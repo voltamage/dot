@@ -27,7 +27,7 @@
       decrypt: yes
       owner: artix
       group: artix
-      mode: 0400 
+      mode: 0600 
 
   - name: Copy server public key
     copy:
@@ -36,4 +36,4 @@
       decrypt: yes
       owner: artix
       group: artix
-      mode: 0400 
+      mode: 0644 
