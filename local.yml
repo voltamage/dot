@@ -4,5 +4,5 @@
 
   tasks:
   - name: Install Neovim
-    pacman:
+    package:
       name: neovim
