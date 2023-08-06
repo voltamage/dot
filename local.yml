@@ -37,3 +37,12 @@
       owner: artix
       group: artix
       mode: 0644 
+  
+  - name: Copy .gitconfig
+    copy:
+      src: tasks/files/.gitconfig
+      dest: /home/artix/.gitconfig
+      decrypt: yes
+      owner: artix
+      group: artix
+      mode: 0644 
