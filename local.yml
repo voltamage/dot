@@ -3,15 +3,6 @@
   become: true
 
   tasks:
-  - name: Install packages
-    package:
-      name:
-        - ansible
-        - base-devel
-        - git
-        - neovim
-        - tmux
-
   - name: Ensure .ssh directory exists
     file:
       dest: /home/artix/.ssh
@@ -46,3 +37,9 @@
       owner: artix
       group: artix
       mode: 0644 
+  
+  - name: Install packages
+    package:
+      name:
+        - neovim
+        - tmux
