@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks: 
+  - name: Install packages
+    package:
+      name:
+        - neovim
+        - tmux
