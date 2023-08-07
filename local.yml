@@ -3,6 +3,11 @@
   become: true
 
   tasks:
+  - name: Install git
+    package:
+      name:
+        - git
+  
   - name: Ensure .ssh directory exists
     file:
       dest: /home/artix/.ssh
