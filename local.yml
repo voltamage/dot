@@ -21,11 +21,6 @@
       regexp: '^#ParallelDownloads'
       line: ParallelDownloads = 8
 
-  - name: Update system
-    pacman:
-      update_cache: true
-      upgrade: true
-
   - name: Install git
     package:
       name:
