@@ -13,3 +13,5 @@
     git:
       repo: https://github.com/voltamage/dotfiles.git
       dest: /home/artix/dotfiles
+    become: yes
+    become_user: artix
