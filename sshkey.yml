@@ -13,7 +13,7 @@
   
   - name: Copy server private key
     copy:
-      src: tasks/files/id_ed25519
+      src: /home/artix/.ansible/pull/artixlinux/tasks/files/id_ed25519
       dest: /home/artix/.ssh/id_ed25519
       decrypt: yes
       owner: artix
@@ -22,7 +22,7 @@
 
   - name: Copy server public key
     copy:
-      src: tasks/files/id_ed25519.pub
+      src: /home/artix/.ansible/pull/artixlinux/tasks/files/id_ed25519.pub
       dest: /home/artix/.ssh/id_ed25519.pub
       decrypt: yes
       owner: artix
@@ -31,7 +31,7 @@
   
   - name: Copy .gitconfig
     copy:
-      src: tasks/files/.gitconfig
+      src: /home/artix/.ansible/pull/artixlinux/tasks/files/.gitconfig
       dest: /home/artix/.gitconfig
       decrypt: yes
       owner: artix
