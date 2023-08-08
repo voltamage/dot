@@ -20,8 +20,3 @@
       path: /etc/pacman.conf
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
-  
-  - name: Install git
-    package:
-      name:
-        - git
