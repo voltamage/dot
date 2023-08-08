@@ -9,24 +9,19 @@
       regexp: '^#Color'
       line: Color
 
+  - name: Configure pacman ParallelDownloads
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#ParallelDownloads'
+      line: ParallelDownloads = 8
+  
   - name: Configure pacman VerbosePkgLists
     lineinfile:
       path: /etc/pacman.conf
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
   
-  - name: Configure pacman ParallelDownloads
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: '^#ParallelDownloads'
-      line: ParallelDownloads = 8
-
   - name: Install git
     package:
       name:
         - git
-  
-  - name: Git clone dotfiles
-    git:
-      repo: https://github.com/voltamage/dotfiles.git
-      dest: /home/artix/dotfiles
