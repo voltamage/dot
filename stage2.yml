@@ -3,6 +3,36 @@
   become: true
 
   tasks: 
+  - name: Update system
+    package:
+      upgrade: true
+      update_cache: true
+
+  - name: Install base-devel for makepkg
+    package:
+      name:
+        - base-devel
+
+  - name: Ensure the aurbuild user exists
+    user:
+      name: aurbuild
+      create_home: no
+
+  - name: Allow the aurbuild user to run 'sudo pacman' without a password
+    lineinfile:
+      path: /etc/sudoers.d/aurbuild
+      line: 'aurbuild ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
+
+  - name: Install Paru
+    kewlfft.aur.aur:
+      name: paru-bin
+      state: present
+    become: yes
+    become_user: aurbuild
+  
   - name: Install packages
     package:
       name:

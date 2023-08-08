@@ -21,6 +21,11 @@
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
   
+  - name: Update system
+    package:
+      upgrade: true
+      update_cache: true
+  
   - name: Git clone dotfiles
     git:
       repo: https://github.com/voltamage/dotfiles.git
