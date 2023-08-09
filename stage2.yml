@@ -38,3 +38,18 @@
       name:
         - neovim
         - tmux
+        - links
+  
+#  - name: Install zfs
+#    kewlfft.aur.aur:
+#      name: librewolf-bin
+#      state: present
+#    become: yes
+#    become_user: aurbuild
+  
+#  - name: Install chezmoi
+#    kewlfft.aur.aur:
+#      name: chezmoi-git
+#      state: present
+#    become: yes
+#    become_user: aurbuild
