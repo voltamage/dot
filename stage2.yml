@@ -29,7 +29,7 @@
   - name: Ensure the aurbuild user exists
     user:
       name: aurbuild
-      create_home: no
+      create_home: yes
 
   - name: Allow the aurbuild user to run 'sudo pacman' without a password
     lineinfile:
