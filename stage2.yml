@@ -12,6 +12,19 @@
     package:
       name:
         - base-devel
+  
+  - name: Ensure the ansible user exists
+    user:
+      name: ansible
+      create_home: no
+  
+  - name: Allow the ansible user to run administrative tasks in passwordless sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_ansible
+      line: 'ansible ALL=(ALL) NOPASSWD: ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
 
   - name: Ensure the aurbuild user exists
     user:
@@ -20,7 +33,7 @@
 
   - name: Allow the aurbuild user to run 'sudo pacman' without a password
     lineinfile:
-      path: /etc/sudoers.d/aurbuild
+      path: /etc/sudoers.d/u_aurbuild
       line: 'aurbuild ALL=(ALL) NOPASSWD: /usr/bin/pacman'
       create: yes
       mode: 0644
@@ -32,6 +45,13 @@
       state: present
     become: yes
     become_user: aurbuild
+
+  - name: Install ZFS
+    kewlfft.aur.aur:
+      name: zfs-dkms
+      state: present
+    become: yes
+    become_user: aurbuild
   
   - name: Install packages
     package:
@@ -39,6 +59,7 @@
         - neovim
         - tmux
         - links
+        - ranger
   
 #  - name: Install zfs
 #    kewlfft.aur.aur:
