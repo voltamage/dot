@@ -3,6 +3,13 @@
   become: true
 
   tasks: 
+  - name: Git clone dotfiles
+    git:
+      repo: https://github.com/voltamage/dotfiles.git
+      dest: /home/artix/dotfiles
+    become: yes
+    become_user: artix
+  
   - name: Update system
     package:
       upgrade: true
@@ -13,19 +20,6 @@
       name:
         - base-devel
   
-  - name: Ensure the ansible user exists
-    user:
-      name: ansible
-      create_home: no
-  
-  - name: Allow the ansible user to run administrative tasks in passwordless sudo
-    lineinfile:
-      path: /etc/sudoers.d/u_ansible
-      line: 'ansible ALL=(ALL) NOPASSWD: ALL'
-      create: yes
-      mode: 0644
-      validate: 'visudo -cf %s'
-
   - name: Ensure the aurbuild user exists
     user:
       name: aurbuild
@@ -56,21 +50,8 @@
   - name: Install packages
     package:
       name:
-        - neovim
-        - tmux
+        - htop
         - links
+        - neovim
         - ranger
-  
-#  - name: Install zfs
-#    kewlfft.aur.aur:
-#      name: librewolf-bin
-#      state: present
-#    become: yes
-#    become_user: aurbuild
-  
-#  - name: Install chezmoi
-#    kewlfft.aur.aur:
-#      name: chezmoi-git
-#      state: present
-#    become: yes
-#    become_user: aurbuild
+        - tmux
