@@ -50,6 +50,7 @@
   - name: Install packages
     package:
       name:
+        - chezmoi
         - htop
         - links
         - neovim
