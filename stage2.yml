@@ -40,12 +40,12 @@
     become: yes
     become_user: aurbuild
 
-  - name: Install ZFS
-    kewlfft.aur.aur:
-      name: zfs-dkms
-      state: present
-    become: yes
-    become_user: aurbuild
+#- name: Install ZFS
+#kewlfft.aur.aur:
+#name: zfs-dkms
+#state: present
+#become: yes
+#become_user: aurbuild
   
   - name: Install packages
     package:
