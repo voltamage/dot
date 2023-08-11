@@ -3,17 +3,6 @@
   become: true
 
   tasks: 
-  - name: Add lib32 to pacman.conf
-    blockinfile:
-      path: /etc/pacman.conf
-      block: |
-        
-        # For 32-bit packages
-        
-        [lib32]
-        Include = /etc/pacman.d/mirrorlist
-      backup: yes
-  
   - name: Configure pacman Color
     lineinfile:
       path: /etc/pacman.conf
@@ -32,7 +21,7 @@
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
   
-  - name: Add Universe repository to pacman.conf
+  - name: Add Universe repository and 32-bit support to pacman.conf
     blockinfile:
       path: /etc/pacman.conf
       block: |
