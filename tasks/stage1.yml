@@ -43,3 +43,18 @@
       decrypt: yes
       owner: artix
       group: artix
+  
+  - name: Ensure chezmoi directory exists
+    file:
+      dest: /home/artix/.config/chezmoi
+      owner: artix
+      group: artix
+      state: directory
+      mode: 0755
+  
+  - name: Copy chezmoi.yaml
+    copy:
+      src: /home/artix/.ansible/pull/artixlinux/tasks/files/chezmoi.yaml
+      dest: /home/artix/.config/chezmoi/chezmoi.yaml
+      owner: artix
+      group: artix
