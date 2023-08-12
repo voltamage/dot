@@ -1,7 +1,7 @@
-Ansible repository for systems automation
+Ansible repository for systems automation, currently supporting Artix Linux
 
-For Artix, install with:
+Install with:
 
 ```
-curl -sSL https://raw.githubusercontent.com/voltamage/dotfiles/main/init-artix | sh
+curl -sSL https://raw.githubusercontent.com/voltamage/dotfiles/main/init | sh
 ```

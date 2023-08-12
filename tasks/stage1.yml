@@ -3,6 +3,13 @@
   become: true
 
   tasks: 
+  - name: Git clone dotfiles
+    git:
+      repo: https://github.com/voltamage/dotfiles.git
+      dest: /home/artix/dotfiles
+    become: yes
+    become_user: artix
+  
   - name: Ensure .ssh directory exists
     file:
       dest: /home/artix/.ssh

@@ -3,22 +3,18 @@
   become: true
 
   tasks: 
-  - name: Git clone dotfiles
-    git:
-      repo: https://github.com/voltamage/dotfiles.git
-      dest: /home/artix/dotfiles
-    become: yes
-    become_user: artix
-  
-  - name: Update system
-    package:
-      upgrade: true
-      update_cache: true
-
-  - name: Install base-devel for makepkg
+  - name: Install packages
     package:
       name:
         - base-devel
+        - chezmoi
+        - fzf
+        - htop
+        - links
+        - neovim
+        - ranger
+        - tmux
+        - ttf-jetbrains-mono-nerd
   
   - name: Ensure the aurbuild user exists
     user:
@@ -39,14 +35,3 @@
       state: present
     become: yes
     become_user: aurbuild
-
-  - name: Install packages
-    package:
-      name:
-        - chezmoi
-        - fzf
-        - htop
-        - links
-        - neovim
-        - ranger
-        - tmux
