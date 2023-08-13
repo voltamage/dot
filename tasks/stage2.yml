@@ -7,6 +7,7 @@
     package:
       name:
         - base-devel
+        - bat
         - chezmoi
         - fzf
         - htop
@@ -32,6 +33,14 @@
   - name: Install Paru
     kewlfft.aur.aur:
       name: paru-bin
+      state: present
+    become: yes
+    become_user: aurbuild
+
+  - name: Install aur packages
+    kewlfft.aur.aur:
+      name:
+        - xdg-ninja-git
       state: present
     become: yes
     become_user: aurbuild
