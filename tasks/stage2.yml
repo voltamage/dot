@@ -12,7 +12,6 @@
         - fzf
         - htop
         - links
-        - neovim
         - ranger
         - tmux
         - ttf-jetbrains-mono-nerd
@@ -42,6 +41,7 @@
     kewlfft.aur.aur:
       name:
         - xdg-ninja-git
+        - neovim-nightly-bin
       state: present
     become: yes
     become_user: aurbuild
