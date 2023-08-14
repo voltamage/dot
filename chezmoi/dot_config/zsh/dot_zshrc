@@ -7,7 +7,7 @@ unsetopt beep
 bindkey -v
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '"$XDG_STATE_HOME"/zsh/.zshrc'
+zstyle :compinstall filename '"$XDG_CONFIG_HOME"/zsh/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall

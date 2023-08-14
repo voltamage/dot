@@ -18,6 +18,14 @@
       state: directory
       mode: 0700 
   
+  - name: Ensure .config/git directory exists
+    file:
+      dest: /home/artix/.config/git
+      owner: artix
+      group: artix
+      state: directory
+      mode: 0755 
+  
   - name: Copy server private key
     copy:
       src: /home/artix/.ansible/pull/artixlinux/tasks/files/id_ed25519
@@ -39,7 +47,7 @@
   - name: Copy .gitconfig
     copy:
       src: /home/artix/.ansible/pull/artixlinux/tasks/files/.gitconfig
-      dest: /home/artix/.gitconfig
+      dest: /home/artix/.config/git/config
       decrypt: yes
       owner: artix
       group: artix
