@@ -3,6 +3,20 @@
   become: true
 
   tasks: 
+  - name: Ensure /etc/zsh directory exists
+    file:
+      dest: /etc/zsh
+      owner: root
+      group: root
+      state: directory
+      mode: 0755
+
+  - name: Configure ZDOTDIR
+    copy:
+      dest: /etc/zsh/zshenv
+      content: |
+        export ZDOTDIR="$HOME"/.config/zsh
+ 
   - name: Configure pacman Color
     lineinfile:
       path: /etc/pacman.conf

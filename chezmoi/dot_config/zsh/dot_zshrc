@@ -11,7 +11,7 @@ setopt SHARE_HISTORY
 unsetopt BEEP
 bindkey -v
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/artix/.zshrc'
+zstyle :compinstall filename '/home/artix/config/zsh/.zshrc'
 
 autoload -Uz compinit
 compinit
