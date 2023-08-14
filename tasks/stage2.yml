@@ -16,6 +16,7 @@
         - ranger
         - tmux
         - ttf-jetbrains-mono-nerd
+        - zsh
   
   - name: Ensure the aurbuild user exists
     user:
@@ -44,3 +45,20 @@
       state: present
     become: yes
     become_user: aurbuild
+  
+  - name: Ensure ~/.local/state/zsh directory exists
+    file:
+      dest: /home/artix/.local/state/zsh
+      owner: artix
+      group: artix
+      state: directory
+      mode: 0755
+  
+  - name: Ensure zsh history exists
+    copy:
+      content: ""
+      dest: /home/artix/.local/state/zsh/history
+      force: no
+      owner: artix
+      group: artix
+      mode: 0600
