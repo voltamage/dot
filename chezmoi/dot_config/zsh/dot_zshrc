@@ -1,8 +1,3 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-# End of lines configured by zsh-newuser-install
-HISTSIZE=100000
-SAVEHIST=100000
 setopt HIST_FCNTL_LOCK
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -10,9 +5,9 @@ setopt HIST_SAVE_NO_DUPS
 setopt SHARE_HISTORY
 unsetopt BEEP
 bindkey -v
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/artix/config/zsh/.zshrc'
 
+# The following lines were added by compinstall
+zstyle :compinstall filename '"$XDG_STATE_HOME"/zsh/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
