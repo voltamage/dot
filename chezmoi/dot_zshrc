@@ -8,7 +8,7 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt SHARE_HISTORY
-unsetopt beep
+unsetopt BEEP
 bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/artix/.zshrc'
