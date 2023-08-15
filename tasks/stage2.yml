@@ -17,6 +17,7 @@
         - tmux
         - ttf-jetbrains-mono-nerd
         - wikiman
+        - zoxide
         - zsh
   
   - name: Ensure the aurbuild user exists
