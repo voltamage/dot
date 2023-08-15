@@ -3,12 +3,15 @@ export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_STATE_HOME="$HOME"/.local/state
 
-export EDITOR=nvim
-export VISUAL=nvim
-
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME"/ansible.cfg
+export ANSIBLE_GALAXY_CACHE_DIR="$XDG_CONFIG_HOME"/ansible/galaxy_cache
+export ANSIBLE_HOME="$XDG_CONFIG_HOME"/ansible
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
+
+export EDITOR=nvim
 export HISTSIZE=100000
 export SAVEHIST=100000
+export VISUAL=nvim
