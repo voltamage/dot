@@ -11,11 +11,10 @@
         - bat
         - chezmoi
         - fzf
-        - htop
         - links
+        - multilib-devel
         - ranger
         - tmux
-        - ttf-jetbrains-mono-nerd
         - wikiman
         - zoxide
         - zsh

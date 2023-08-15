@@ -13,5 +13,8 @@ compinit
 # End of lines added by compinstall
 eval "$(zoxide init zsh)"
 
+alias cat='bat'
 alias cd='z'
 alias cdi='zi'
+alias links='links duckduckgo.com'
+alias zsh-source='source "$XDG_CONFIG_HOME"/zsh/.zshrc'
