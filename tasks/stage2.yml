@@ -6,6 +6,7 @@
   - name: Install packages
     package:
       name:
+        - arch-wiki-docs
         - base-devel
         - bat
         - chezmoi
@@ -15,6 +16,7 @@
         - ranger
         - tmux
         - ttf-jetbrains-mono-nerd
+        - wikiman
         - zsh
   
   - name: Ensure the aurbuild user exists
