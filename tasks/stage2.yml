@@ -42,8 +42,9 @@
   - name: Install aur packages
     kewlfft.aur.aur:
       name:
-        - xdg-ninja-git
         - neovim-nightly-bin
+        - pfetch-rs-bin
+        - xdg-ninja-git
       state: present
     become: yes
     become_user: aurbuild
