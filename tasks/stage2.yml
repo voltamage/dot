@@ -44,6 +44,7 @@
   - name: Install aur packages
     kewlfft.aur.aur:
       name:
+        - discordo-git
         - neovim-nightly-bin
         - pfetch-rs-bin
         - xdg-ninja-git
