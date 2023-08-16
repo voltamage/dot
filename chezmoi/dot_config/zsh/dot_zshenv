@@ -6,9 +6,10 @@ export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_RUNTIME_DIR=/run/user/"$UID"
 export XDG_STATE_HOME="$HOME"/.local/state
 
-export ANSIBLE_CONFIG="$XDG_CONFIG_HOME"/ansible.cfg
-export ANSIBLE_GALAXY_CACHE_DIR="$XDG_CONFIG_HOME"/ansible/galaxy_cache
+##export ANSIBLE_CONFIG="$XDG_CONFIG_HOME"/ansible.cfg
+##export ANSIBLE_GALAXY_CACHE_DIR="$XDG_CONFIG_HOME"/ansible/galaxy_cache
 export ANSIBLE_HOME="$XDG_CONFIG_HOME"/ansible
+##export ANSIBLE_LOCAL_TEMP="$XDG_CONFIG_HOME"/ansible/tmp
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
