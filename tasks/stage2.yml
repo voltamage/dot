@@ -7,11 +7,12 @@
     package:
       name:
         - arch-wiki-docs
+        - artixnews
         - base-devel
         - bat
         - chezmoi
         - fzf
-        - links
+        - lynx
         - multilib-devel
         - onefetch
         - ranger
