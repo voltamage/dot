@@ -13,6 +13,7 @@
         - fzf
         - links
         - multilib-devel
+        - onefetch
         - ranger
         - tmux
         - wikiman
