@@ -7,9 +7,11 @@
     package:
       name:
         - arch-wiki-docs
+        - aria2
         - artixnews
         - base-devel
         - bat
+        - htop
         - chezmoi
         - fzf
         - lynx
@@ -43,10 +45,13 @@
 
   - name: Install aur packages
     kewlfft.aur.aur:
+      use: paru
+      extra_args: "-a"
       name:
 #        - discordo-git -- needs networking
         - neovim-nightly-bin
         - pfetch-rs-bin
+        - timg
         - xdg-ninja-git
       state: present
     become: yes
