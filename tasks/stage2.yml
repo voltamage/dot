@@ -49,6 +49,7 @@
       extra_args: "-a"
       name:
 #        - discordo-git -- needs networking
+        - hyprland-nvidia-nosystemd-git                       
         - neovim-nightly-bin
         - pfetch-rs-bin
         - timg
