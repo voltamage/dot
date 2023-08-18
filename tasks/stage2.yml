@@ -15,12 +15,14 @@
         - chezmoi
         - fzf
         - lynx
+        - mpv
         - multilib-devel
         - onefetch
         - ranger
         - tmux
         - wezterm
         - wikiman
+        - yt-dlp
         - zoxide
         - zsh
   
@@ -54,8 +56,10 @@
         - librewolf-bin
         - neovim-nightly-bin
         - pfetch-rs-bin
+        - swww
         - tgpt-bin
         - timg
+        - waypaper-git
         - xdg-ninja-git
       state: present
     become: yes
