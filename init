@@ -11,5 +11,5 @@ ansible-playbook ~/.ansible/pull/artixlinux/tasks/stage2.yml -v &&
 chezmoi apply &&
 mv ~/.ansible ~/.config/ansible &&
 rm ~/.bash* &&
-sudo chsh artix &&
+sudo chsh -s /usr/bin/zsh artix &&
 Hyprland
