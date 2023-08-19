@@ -1,0 +1,2 @@
+--downloader aria2c
+--format-sort vcodec:vp9,av01
