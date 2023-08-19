@@ -23,6 +23,7 @@
         - wezterm
         - wikiman
         - yt-dlp
+        - ytfzf
         - zoxide
         - zsh
   
