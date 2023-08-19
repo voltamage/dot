@@ -22,6 +22,7 @@
         - tmux
         - wezterm
         - wikiman
+        - xdg-desktop-portal-hyprland
         - yt-dlp
         - ytfzf
         - zoxide
