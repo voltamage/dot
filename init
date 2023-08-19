@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo pacman -Sy --noconfirm ansible &&
-ansible localhost --module-name package --become --args name=ansible,curl,git,pacman-contrib -v &&
+ansible localhost --module-name package --become --args name=ansible,curl,git,pacman-contrib,parallel -v &&
 curl https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | sudo tee /etc/pacman.d/mirrorlist-orig &&
 rankmirrors -p /etc/pacman.d/mirrorlist-orig | sudo tee /etc/pacman.d/mirrorlist &&
 ansible-pull -U https://github.com/voltamage/dotfiles.git -v &&
