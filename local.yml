@@ -3,20 +3,6 @@
   become: true
 
   tasks: 
-  - name: Ensure /etc/zsh directory exists
-    file:
-      dest: /etc/zsh
-      owner: root
-      group: root
-      state: directory
-      mode: 0755
-
-  - name: Configure ZDOTDIR
-    copy:
-      dest: /etc/zsh/zshenv
-      content: |
-        export ZDOTDIR="$HOME"/.config/zsh
- 
   - name: Configure pacman Color
     lineinfile:
       path: /etc/pacman.conf
@@ -27,7 +13,7 @@
     lineinfile:
       path: /etc/pacman.conf
       regexp: '^#ParallelDownloads'
-      line: ParallelDownloads = 8
+      line: ParallelDownloads = 16
   
   - name: Configure pacman VerbosePkgLists
     lineinfile:
@@ -35,21 +21,37 @@
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
   
+  - name: Install packages
+    package:
+      name:
+        - ansible
+        - curl
+        - git
+        - pacman-contrib
+        - parallel
+  
+  - name: Retrieve latest Artix mirrorlist
+    shell: curl https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | tee /tmp/rankmirrors-artix
+
+  - name: Rank Artix mirrors
+    shell: rankmirrors -p /tmp/rankmirrors-artix | sudo tee /etc/pacman.d/mirrorlist
+  
   - name: Add Universe repository and 32-bit support to pacman.conf
     blockinfile:
       path: /etc/pacman.conf
       block: |
         
         # For 32-bit packages
-        
         [lib32]
         Include = /etc/pacman.d/mirrorlist
         
         # Artix repository containing artix-archlinux-support to enable Arch repos
-        
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
   
+  - name: Initialize and populate Artix keyring
+    shell: sudo pacman-key --init && sudo pacman-key --populate artix
+
   - name: Add Arch Linux support for Artix
     package:
       name:
@@ -63,26 +65,23 @@
       block: |
         
         # For 32-bit packages
-        
         [lib32]
         Include = /etc/pacman.d/mirrorlist
         
         # Arch Linux repos, community requires extra
-        
         [extra]
-        Include = /etc/pacman.d/mirrorlist-arch
-        
-        [community]
         Include = /etc/pacman.d/mirrorlist-arch
         
         [multilib]
         Include = /etc/pacman.d/mirrorlist-arch
         
         # Artix repository containing artix-archlinux-support to enable Arch repos
-        
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
   
+  - name: Populate Arch keyring
+    shell: sudo pacman-key --populate archlinux
+
   - name: Update system
     package:
       upgrade: true
