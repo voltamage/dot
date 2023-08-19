@@ -61,6 +61,7 @@
         - swww
         - tgpt-bin
         - timg
+        - tldr++
         - xdg-ninja-git
       state: present
     become: yes
