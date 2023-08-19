@@ -50,7 +50,7 @@
         Server = https://mirror1.artixlinux.org/universe/$arch
   
   - name: Initialize and populate Artix keyring
-    shell: sudo pacman-key --init && sudo pacman-key --populate artix
+    shell: sudo pacman-key --init && sudo pacman-key --populate
 
   - name: Add Arch Linux support for Artix
     package:
@@ -80,7 +80,7 @@
         Server = https://mirror1.artixlinux.org/universe/$arch
   
   - name: Populate Arch keyring
-    shell: sudo pacman-key --populate archlinux
+    shell: sudo pacman-key --populate
 
   - name: Update system
     package:
