@@ -60,7 +60,6 @@
         - swww
         - tgpt-bin
         - timg
-        - waypaper-git
         - xdg-ninja-git
       state: present
     become: yes
