@@ -31,9 +31,7 @@
         - parallel
 
   - name: Update and rank latest Artix mirrorlist
-    shell: curl -sSL https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | sudo tee /tmp/rankmirrors-artix | rankmirrors -p /tmp/rankmirrors-artix | sudo tee /etc/pacman.d/mirrorlist
-    become: true
-    become_user: root
+    shell: curl -sSL https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | awk '/^## North America$/{f=1; next}f==0{next}/^$/{exit}{print substr($0, 1);}' | sed -e '/Server = https:/!d' | sudo tee /tmp/rankmirrors-artix && rankmirrors -p /tmp/rankmirrors-artix | sudo tee /etc/pacman.d/mirrorlist
 
   - name: Add Universe repository and 32-bit support to pacman.conf
     blockinfile:
@@ -59,9 +57,7 @@
       update_cache: true
   
   - name: Update and rank latest Arch mirrorlist
-    shell: curl -sSL "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4&ip_version=6&use_mirror_status=on" | sed -e 's/^#Server/Server/' | sed -e '/Server = https:/!d' | sudo tee /tmp/rankmirrors-archlinux | rankmirrors -p /tmp/rankmirrors-archlinux | sudo tee /etc/pacman.d/mirrorlist-arch
-    become: true
-    become_user: root
+    shell: curl -sSL "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4&ip_version=6&use_mirror_status=on" | sed -e 's/^#Server/Server/' | sed -e '/Server = https:/!d' | sudo tee /tmp/rankmirrors-archlinux && rankmirrors -p /tmp/rankmirrors-archlinux | sudo tee /etc/pacman.d/mirrorlist-arch
   
   - name: Add Arch repositories to pacman.conf
     blockinfile:
