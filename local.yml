@@ -46,8 +46,8 @@
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
 
-  - name: Wipe current gpg and mirror dbs
-    shell: sudo rm -rf /var/lib/pacman/sync && sudo pacman -Sy && sudo rm -rf /etc/pacman.d/gnupg && sudo pacman-key --init && sudo pacman-key --populate
+  - name: Refresh current mirror dbs
+    shell: sudo rm -rf /var/lib/pacman/sync && sudo pacman -Sy
   
   - name: Add Arch Linux support for Artix
     package:
@@ -79,5 +79,5 @@
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
   
-  - name: Wipe current gpg and mirror dbs
-    shell: sudo rm -rf /var/lib/pacman/sync && sudo pacman -Sy && sudo rm -rf /etc/pacman.d/gnupg && sudo pacman-key --init && sudo pacman-key --populate
+  - name: Refresh current mirror dbs
+    shell: sudo rm -rf /var/lib/pacman/sync && sudo pacman -Sy
