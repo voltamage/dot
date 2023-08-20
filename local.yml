@@ -21,21 +21,6 @@
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
   
-  - name: Install packages
-    package:
-      name:
-        - ansible
-        - curl
-        - git
-        - pacman-contrib
-        - parallel
-  
-  - name: Retrieve latest Artix mirrorlist
-    shell: curl https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | tee /tmp/rankmirrors-artix
-
-  - name: Rank Artix mirrors
-    shell: rankmirrors -p /tmp/rankmirrors-artix | sudo tee /etc/pacman.d/mirrorlist
-  
   - name: Add Universe repository and 32-bit support to pacman.conf
     blockinfile:
       path: /etc/pacman.conf
@@ -49,12 +34,6 @@
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
     
-  - name: Wipe current gpg and mirror dbs
-    shell: sudo rm -rf /var/lib/pacman/sync && sudo rm -rf /etc/pacman.d/gnupg
-
-  - name: Initialize and populate Artix keyring
-    shell: sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Syyu
-
   - name: Add Arch Linux support for Artix
     package:
       name:
@@ -80,10 +59,3 @@
         # Artix repository containing artix-archlinux-support to enable Arch repos
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
-  
-  - name: Populate Arch keyring
-    shell: sudo pacman-key --populate
-
-
-  - name: Check and update everything
-    shell: sudo pacman -Syyu
