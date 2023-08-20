@@ -20,6 +20,21 @@
       path: /etc/pacman.conf
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
+
+  - name: Install packages
+    package:
+      name:
+        - ansible
+        - curl
+        - git
+        - pacman-contrib
+        - parallel
+
+  - name: Retrieve latest Artix mirrorlist
+    shell: curl https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | tee /tmp/rankmirrors-artix
+
+  - name: Rank Artix mirrors
+    shell: rankmirrors -p /tmp/rankmirrors-artix | sudo tee /etc/pacman.d/mirrorlist
   
   - name: Add Universe repository and 32-bit support to pacman.conf
     blockinfile:
