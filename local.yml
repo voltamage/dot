@@ -13,7 +13,7 @@
     lineinfile:
       path: /etc/pacman.conf
       regexp: '^#ParallelDownloads'
-      line: ParallelDownloads = 16
+      line: ParallelDownloads = 12
   
   - name: Configure pacman VerbosePkgLists
     lineinfile:
