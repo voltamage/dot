@@ -31,7 +31,7 @@
         - parallel
 
   - name: Update and rank latest Artix mirrorlist
-    shell: curl -sSL https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | awk '/^## North America$/{f=1; next}f==0{next}/^$/{exit}{print substr($0, 1);}' | sed -e '/Server = https:/!d' | sudo tee /tmp/rankmirrors-artix | rankmirrors -p /tmp/rankmirrors-artix | sudo tee /etc/pacman.d/mirrorlist
+    shell: curl -sSL https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | sudo tee /tmp/rankmirrors-artix | rankmirrors -p /tmp/rankmirrors-artix | sudo tee /etc/pacman.d/mirrorlist
 
   - name: Add Universe repository and 32-bit support to pacman.conf
     blockinfile:
