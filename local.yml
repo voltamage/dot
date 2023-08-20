@@ -48,7 +48,10 @@
         # Artix repository containing artix-archlinux-support to enable Arch repos
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
-  
+    
+  - name: Wipe current gpg and mirror dbs
+    shell: sudo rm -rf /var/lib/pacman/sync && sudo rm -rf /etc/pacman.d/gnupg
+
   - name: Initialize and populate Artix keyring
     shell: sudo pacman-key --init && sudo pacman-key --populate
 
