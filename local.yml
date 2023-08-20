@@ -53,14 +53,13 @@
     shell: sudo rm -rf /var/lib/pacman/sync && sudo rm -rf /etc/pacman.d/gnupg
 
   - name: Initialize and populate Artix keyring
-    shell: sudo pacman-key --init && sudo pacman-key --populate
+    shell: sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Syyu
 
   - name: Add Arch Linux support for Artix
     package:
       name:
         - artix-archlinux-support
         - lib32-artix-archlinux-support
-      update_cache: true
   
   - name: Add Arch repositories to pacman.conf
     blockinfile:
@@ -85,7 +84,6 @@
   - name: Populate Arch keyring
     shell: sudo pacman-key --populate
 
-  - name: Update system
-    package:
-      upgrade: true
-      update_cache: true
+
+  - name: Check and update everything
+    shell: sudo pacman -Syyu
