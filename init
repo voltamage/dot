@@ -2,6 +2,7 @@
 sudo pacman -Sy --noconfirm ansible &&
 ansible localhost --module-name package --become --args name=ansible,git -v &&
 ansible-pull -U https://github.com/voltamage/dotfiles.git -v &&
+sudo pacman -Syyu &&
 ansible-playbook ~/.ansible/pull/artixlinux/tasks/stage1.yml --ask-vault-pass -v &&
 cd ~/dotfiles &&
 git remote remove origin &&
