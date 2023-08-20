@@ -39,6 +39,7 @@
       name:
         - artix-archlinux-support
         - lib32-artix-archlinux-support
+      update_cache: true
   
   - name: Add Arch repositories to pacman.conf
     blockinfile:
