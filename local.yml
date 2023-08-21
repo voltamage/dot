@@ -95,9 +95,6 @@
       mode: 0644
       validate: 'visudo -cf %s'
 
-  - name: Update and rank latest Artix mirrorlist
-    shell: ansible-galaxy collection install kewlfft.aur -v
-  
   - name: Install Paru
     kewlfft.aur.aur:
       name: paru-bin
