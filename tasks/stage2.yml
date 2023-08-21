@@ -17,6 +17,10 @@
         - fzf
         - lynx
         - mpv
+        - noto-fonts
+        - noto-fonts-cjk
+        - noto-fonts-emoji
+        - noto-fonts-extra
         - onefetch
         - ranger
         - tmux
@@ -27,7 +31,7 @@
         - ytfzf
         - zoxide
         - zsh
-  
+
   - name: Install aur packages
     kewlfft.aur.aur:
       use: paru
