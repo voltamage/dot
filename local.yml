@@ -104,7 +104,12 @@
       state: present
     become: yes
     become_user: aurbuild
-
+  
+  - name: Install booster
+    package:
+      name:
+        - booster
+  
   - name: Removed mkinitcpio
     kewlfft.aur.aur:
       use: paru
@@ -115,11 +120,6 @@
     become: yes
     become_user: aurbuild
   
-  - name: Install booster
-    package:
-      name:
-        - booster
-
   - name: Install aur packages
     kewlfft.aur.aur:
       use: paru
