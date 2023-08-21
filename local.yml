@@ -2,9 +2,9 @@
   connection: local
   become: true
 
-#  tasks:
+  tasks:
 #  - name: Setup ssh
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/stage1.yml --ask-vault-pass -v 
+#    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/stage1.yml --ask-vault-pass -v 
 
   - name: Ensure /etc/zsh directory exists
     file:
