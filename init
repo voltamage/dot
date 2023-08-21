@@ -1,6 +1,7 @@
 #!/bin/sh
 sudo pacman -Sy --noconfirm ansible &&
 ansible localhost --module-name package --become --args name=ansible,git -v &&
+ansible-galaxy collection install kewlfft.aur -v &&
 ansible-pull -U https://github.com/voltamage/dotfiles.git -v &&
 cd ~/dotfiles &&
 git remote remove origin &&
