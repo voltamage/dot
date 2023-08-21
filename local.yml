@@ -84,6 +84,14 @@
     package:
       name:
         - base-devel
+        - booster
+  
+  - name: Removed mkinitcpio packages:
+    package:
+      name:
+        - mkinitcpio*
+      state: absent
+      force: true
   
   - name: Ensure the aurbuild user exists
     user:
@@ -103,25 +111,7 @@
       name: paru-bin
       state: present
     become: yes
-    become_user: aurbuild
-  
-  - name: Install booster
-    package:
-      name:
-        - booster
-  
-  - name: Removed mkinitcpio packages:
-    package:
-      name:
-        - mkinitcpio*
-      state: absent
-      force: true
-  
-  - name: Install aur packages
-    kewlfft.aur.aur:
-      use: paru
-      extra_args: "-a"
-      name:
+..  name:
         - rate-mirrors-bin
       state: present
     become: yes
