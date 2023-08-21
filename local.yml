@@ -156,9 +156,13 @@
   
   - name: Update and rank latest Arch mirrorlist
     shell: rate-mirrors artix | sed -e '/Server = https:/!d' | sudo tee /etc/pacman.d/mirrorlist
+    become: yes
+    become_user: artix
   
   - name: Update and rank latest Arch mirrorlist
     shell: rate-mirrors arch | sed -e '/Server = https:/!d' | sudo tee /etc/pacman.d/mirrorlist-arch
+    become: yes
+    become_user: artix
   
   - name: Delete stale mirror database
     shell: sudo rm -rf /var/lib/pacman/sync
