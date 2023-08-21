@@ -110,10 +110,14 @@
     become: yes
     become_user: aurbuild
 
-  - name: Add Universe repository to pacman.conf
+  - name: Add Universe and lib32 repositories to pacman.conf
     blockinfile:
       path: /etc/pacman.conf
       block: |
+
+        # For 32-bit packages
+        [lib32]
+        Include = /etc/pacman.d/mirrorlist
         
         # Artix repository containing artix-archlinux-support to enable Arch repos
         [universe]
