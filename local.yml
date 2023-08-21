@@ -99,7 +99,22 @@
       state: present
     become: yes
     become_user: aurbuild
+
+  - name: Removed mkinitcpio
+    kewlfft.aur.aur:
+      use: paru
+      extra_args: "-Rnsc"
+      name:
+        - mkinitcpio
+      state: absent
+    become: yes
+    become_user: aurbuild
   
+ - name: Install booster
+    package:
+      name:
+        - booster
+
   - name: Install aur packages
     kewlfft.aur.aur:
       use: paru
