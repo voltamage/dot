@@ -1,36 +1,6 @@
 - hosts: localhost
   connection: local
   become: true
-
-  tasks: 
-  - name: Ensure /etc/zsh directory exists
-    file:
-      dest: /etc/zsh
-      owner: root
-      group: root
-      state: directory
-      mode: 0755
-
-  - name: Configure ZDOTDIR
-    copy:
-      dest: /etc/zsh/zshenv
-      content: |
-        export ZDOTDIR="$HOME"/.config/zsh
-  
-  - name: Ensure chezmoi directory exists
-    file:
-      dest: /home/artix/.config/chezmoi
-      owner: artix
-      group: artix
-      state: directory
-      mode: 0755
-  
-  - name: Copy chezmoi.yaml
-    copy:
-      src: /home/artix/.ansible/pull/artixlinux/tasks/files/chezmoi.yaml
-      dest: /home/artix/.config/chezmoi/chezmoi.yaml
-      owner: artix
-      group: artix
   
   - name: Ensure .ssh directory exists
     file:
@@ -73,12 +43,4 @@
       decrypt: yes
       owner: artix
       group: artix
-  
-  - name: Git clone dotfiles
-    git:
-      repo: https://github.com/voltamage/dotfiles.git
-      dest: /home/artix/dotfiles
-    become: yes
-    become_user: artix
-  
   

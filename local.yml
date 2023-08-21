@@ -3,6 +3,62 @@
   become: true
 
   tasks: 
+  - name: Ensure /etc/zsh directory exists
+    file:
+      dest: /etc/zsh
+      owner: root
+      group: root
+      state: directory
+      mode: 0755
+
+  - name: Configure ZDOTDIR
+    copy:
+      dest: /etc/zsh/zshenv
+      content: |
+        export ZDOTDIR="$HOME"/.config/zsh
+  
+  - name: Ensure ~/.local/state/zsh directory exists
+    file:
+      dest: /home/artix/.local/state/zsh
+      owner: artix
+      group: artix
+      state: directory
+      mode: 0755
+  
+  - name: Ensure zsh history exists
+    copy:
+      content: ""
+      dest: /home/artix/.local/state/zsh/history
+      force: no
+      owner: artix
+      group: artix
+      mode: 0600
+  
+  - name: Ensure chezmoi directory exists
+    file:
+      dest: /home/artix/.config/chezmoi
+      owner: artix
+      group: artix
+      state: directory
+      mode: 0755
+  
+  - name: Copy chezmoi.yaml
+    copy:
+      src: /home/artix/.ansible/pull/artixlinux/tasks/files/chezmoi.yaml
+      dest: /home/artix/.config/chezmoi/chezmoi.yaml
+      owner: artix
+      group: artix
+  
+  - name: Git clone dotfiles
+    git:
+      repo: https://github.com/voltamage/dotfiles.git
+      dest: /home/artix/dotfiles
+    become: yes
+    become_user: artix
+  
+  - name: Setup ssh
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/stage1.yml --ask-vault-pass -v 
+ 
   - name: Configure pacman Color
     lineinfile:
       path: /etc/pacman.conf
@@ -21,33 +77,52 @@
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
 
-  - name: Install packages
+  - name: Install base-devel
     package:
       name:
-        - ansible
-        - curl
-        - git
-        - pacman-contrib
-        - parallel
+        - base-devel
+  
+  - name: Ensure the aurbuild user exists
+    user:
+      name: aurbuild
+      create_home: yes
+
+  - name: Allow the aurbuild user to run 'sudo pacman' without a password
+    lineinfile:
+      path: /etc/sudoers.d/u_aurbuild
+      line: 'aurbuild ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
 
   - name: Update and rank latest Artix mirrorlist
-    shell: curl -sSL https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/branch/master/mirrorlist | sed -e '/Server = https:/!d' | sudo tee /tmp/rankmirrors-artix && rankmirrors -p /tmp/rankmirrors-artix | sudo tee /etc/pacman.d/mirrorlist
+    shell: ansible-galaxy collection install kewlfft.aur -v
+  
+  - name: Install Paru
+    kewlfft.aur.aur:
+      name: paru-bin
+      state: present
+    become: yes
+    become_user: aurbuild
+  
+  - name: Install aur packages
+    kewlfft.aur.aur:
+      use: paru
+      extra_args: "-a"
+      name:
+        - rate-mirrors-bin
+      state: present
+    become: yes
+    become_user: aurbuild
 
-  - name: Add Universe repository and 32-bit support to pacman.conf
+  - name: Add Universe repository to pacman.conf
     blockinfile:
       path: /etc/pacman.conf
       block: |
         
-        # For 32-bit packages
-        [lib32]
-        Include = /etc/pacman.d/mirrorlist
-        
         # Artix repository containing artix-archlinux-support to enable Arch repos
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
-
-  - name: Refresh current mirror dbs
-    shell: sudo rm -rf /var/lib/pacman/sync && sudo pacman -Sy
   
   - name: Add Arch Linux support for Artix
     package:
@@ -55,9 +130,6 @@
         - artix-archlinux-support
         - lib32-artix-archlinux-support
       update_cache: true
-  
-  - name: Update and rank latest Arch mirrorlist
-    shell: curl -sSL "https://archlinux.org/mirrorlist/?country=US&protocol=https&ip_version=4&ip_version=6&use_mirror_status=on" | sed -e 's/^#Server/Server/' | sed -e '/Server = https:/!d' | sudo tee /tmp/rankmirrors-archlinux && rankmirrors -p /tmp/rankmirrors-archlinux | sudo tee /etc/pacman.d/mirrorlist-arch
   
   - name: Add Arch repositories to pacman.conf
     blockinfile:
@@ -79,5 +151,25 @@
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
   
-  - name: Refresh current mirror dbs
-    shell: sudo rm -rf /var/lib/pacman/sync && sudo pacman -Sy
+  - name: Update mirrorlist
+    package:
+      update_cache: true
+  
+  - name: Update and rank latest Arch mirrorlist
+    shell: rate-mirrors artix | sed -e '/Server = https:/!d' | sudo tee /etc/pacman.d/mirrorlist
+  
+  - name: Update and rank latest Arch mirrorlist
+    shell: rate-mirrors arch | sed -e '/Server = https:/!d' | sudo tee /etc/pacman.d/mirrorlist-arch
+  
+  - name: Delete stale mirror database
+    shell: sudo rm -rf /var/lib/pacman/sync
+  
+  - name: Update system
+    package:
+      update_cache: true
+      upgrade: true
+
+#mv ~/.ansible ~/.config/ansible &&
+#rm ~/.bash* &&
+#chezmoi apply &&
+#sudo chsh -s /usr/bin/zsh artix &&

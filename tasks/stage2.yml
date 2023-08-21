@@ -9,7 +9,6 @@
         - arch-wiki-docs
         - aria2
         - artixnews
-        - base-devel
         - bat
         - booster
         - btop
@@ -29,26 +28,6 @@
         - zoxide
         - zsh
   
-  - name: Ensure the aurbuild user exists
-    user:
-      name: aurbuild
-      create_home: yes
-
-  - name: Allow the aurbuild user to run 'sudo pacman' without a password
-    lineinfile:
-      path: /etc/sudoers.d/u_aurbuild
-      line: 'aurbuild ALL=(ALL) NOPASSWD: /usr/bin/pacman'
-      create: yes
-      mode: 0644
-      validate: 'visudo -cf %s'
-
-  - name: Install Paru
-    kewlfft.aur.aur:
-      name: paru-bin
-      state: present
-    become: yes
-    become_user: aurbuild
-
   - name: Install aur packages
     kewlfft.aur.aur:
       use: paru
@@ -67,20 +46,3 @@
       state: present
     become: yes
     become_user: aurbuild
-  
-  - name: Ensure ~/.local/state/zsh directory exists
-    file:
-      dest: /home/artix/.local/state/zsh
-      owner: artix
-      group: artix
-      state: directory
-      mode: 0755
-  
-  - name: Ensure zsh history exists
-    copy:
-      content: ""
-      dest: /home/artix/.local/state/zsh/history
-      force: no
-      owner: artix
-      group: artix
-      mode: 0600
