@@ -110,15 +110,12 @@
       name:
         - booster
   
-  - name: Removed mkinitcpio
-    kewlfft.aur.aur:
-      use: paru
-      extra_args: "-Rnsc"
+  - name: Removed mkinitcpio packages:
+    package:
       name:
-        - mkinitcpio
+        - mkinitcpio*
       state: absent
-    become: yes
-    become_user: aurbuild
+      force: true
   
   - name: Install aur packages
     kewlfft.aur.aur:
