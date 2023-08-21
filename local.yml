@@ -86,7 +86,7 @@
         - base-devel
         - booster
   
-  - name: Removed mkinitcpio packages:
+  - name: Removed mkinitcpio packages
     package:
       name:
         - mkinitcpio*
