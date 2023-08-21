@@ -111,7 +111,13 @@
       name: paru-bin
       state: present
     become: yes
-..  name:
+    become_user: aurbuild
+    
+  - name: Install rate-mirrors
+    kewlfft.aur.aur:
+      use: paru
+      extra_args: "-a"
+      name:
         - rate-mirrors-bin
       state: present
     become: yes
