@@ -3,8 +3,8 @@
   become: true
 
   tasks:
- # - name: Setup ssh
- #   shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/stage1.yml --ask-vault-pass -v 
+  - name: Setup ssh
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/stage1.yml --ask-vault-pass -v 
 
   - name: Ensure /etc/zsh directory exists
     file:
@@ -56,7 +56,7 @@
     git:
       repo: https://github.com/voltamage/dotfiles.git
       dest: /home/artix/dotfiles
-.
+
   - name: Configure pacman Color
     lineinfile:
       path: /etc/pacman.conf
