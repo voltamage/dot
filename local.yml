@@ -170,8 +170,8 @@
     package:
       update_cache: true
   
-  - name: Update and rank latest Arch mirrorlist
-    shell: rate-mirrors artix | sed -e '/Server = https:/!d' | sudo tee /etc/pacman.d/mirrorlist
+  - name: Update and rank latest Artix mirrorlist
+    shell: rate-mirrors artix | sed -e '/Server = https:/!d' | sed -e '/berkeley/d' | sudo tee /etc/pacman.d/mirrorlist
     become: yes
     become_user: artix
   
