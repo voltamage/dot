@@ -13,10 +13,10 @@
         - booster
         - btop
         - chezmoi
+        - cloc
         - fzf
         - lynx
         - mpv
-        - multilib-devel
         - onefetch
         - ranger
         - tmux

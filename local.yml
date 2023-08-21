@@ -139,11 +139,12 @@
         [universe]
         Server = https://mirror1.artixlinux.org/universe/$arch
   
-  - name: Add Arch Linux support for Artix
+  - name: Add Arch Linux and 32-bit devel support for Artix
     package:
       name:
         - artix-archlinux-support
         - lib32-artix-archlinux-support
+        - multilib-devel
       update_cache: true
   
   - name: Add Arch repositories to pacman.conf
