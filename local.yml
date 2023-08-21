@@ -89,7 +89,10 @@
   - name: Removed mkinitcpio packages
     package:
       name:
-        - mkinitcpio*
+        - mkinitcpio
+        - mkinitcpio-busybox
+        - mkinitcpio-nfs-utils
+        - mkinitcpio-openswap
       state: absent
       force: true
   
