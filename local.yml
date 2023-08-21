@@ -115,7 +115,7 @@
     become: yes
     become_user: aurbuild
   
- - name: Install booster
+  - name: Install booster
     package:
       name:
         - booster
