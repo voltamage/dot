@@ -4,4 +4,5 @@ ansible localhost --module-name package --become --args name=ansible,git &&
 ansible-galaxy collection install kewlfft.aur -v &&
 ansible-pull -U https://github.com/voltamage/dotfiles.git -v &&
 ansible-playbook ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
+chezmoi apply &&
 Hyprland
