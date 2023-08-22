@@ -11,9 +11,9 @@
       name:
         - base-devel
         - booster
-  
-  - name: ansible
-    import_playbook: tasks/user-ansible.yml
+
+  - name: Create user ansible
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/user-ansible.yml
 
   - name: Install Paru
     kewlfft.aur.aur:
@@ -32,14 +32,14 @@
     become: yes
     become_user: ansible
   
-  - name: mirrors
-    import_playbook: tasks/init-mirrors.yml
+  - name: Configure mirrors
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-mirrors.yml
   
-  - name: dotfiles
-    import_playbook: tasks/init-dotfiles.yml
+  - name: Apply dotfiles
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/apply-dotfiles.yml
   
-  - name: mirror update
-    import_playbook: tasks/update-mirrors.yml
+  - name: Refresh mirrorlist
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/update-mirrors.yml
   
   - name: Removed mkinitcpio packages
     package:
@@ -55,9 +55,9 @@
     package:
       update_cache: true
       upgrade: true
+
+  - name: Install packages
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/list-packages.yml
   
-  - name: packages
-    import_playbook: tasks/list-packages.yml
- 
-  - name: shell
-    import_playbook: tasks/init-shell.yml
+  - name: Configure shell
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-shell.yml
