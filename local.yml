@@ -35,9 +35,6 @@
   - name: Configure mirrors
     shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-mirrors.yml
   
-  - name: Apply dotfiles
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-dotfiles.yml
-  
   - name: Refresh mirrorlist
     shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/update-mirrors.yml
   
