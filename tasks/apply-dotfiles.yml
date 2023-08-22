@@ -27,7 +27,7 @@
       group: artix
       mode: 0644
   
-  - name: Apply configuration files
-    shell: chezmoi apply 
-    become: true
-    become_user: artix
+  #- name: Apply configuration files
+  #  shell: chezmoi apply 
+  #  become: true
+  #  become_user: artix
