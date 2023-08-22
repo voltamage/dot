@@ -2,6 +2,7 @@
   connection: local
   become: true
 
+  tasks:
   - name: Install chezmoi
     package:
       name:
