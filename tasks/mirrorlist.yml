@@ -3,16 +3,6 @@
   become: true
 
   tasks:
-  - name: Ensure rate-mirrors is present
-    kewlfft.aur.aur:
-      use: paru
-      extra_args: "-a"
-      name:
-        - rate-mirrors-bin
-      state: present
-    become: yes
-    become_user: ansible
-
   - name: Update and rank latest Artix mirrorlist
     shell: rate-mirrors artix | sed -e '/Server = https:/!d' | sed -e '/berkeley/d' | sudo tee /etc/pacman.d/mirrorlist
     become: yes
