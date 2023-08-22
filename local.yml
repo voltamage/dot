@@ -62,8 +62,5 @@
   - name: Configure shell
     shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-shell.yml
   
-  - name: Remove bash shell related files
-    command: rm /home/artix/.bash*
-  
   - name: Move .ansible folder to XDG compliant folder in lieu of setting environment variables
     command: mv /home/artix/.ansible /home/artix/.config/ansible

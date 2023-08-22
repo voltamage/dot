@@ -54,3 +54,12 @@
   
   - name: Fix dotfiles origin
     shell: cd /home/artix/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
+  
+  - name: Configure chezmoi
+    lineinfile:
+      path: /home/artix/.config/chezmoi/chezmoi.yaml
+      line: 'sourceDir: ~/dotfiles/chezmoi'
+      create: yes
+      owner: artix
+      group: artix
+      mode: 0644
