@@ -4,7 +4,7 @@
 
   tasks:
   - name: Initialize dotfiles repository
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/dotinit.yml --ask-vault-pass
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-dotfiles.yml --ask-vault-pass
   
   - name: Install base-devel and booster
     package:
@@ -39,7 +39,7 @@
     shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/apply-dotfiles.yml
   
   - name: Refresh mirrorlist
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/mirrorlist.yml
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/update-mirrors.yml
   
   - name: Removed mkinitcpio packages
     package:
