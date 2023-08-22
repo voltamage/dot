@@ -1,11 +1,7 @@
 #!/bin/sh
 sudo pacman -Sy --noconfirm ansible &&
-ansible localhost --module-name package --become --args name=ansible,git -v &&
+ansible localhost --module-name package --become --args name=ansible,git &&
 ansible-galaxy collection install kewlfft.aur -v &&
 ansible-pull -U https://github.com/voltamage/dotfiles.git -v &&
-ansible-playbook ~/.ansible/pull/artixlinux/tasks/stage2.yml -v &&
-mv ~/.ansible ~/.config/ansible &&
-rm ~/.bash* &&
-chezmoi apply &&
-sudo chsh -s /usr/bin/zsh artix &&
+ansible-playbook ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
 Hyprland

@@ -1,0 +1,67 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: Configure pacman Color
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#Color'
+      line: Color
+      
+  - name: Configure pacman ParallelDownloads
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#ParallelDownloads'
+      line: ParallelDownloads = 12
+  
+  - name: Configure pacman VerbosePkgLists
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#VerbosePkgLists'
+      line: VerbosePkgLists
+  
+  - name: Add Universe and lib32 repositories to pacman.conf
+    blockinfile:
+      path: /etc/pacman.conf
+      block: |
+
+        # For 32-bit packages
+        [lib32]
+        Include = /etc/pacman.d/mirrorlist
+        
+        # Artix repository containing artix-archlinux-support to enable Arch repos
+        [universe]
+        Server = https://mirror1.artixlinux.org/universe/$arch
+  
+  - name: Add Arch Linux and 32-bit devel support for Artix
+    package:
+      name:
+        - artix-archlinux-support
+        - lib32-artix-archlinux-support
+        - multilib-devel
+      update_cache: true
+  
+  - name: Add Arch repositories to pacman.conf
+    blockinfile:
+      path: /etc/pacman.conf
+      block: |
+        
+        # For 32-bit packages
+        [lib32]
+        Include = /etc/pacman.d/mirrorlist
+        
+        # Arch Linux repos, community requires extra
+        [extra]
+        Include = /etc/pacman.d/mirrorlist-arch
+        
+        [multilib]
+        Include = /etc/pacman.d/mirrorlist-arch
+        
+        # Artix repository containing artix-archlinux-support to enable Arch repos
+        [universe]
+        Server = https://mirror1.artixlinux.org/universe/$arch
+  
+  - name: Update mirror dbs
+    package:
+      update_cache: true

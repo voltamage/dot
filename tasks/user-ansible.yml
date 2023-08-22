@@ -1,0 +1,17 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: Ensure the ansible user exists
+    user:
+      name: ansible
+      create_home: yes
+
+  - name: Allow the ansible user to run passwordless sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_ansible
+      line: 'ansible ALL=(ALL) NOPASSWD:ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'

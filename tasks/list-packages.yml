@@ -3,7 +3,7 @@
   become: true
 
   tasks: 
-  - name: Install packages
+  - name: Ensure installed packages
     package:
       name:
         - arch-wiki-docs
@@ -36,23 +36,12 @@
         - zoxide
         - zsh
 
-  - name: Install aur packages
-    kewlfft.aur.aur:
-      use: paru
-      extra_args: "-a"
+  - name: Ensure removed packages
+    package:
       name:
-#        - discordo-git -- needs networking
-        - hyprland-nvidia-nosystemd-git                       
-        - librewolf-bin
-        - neovim-nightly-bin
-        - pfetch-rs-bin
-#        - pigz-gzip-symlink --these need manual intervention for package replacement
-#        - plzip-lzip-link
-        - swww
-        - tgpt-bin
-        - timg
-        - tldr++
-        - xdg-ninja-git
-      state: present
-    become: yes
-    become_user: ansible
+        - mkinitcpio
+        - mkinitcpio-busybox
+        - mkinitcpio-nfs-utils
+        - mkinitcpio-openswap
+      state: absent
+      force: true

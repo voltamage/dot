@@ -1,0 +1,38 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: Ensure /etc/zsh directory exists
+    file:
+      dest: /etc/zsh
+      owner: root
+      group: root
+      state: directory
+      mode: 0755
+
+  - name: Configure ZDOTDIR
+    copy:
+      dest: /etc/zsh/zshenv
+      content: |
+        export ZDOTDIR="$HOME"/.config/zsh
+  
+  - name: Ensure ~/.local/state/zsh directory exists
+    file:
+      dest: /home/artix/.local/state/zsh
+      owner: artix
+      group: artix
+      state: directory
+      mode: 0755
+  
+  - name: Ensure zsh history exists
+    copy:
+      content: ""
+      dest: /home/artix/.local/state/zsh/history
+      force: no
+      owner: artix
+      group: artix
+      mode: 0600
+  
+  - name: Make user use zsh as the default shell
+    command: sudo chsh -s /usr/bin/zsh artix
