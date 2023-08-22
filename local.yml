@@ -52,14 +52,23 @@
       owner: artix
       group: artix
 
-  - name: Enable pacman parallel downloads, color output, and verbose pkglists
-    blockinfile:
+  - name: Configure pacman Color
+    lineinfile:
       path: /etc/pacman.conf
-      block: |
-
-        Color
-        ParallelDownloads = 12
-        VerbosePkgLists
+      regexp: '^#Color'
+      line: Color
+      
+  - name: Configure pacman ParallelDownloads
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#ParallelDownloads'
+      line: ParallelDownloads = 12
+  
+  - name: Configure pacman VerbosePkgLists
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#VerbosePkgLists'
+      line: VerbosePkgLists
   
   - name: Install base-devel
     package:
@@ -112,10 +121,6 @@
       path: /etc/pacman.conf
       block: |
 
-        Color
-        ParallelDownloads = 12
-        VerbosePkgLists
-
         # For 32-bit packages
         [lib32]
         Include = /etc/pacman.d/mirrorlist
@@ -136,10 +141,6 @@
     blockinfile:
       path: /etc/pacman.conf
       block: |
-
-        Color
-        ParallelDownloads = 12
-        VerbosePkgLists
         
         # For 32-bit packages
         [lib32]
