@@ -63,3 +63,12 @@
       owner: artix
       group: artix
       mode: 0644
+  
+  - name: Create blank chezmoistate.boltdb to avoid error
+    lineinfile:
+      path: /home/artix/.config/chezmoi/chezmoistate.boltdb
+      line: ''
+      create: yes
+      owner: artix
+      group: artix
+      mode: 0644
