@@ -1,4 +1,4 @@
-vim.g.mapleader = ''
+vim.g.mapleader = ' '
 
 vim.o.autoindent = true
 vim.o.clipboard = 'unnamedplus'
@@ -53,6 +53,25 @@ require('lazy').setup({
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
+    },
+    {
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+      dependencies = {
+        'nvim-lua/plenary.nvim'
+      },
+      config = true,
+    },
+    {
+    'nvim-pack/nvim-spectre',
+      dependencies = {
+        'nvim-lua/plenary.nvim'
+      },
+    config = function()
+      require('spectre').setup({
+        live_update = true,
+        replace_vim_cmd = 'cdfo',
+        })
+    end,
     },
 --    config = function()
 --      local lsp = require('lsp-zero').present({})

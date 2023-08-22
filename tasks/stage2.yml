@@ -10,10 +10,10 @@
         - aria2
         - artixnews
         - bat
-        - booster
         - btop
         - chezmoi
         - cloc
+        - fd
         - fzf
         - lynx
         - mpv
@@ -22,7 +22,10 @@
         - noto-fonts-emoji
         - noto-fonts-extra
         - onefetch
+        - pacman-contrib
         - ranger
+        - ripgrep
+        - ripgrep-all
         - tmux
         - ttf-jetbrains-mono-nerd
         - wezterm
@@ -43,6 +46,8 @@
         - librewolf-bin
         - neovim-nightly-bin
         - pfetch-rs-bin
+        - pigz-gzip-symlink
+        - plzip-lzip-link
         - swww
         - tgpt-bin
         - timg
@@ -50,4 +55,4 @@
         - xdg-ninja-git
       state: present
     become: yes
-    become_user: aurbuild
+    become_user: ansible

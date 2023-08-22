@@ -96,15 +96,15 @@
       state: absent
       force: true
   
-  - name: Ensure the aurbuild user exists
+  - name: Ensure the ansible user exists
     user:
-      name: aurbuild
+      name: ansible
       create_home: yes
 
-  - name: Allow the aurbuild user to run 'sudo pacman' without a password
+  - name: Allow the ansible user to run passwordless sudo
     lineinfile:
-      path: /etc/sudoers.d/u_aurbuild
-      line: 'aurbuild ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+      path: /etc/sudoers.d/u_ansible
+      line: 'ansible ALL=(ALL) NOPASSWD:ALL'
       create: yes
       mode: 0644
       validate: 'visudo -cf %s'
@@ -114,7 +114,7 @@
       name: paru-bin
       state: present
     become: yes
-    become_user: aurbuild
+    become_user: ansible
     
   - name: Install rate-mirrors
     kewlfft.aur.aur:
@@ -124,7 +124,7 @@
         - rate-mirrors-bin
       state: present
     become: yes
-    become_user: aurbuild
+    become_user: ansible
 
   - name: Add Universe and lib32 repositories to pacman.conf
     blockinfile:
@@ -174,12 +174,12 @@
   - name: Update and rank latest Artix mirrorlist
     shell: rate-mirrors artix | sed -e '/Server = https:/!d' | sed -e '/berkeley/d' | sudo tee /etc/pacman.d/mirrorlist
     become: yes
-    become_user: artix
+    become_user: ansible
   
   - name: Update and rank latest Arch mirrorlist
     shell: rate-mirrors arch | sed -e '/Server = https:/!d' | sudo tee /etc/pacman.d/mirrorlist-arch
     become: yes
-    become_user: artix
+    become_user: ansible
   
   - name: Delete stale mirror database
     shell: sudo rm -rf /var/lib/pacman/sync
