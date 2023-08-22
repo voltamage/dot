@@ -11,8 +11,9 @@
       name:
         - base-devel
         - booster
-
-  - import_tasks: tasks/user-ansible.yml
+  
+  - name: ansible
+  - import_playbook: tasks/user-ansible.yml
 
   - name: Install Paru
     kewlfft.aur.aur:
@@ -31,9 +32,14 @@
     become: yes
     become_user: ansible
   
-  - import_tasks: tasks/init-mirrors.yml
-  - import_tasks: tasks/apply-dotfiles.yml
-  - import_tasks: tasks/update-mirrors.yml
+  - name: mirrors
+  - import_playbook: tasks/init-mirrors.yml
+  
+  - name: dotfiles
+  - import_playbook: tasks/init-dotfiles.yml
+  
+  - name: mirror update
+  - import_playbook: tasks/update-mirrors.yml
   
   - name: Removed mkinitcpio packages
     package:
@@ -49,6 +55,9 @@
     package:
       update_cache: true
       upgrade: true
-
-  - import_tasks: tasks/list-packages.yml
-  - import_tasks: tasks/init-shell.yml
+  
+  - name: packages
+  - import_playbook: tasks/list-packages.yml
+ 
+  - name: shell
+  - import_playbook: tasks/init-shell.yml
