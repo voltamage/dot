@@ -10,13 +10,13 @@
       state: present
       update_cache: true
   
-  - name: Ensure chezmoi directory exists
-    file:
-      dest: /home/artix/.config/chezmoi
-      owner: artix
-      group: artix
-      state: directory
-      mode: 0755
+  #- name: Ensure chezmoi directory exists
+  #  file:
+  #    dest: /home/artix/.config/chezmoi
+  #    owner: artix
+  #    group: artix
+  #    state: directory
+  #    mode: 0755
   
   - name: Configure chezmoi
     lineinfile:
@@ -29,3 +29,5 @@
   
   - name: Apply configuration files
     shell: chezmoi apply 
+    become: true
+    become_user: artix
