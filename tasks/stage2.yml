@@ -46,8 +46,8 @@
         - librewolf-bin
         - neovim-nightly-bin
         - pfetch-rs-bin
-        - pigz-gzip-symlink
-        - plzip-lzip-link
+#        - pigz-gzip-symlink --these need manual intervention for package replacement
+#        - plzip-lzip-link
         - swww
         - tgpt-bin
         - timg
