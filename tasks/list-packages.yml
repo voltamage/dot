@@ -15,6 +15,7 @@
         - cloc
         - fd
         - fzf
+        - grim
         - lynx
         - mpv
         - noto-fonts
@@ -26,6 +27,7 @@
         - ranger
         - ripgrep
         - ripgrep-all
+        - slurp
         - tmux
         - ttf-jetbrains-mono-nerd
         - wezterm

@@ -72,6 +72,14 @@ require('lazy').setup({
         })
     end,
     },
+    {
+    'akinsho/toggleterm.nvim',
+    config = function()
+      require('toggleterm').setup({
+        shade_terminals = false,
+        })
+    end,
+    },
 --    config = function()
 --      local lsp = require('lsp-zero').present({})
 --      lsp.on_attach(function(client, bufnr)
