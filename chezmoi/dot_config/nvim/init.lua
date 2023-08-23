@@ -11,6 +11,7 @@ vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.o.wrap = false
 
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -27,14 +28,12 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   'tpope/vim-fugitive',
   {
-    'ellisonleao/gruvbox.nvim',
+    'sainnhe/gruvbox-material',
     lazy = false,
     priority = 1000,
     config = function()
-      require('gruvbox').setup({
-	  transparent_mode = true,
-      })
-      vim.cmd([[colorscheme gruvbox]])
+      vim.cmd('colorscheme gruvbox-material')
+--      vim.cmd('g:gruvbox_material_transparent_background = 1')
     end,
   },
   {
