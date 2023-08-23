@@ -7,4 +7,5 @@ ansible-playbook ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
 rm /home/artix/.bash* &&
 mv /home/artix/.ansible /home/artix/.config/ansible &&
 chezmoi apply &&
-Hyprland
+Hyprland &&
+swww img $WALLPAPER/wallpaper2
