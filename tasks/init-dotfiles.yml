@@ -54,7 +54,16 @@
   
   - name: Fix dotfiles origin
     shell: cd /home/artix/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
-  
+ 
+  - name: Ensure .ssh directory exists
+    file:
+      dest: /home/artix/.config/chezmoi
+      owner: artix
+      group: artix
+      state: directory
+    become: yes
+    become_user: artix
+ 
   - name: Configure chezmoi
     lineinfile:
       path: /home/artix/.config/chezmoi/chezmoi.yaml
@@ -64,11 +73,11 @@
       group: artix
       mode: 0644
   
-  - name: Create blank chezmoistate.boltdb to avoid error
-    lineinfile:
-      path: /home/artix/.config/chezmoi/chezmoistate.boltdb
-      line: ''
-      create: yes
-      owner: artix
-      group: artix
-      mode: 0644
+  #- name: Create blank chezmoistate.boltdb to avoid error
+  #  lineinfile:
+  #    path: /home/artix/.config/chezmoi/chezmoistate.boltdb
+  #    line: ''
+  #    create: yes
+  #    owner: artix
+  #    group: artix
+  #    mode: 0644
