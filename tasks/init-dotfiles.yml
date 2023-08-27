@@ -38,22 +38,6 @@
       owner: artix
       group: artix
       mode: 0600 
-  
-  - name: Ensure .config/git directory exists
-    file:
-      dest: /home/artix/.config/git
-      owner: artix
-      group: artix
-      state: directory
-      mode: 0755 
-  
-  - name: Copy .gitconfig
-    copy:
-      src: /home/artix/dotfiles/tasks/files/.gitconfig
-      dest: /home/artix/.config/git/config
-      decrypt: yes
-      owner: artix
-      group: artix
  
   - name: Ensure chezmoi directory exists
     file:
