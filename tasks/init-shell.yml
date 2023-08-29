@@ -19,20 +19,20 @@
   
   - name: Ensure ~/.local/state/zsh directory exists
     file:
-      dest: /home/artix/.local/state/zsh
-      owner: artix
-      group: artix
+      dest: /home/main/.local/state/zsh
+      owner: main
+      group: main
       state: directory
       mode: 0755
   
   - name: Ensure zsh history exists
     copy:
       content: ""
-      dest: /home/artix/.local/state/zsh/history
+      dest: /home/main/.local/state/zsh/history
       force: no
-      owner: artix
-      group: artix
+      owner: main
+      group: main
       mode: 0600
   
   - name: Make user use zsh as the default shell
-    command: sudo chsh -s /usr/bin/zsh artix
+    command: sudo chsh -s /usr/bin/zsh main

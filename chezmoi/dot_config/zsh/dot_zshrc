@@ -12,6 +12,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -22,7 +23,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light spaceship-prompt/spaceship-prompt
 zinit light marlonrichert/zsh-autocomplete
 
 alias cat='bat'
@@ -30,6 +30,7 @@ alias cd='z'
 alias cdi='zi'
 alias fetch-git='onefetch'
 alias fetch='pfetch'
+alias loc='tokei'
 alias lynx='lynx https://lite.duckduckgo.com/lite'
 alias net='librewolf'
 alias paru='paru --bottomup'
