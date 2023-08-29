@@ -6,53 +6,53 @@
     #  - name: Git clone dotfiles
     #git:
     #  repo: https://github.com/voltamage/dotfiles.git
-    #  dest: /home/artix/dotfiles
+    #  dest: /home/main/dotfiles
     #become: yes
-    #become_user: artix
+    #become_user: main
   
   - name: Fix dotfiles origin
-    shell: cd /home/artix/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
+    shell: cd /home/main/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
   
   - name: Ensure .ssh directory exists
     file:
-      dest: /home/artix/.ssh
-      owner: artix
-      group: artix
+      dest: /home/main/.ssh
+      owner: main
+      group: main
       state: directory
       mode: 0700 
 
   - name: Copy server public key
     copy:
-      src: /home/artix/dotfiles/tasks/files/id_ed25519.pub
-      dest: /home/artix/.ssh/id_ed25519.pub
+      src: /home/main/dotfiles/tasks/files/id_ed25519.pub
+      dest: /home/main/.ssh/id_ed25519.pub
       decrypt: yes
-      owner: artix
-      group: artix
+      owner: main
+      group: main
       mode: 0644 
   
   - name: Copy server private key
     copy:
-      src: /home/artix/dotfiles/tasks/files/id_ed25519
-      dest: /home/artix/.ssh/id_ed25519
+      src: /home/main/dotfiles/tasks/files/id_ed25519
+      dest: /home/main/.ssh/id_ed25519
       decrypt: yes
-      owner: artix
-      group: artix
+      owner: main
+      group: main
       mode: 0600 
  
   - name: Ensure chezmoi directory exists
     file:
-      dest: /home/artix/.config/chezmoi
-      owner: artix
-      group: artix
+      dest: /home/main/.config/chezmoi
+      owner: main
+      group: main
       state: directory
     become: yes
-    become_user: artix
+    become_user: main
  
   - name: Configure chezmoi
     lineinfile:
-      path: /home/artix/.config/chezmoi/chezmoi.yaml
+      path: /home/main/.config/chezmoi/chezmoi.yaml
       line: 'sourceDir: ~/dotfiles/chezmoi'
       create: yes
-      owner: artix
-      group: artix
+      owner: main
+      group: main
       mode: 0644
