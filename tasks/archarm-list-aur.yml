@@ -1,0 +1,30 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks: 
+  - name: Ensure paru is installed
+    kewlfft.aur.aur:
+      name: paru-bin
+      state: present
+    become: yes
+    become_user: ansible
+  
+  - name: Install aur packages
+    kewlfft.aur.aur:
+      use: paru
+      extra_args: "-a"
+      name:
+        - discordo-git
+        - neovim-git
+        - paru-bin
+        - pfetch-rs
+        - rate-mirrors-bin
+        - timg
+        - xdg-ninja-git
+        - pigz-gzip-symlink # manual confirmation required
+        - plzip-lzip-link # manual confirmation required
+        - tldr++
+      state: present
+    become: yes
+    become_user: ansible

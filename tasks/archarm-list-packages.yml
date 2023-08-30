@@ -1,0 +1,34 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks: 
+  - name: Ensure installed packages
+    package:
+      name:
+        - ansible
+        - arch-wiki-docs
+        - aria2
+        - base-devel
+        - bat
+        - chezmoi
+        - fd
+        - fzf
+        - lynx
+        - man-db
+        - onefetch
+        - openssl-1.1
+        - pacman-contrib
+        - ranger
+        - ripgrep
+        - ripgrep-all
+        - rustup
+        - starship
+        - tmux
+        - tokei
+        - tree-sitter-cli
+        - ttf-jetbrains-mono-nerd
+        - wikiman
+        - yt-dlp
+        - zoxide
+        - zsh
