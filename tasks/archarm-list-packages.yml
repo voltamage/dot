@@ -14,9 +14,15 @@
         - chezmoi
         - fd
         - fzf
+        - gcc
+        - git
+        - glow
+        - htop
         - lynx
         - man-db
+        - nodejs
         - onefetch
+        - openssh
         - openssl-1.1
         - pacman-contrib
         - ranger
@@ -24,6 +30,7 @@
         - ripgrep-all
         - rustup
         - starship
+        - sudo
         - tmux
         - tokei
         - tree-sitter-cli
