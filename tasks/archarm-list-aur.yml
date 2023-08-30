@@ -24,7 +24,7 @@
         - rate-mirrors-bin
         - tgpt-bin
         - timg
-        - tldr++
+        - tldr++ # first time initialization
         - xdg-ninja-git
       state: present
     become: yes
