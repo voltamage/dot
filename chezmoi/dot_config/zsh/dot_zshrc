@@ -34,6 +34,7 @@ alias ls='ls -a'
 alias lynx='lynx https://lite.duckduckgo.com/lite'
 alias net='librewolf'
 alias paru='paru --bottomup'
+alias tgpt='tgpt -i'
 alias wikiman='wikiman -H lynx'
 alias zsh-source='source "$XDG_CONFIG_HOME"/zsh/.zshrc'
 
