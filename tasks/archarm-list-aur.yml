@@ -19,12 +19,13 @@
         - neovim-git
         - paru-bin
         - pfetch-rs
-        - rate-mirrors-bin
-        - timg
-        - xdg-ninja-git
         - pigz-gzip-symlink # manual confirmation required
         - plzip-lzip-link # manual confirmation required
+        - rate-mirrors-bin
+        - tgpt-bin
+        - timg
         - tldr++
+        - xdg-ninja-git
       state: present
     become: yes
     become_user: ansible
