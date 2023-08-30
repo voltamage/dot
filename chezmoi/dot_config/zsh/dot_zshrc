@@ -12,7 +12,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -36,3 +35,5 @@ alias net='librewolf'
 alias paru='paru --bottomup'
 alias wikiman='wikiman -H lynx'
 alias zsh-source='source "$XDG_CONFIG_HOME"/zsh/.zshrc'
+
+eval "$(starship init zsh)"
