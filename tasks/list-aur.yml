@@ -15,15 +15,13 @@
       use: paru
       extra_args: "-a"
       name:
-#        - discordo-git -- needs networking
         - hyprland-nvidia-git                       
         - librewolf-bin
         - neovim-git
+        - nvtop-nosystemd-git
         - pfetch-rs-bin
-#        - pigz-gzip-symlink --these need manual intervention for package replacement
-#        - plzip-lzip-link
+        - rate-mirrors-bin
         - swww
-        - tgpt-bin
         - timg
         - tldr++
         - xdg-ninja-git

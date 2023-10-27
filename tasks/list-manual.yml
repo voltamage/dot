@@ -1,0 +1,16 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks: 
+  - name: Ensure paru is installed
+    kewlfft.aur.aur:
+      name: paru-bin
+      state: present
+    become: yes
+    become_user: ansible
+  
+  - name: Install packages requiring manual intervention
+    shell: yes | paru -S pigz-gzip-symlink
+    become: yes
+    become_user: ansible
