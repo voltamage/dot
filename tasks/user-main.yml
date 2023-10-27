@@ -11,7 +11,7 @@
   - name: Allow the ansible user to run passwordless sudo
     lineinfile:
       path: /etc/sudoers.d/u_ansible
-      line: 'main ALL=(ALL)'
+      line: 'main ALL=(ALL) ALL'
       create: yes
       mode: 0644
       validate: 'visudo -cf %s'
