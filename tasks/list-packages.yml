@@ -30,6 +30,7 @@
         - ripgrep
         - ripgrep-all
         - slurp
+        - starship
         - tmux
         - ttf-jetbrains-mono-nerd
         - wezterm
