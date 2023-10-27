@@ -12,8 +12,10 @@
   
   - name: Fix dotfiles origin
 #this fix sucks btw, dubious ownership error
-    shell: git config --global --add safe.directory /home/main/dotfiles && cd /home/main/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
-  
+    shell: cd /home/main/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
+    become: yes
+    become_user: main
+
   - name: Ensure .ssh directory exists
     file:
       dest: /home/main/.ssh
