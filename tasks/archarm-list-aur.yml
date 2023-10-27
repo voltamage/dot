@@ -15,28 +15,13 @@
       use: paru
       extra_args: "-a"
       name:
-        - discordo-git
         - neovim-git
-        - neovim-symlinks # manual confirmation required
         - paru-bin
         - pfetch-rs
-        - pigz-gzip-symlink # manual confirmation required
-        - plzip-lzip-link # manual confirmation required
         - rate-mirrors-bin
-        - tgpt-bin
         - timg
-        - tldr++ # first time initialization
+        - tldr++
         - xdg-ninja-git
-      state: present
-    become: yes
-    become_user: ansible
-  
-  - name: Remove aur packages
-    kewlfft.aur.aur:
-      use: paru
-      extra_args: "-Rsn"
-      name:
-        - plzip-lzip-link # manual confirmation required
       state: present
     become: yes
     become_user: ansible
