@@ -19,6 +19,7 @@
         - librewolf-bin
         - neovim-git
         - nvtop-nosystemd-git
+        - paru-bin
         - pfetch-rs-bin
         - rate-mirrors-bin
         - swww

@@ -11,6 +11,6 @@
     become_user: ansible
   
   - name: Install packages requiring manual intervention
-    shell: yes | paru -S pigz-gzip-symlink
+    shell: yes | paru -S neovim-symlinks pigz-gzip-symlink
     become: yes
     become_user: ansible
