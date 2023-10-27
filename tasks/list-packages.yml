@@ -6,24 +6,32 @@
   - name: Ensure installed packages
     package:
       name:
+        - ansible
         - arch-wiki-docs
         - aria2
         - artixnews
+        - base-devel
         - bat
         - btop
         - chezmoi
         - fd
         - fzf
+        - gcc
+        - git
+        - glow
         - grim
         - kitty
         - lynx
+        - man-db
         - mpv
         - ninja
+        - nodejs
         - noto-fonts
         - noto-fonts-cjk
         - noto-fonts-emoji
         - noto-fonts-extra
         - onefetch
+        - openssh
         - pacman-contrib
         - ranger
         - ripgrep
@@ -32,8 +40,8 @@
         - starship
         - tmux
         - tokei
+        - tree-sitter-cli
         - ttf-jetbrains-mono-nerd
-        - wezterm
         - wikiman
         - xdg-desktop-portal-hyprland
         - yt-dlp
