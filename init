@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo pacman -Sy --noconfirm ansible &&
+sudo pacman -Sy --noconfirm ansible glibc &&
 ansible localhost --module-name package --become --args name=ansible,git &&
 ansible-galaxy collection install kewlfft.aur -v &&
 ansible-pull -U https://github.com/voltamage/dotfiles.git -v &&
