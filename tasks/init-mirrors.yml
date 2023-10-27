@@ -21,7 +21,7 @@
       regexp: '^#VerbosePkgLists'
       line: VerbosePkgLists
   
-  - name: Add Universe and lib32 repositories to pacman.conf
+  - name: Add lib32 repository to pacman.conf
     blockinfile:
       path: /etc/pacman.conf
       block: |
@@ -29,10 +29,6 @@
         # For 32-bit packages
         [lib32]
         Include = /etc/pacman.d/mirrorlist
-        
-        # Artix repository containing artix-archlinux-support to enable Arch repos
-        [universe]
-        Server = https://mirror1.artixlinux.org/universe/$arch
   
   - name: Add Arch Linux and 32-bit devel support for Artix
     package:
@@ -57,10 +53,6 @@
         
         [multilib]
         Include = /etc/pacman.d/mirrorlist-arch
-        
-        # Artix repository containing artix-archlinux-support to enable Arch repos
-        [universe]
-        Server = https://mirror1.artixlinux.org/universe/$arch
   
   - name: Update mirror dbs
     package:

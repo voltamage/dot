@@ -6,7 +6,6 @@ ansible-pull -U https://github.com/voltamage/dotfiles.git -v &&
 ansible-playbook ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
 rm /home/artix/.bash* &&
 mv /home/artix/.ansible /home/artix/.config/ansible &&
-sudo passwd main
 #sudo passwd main &&
 #chezmoi apply &&
 #Hyprland &&

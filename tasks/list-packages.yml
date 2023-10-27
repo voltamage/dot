@@ -14,9 +14,9 @@
         - chezmoi
         - cloc
         - fd
-        - foot
         - fzf
         - grim
+        - kitty
         - lynx
         - mpv
         - ninja
