@@ -33,6 +33,7 @@
         - onefetch
         - openssh
         - pacman-contrib
+        - python-pillow # NOTE: this is required for ranger's kitty image preview
         - ranger
         - ripgrep
         - ripgrep-all
