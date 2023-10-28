@@ -1,4 +1,6 @@
 vim.g.mapleader = ' '
+vim.g.loaded_netrw = 1        -- NOTE: this is for nvim-tree
+vim.g.loaded_netrwPlugin = 1  -- NOTE: this is for nvim-tree
 
 vim.o.autoindent = true
 vim.o.clipboard = 'unnamedplus'
@@ -8,7 +10,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
-vim.o.termguicolors = true
+vim.o.termguicolors = true -- NOTE: relied on by nvim-tree
 vim.o.wrap = false
 
 
@@ -49,12 +51,34 @@ require('lazy').setup({
         rgb_fn    = true,
       })
     end,
-    },
+  },
+  {
+    'xiyaowong/transparent.nvim',
+    config = function()
+      require('transparent').setup {
+        extra_groups = {
+          'NeoTreeNormal',
+          'NeoTreeNormalNC',
+          'NormalFloat',
+        },
+      }
+    end,
+  },
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('nvim-treesitter').setup({'nvim-treesitter/nvim-treesitter', build = 'TSUpdate'})
     end,
+  },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+    },
+    config = true,
   },
   {
     'folke/todo-comments.nvim',
