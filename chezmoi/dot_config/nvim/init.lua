@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
-vim.g.loaded_netrw = 1        -- NOTE: this is for nvim-tree
-vim.g.loaded_netrwPlugin = 1  -- NOTE: this is for nvim-tree
+vim.g.loaded_netrw = 1        -- NOTE: this might help with neo-tree
+vim.g.loaded_netrwPlugin = 1  -- NOTE: this might help with neo-tree
 
 vim.o.autoindent = true
 vim.o.clipboard = 'unnamedplus'
@@ -10,7 +10,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
-vim.o.termguicolors = true -- NOTE: relied on by nvim-tree
+vim.o.termguicolors = true -- NOTE: relied on by neo-tree
 vim.o.wrap = false
 
 
@@ -95,53 +95,36 @@ require('lazy').setup({
     opts = {},
   },
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+  'nvim-telescope/telescope.nvim', branch = '0.1.x',
     dependencies = {
-      'neovim/nvim-lspconfig',
-      'williamboman/mason.nvim', -- optional
-      'williamboman/mason-lspconfig.nvim', -- optional
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-nvim-lsp',
-      'L3MON4D3/LuaSnip',
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'nvim-treesitter/nvim-treesitter',
     },
-    {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
-      dependencies = {
-        'nvim-lua/plenary.nvim'
-      },
-      config = true,
-    },
-    {
-    'nvim-pack/nvim-spectre',
-      dependencies = {
-        'nvim-lua/plenary.nvim'
-      },
-    config = function()
-      require('spectre').setup({
-        live_update = true,
-        replace_vim_cmd = 'cdfo',
-        })
-    end,
-    },
-    {
-    'akinsho/toggleterm.nvim',
-    config = function()
-      require('toggleterm').setup({
-        shade_terminals = false,
-        })
-    end,
-    },
---    config = function()
---      local lsp = require('lsp-zero').present({})
---      lsp.on_attach(function(client, bufnr)
---        lsp.default_keymaps({buffer = bufnr})
---      end)
---      lsp.setup()
---    end,
+    config = true,
   },
---  defaults = {
---    lazy = true,
---    version = '*',
---  },
+  {
+  'nvim-pack/nvim-spectre',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+  config = function()
+    require('spectre').setup({
+      live_update = true,
+      replace_vim_cmd = 'cdfo',
+      })
+    end,
+  },
+  {
+  'akinsho/toggleterm.nvim',
+  config = function()
+    require('toggleterm').setup({
+      shade_terminals = false,
+      })
+    end,
+  },
+  defaults = {
+    lazy = true,
+    version = '*',
+  },
 })
