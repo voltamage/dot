@@ -44,6 +44,7 @@
         - ttf-jetbrains-mono-nerd
         - wikiman
         - wl-clipboard
+        - xdg-desktop-portal-hyprland
         - yt-dlp
         - ytfzf
         - zoxide
