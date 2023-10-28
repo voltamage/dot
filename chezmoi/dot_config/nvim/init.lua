@@ -37,6 +37,20 @@ require('lazy').setup({
     end,
   },
   {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup(nil,{
+        RGB       = true,
+        RRGGBB    = true,
+        RRGGBBAA  = true,
+        hsl_fn    = true,
+        mode      = 'background',
+        names     = false,
+        rgb_fn    = true,
+      })
+    end,
+    },
+  {
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('nvim-treesitter').setup({'nvim-treesitter/nvim-treesitter', build = 'TSUpdate'})
