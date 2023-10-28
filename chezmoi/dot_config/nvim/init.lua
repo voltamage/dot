@@ -57,6 +57,20 @@ require('lazy').setup({
     end,
   },
   {
+    'folke/todo-comments.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+    opts = {},
+  },
+  {
+    'folke/trouble.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    opts = {},
+  },
+  {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     dependencies = {
