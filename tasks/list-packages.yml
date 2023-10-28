@@ -43,7 +43,7 @@
         - tree-sitter-cli
         - ttf-jetbrains-mono-nerd
         - wikiman
-        - wl-copy
+        - wl-clipboard
         - xdg-desktop-portal-hyprland
         - yt-dlp
         - ytfzf
