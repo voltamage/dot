@@ -22,6 +22,7 @@
         - paru-bin
         - pfetch-rs-bin
         - rate-mirrors-bin
+        - rofi-lbonn-wayland-git
         - swww
         - timg
         - tldr++
