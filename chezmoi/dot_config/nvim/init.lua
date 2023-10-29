@@ -4,7 +4,6 @@ vim.g.loaded_netrwPlugin = 1  -- NOTE: this might help with neo-tree
 
 vim.o.autoindent = true
 vim.o.clipboard = 'unnamedplus'
-vim.o.conceallevel = 3 -- NOTE: this is for neorg
 vim.o.expandtab = true
 vim.o.mouse = 'a'
 vim.o.number = true
@@ -67,7 +66,8 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
-      require('nvim-treesitter').setup({'nvim-treesitter/nvim-treesitter', build = 'TSUpdate'})
+      require('nvim-treesitter').setup({'nvim-treesitter/nvim-treesitter',
+      build = 'TSUpdate'})
     end,
   },
   {
@@ -128,6 +128,7 @@ require('lazy').setup({
     build = ':Neorg sync-parsers', -- BUG: does not seem to trigger properly, complains on first run
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
     },
     config = function()
       require('neorg').setup {
@@ -143,6 +144,7 @@ require('lazy').setup({
           },
         },
       }
+      vim.wo.conceallevel = 2 -- TODO: difference between vim.o and vim.wo
     end,
   },
   {

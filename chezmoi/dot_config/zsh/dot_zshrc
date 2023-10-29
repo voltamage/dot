@@ -27,6 +27,8 @@ zinit light marlonrichert/zsh-autocomplete
 alias cat='bat'
 alias cd='z'
 alias cdi='zi'
+alias e='nvim'
+alias en='nvim ~/.config/nvim/init.lua'
 alias fetch-git='onefetch'
 alias fetch='pfetch'
 alias loc='tokei'
