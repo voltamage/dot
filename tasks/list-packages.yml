@@ -36,6 +36,7 @@
         - openssh
         - pacman-contrib
         - python-pillow # NOTE: this is required for ranger's kitty image preview
+        - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
         - ranger
         - ripgrep
         - ripgrep-all
