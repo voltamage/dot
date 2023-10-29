@@ -3,12 +3,13 @@ sudo pacman -Sy --noconfirm ansible glibc &&
 ansible localhost --module-name package --become --args name=ansible,git &&
 ansible-galaxy collection install kewlfft.aur -v &&
 ansible-pull -U https://github.com/voltamage/dotfiles.git -v &&
+ansible-playbook ~/.ansible/pull/artixlinux/tasks/list-packages.yml
 ansible-playbook ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
 ansible-playbook ~/.ansible/pull/artixlinux/tasks/list-manual.yml &&
 rm /home/artix/.bash* &&
 mv /home/artix/.ansible /home/artix/.config/ansible &&
 swww init
-#sudo passwd main &&
-#chezmoi apply &&
-#Hyprland &&
-#swww img $WALLPAPER/wallpaper2
+
+#sudo passwd main
+#su main
+#Hyprland
