@@ -123,6 +123,18 @@ require('lazy').setup({
       })
     end,
   },
+  {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v3.x',
+    dependencies = {
+      'L3MON4D3/LuaSnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/nvim-cmp',
+      'neovim/nvim-lspconfig',
+      'williamboman/mason-lspconfig.nvim',
+      'williamboman/mason.nvim',
+    },
+  },
   defaults = {
     lazy = true,
     version = '*',
