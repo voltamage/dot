@@ -24,9 +24,9 @@ autoload -Uz _zinit
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light marlonrichert/zsh-autocomplete
 
+alias c='chezmoi'
 alias cat='bat'
-alias cd='z'
-alias cdi='zi'
+alias cd='z' # BUG: interactive mode is broken and therefore has no alias
 alias e='nvim'
 alias en='nvim ~/.config/nvim/init.lua'
 alias fetch-git='onefetch'
@@ -34,11 +34,9 @@ alias fetch='pfetch'
 alias loc='tokei'
 alias ls='eza -a -o --icons'
 alias lynx='lynx https://lite.duckduckgo.com/lite'
-alias net='librewolf'
 alias paru='paru --bottomup'
 alias q='exit'
-alias tgpt='tgpt -i'
+alias source-zsh='source "$XDG_CONFIG_HOME"/zsh/.zshrc'
 alias wikiman='wikiman -H lynx'
-alias zsh-source='source "$XDG_CONFIG_HOME"/zsh/.zshrc'
 
 eval "$(starship init zsh)"
