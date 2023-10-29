@@ -4,6 +4,7 @@ vim.g.loaded_netrwPlugin = 1  -- NOTE: this might help with neo-tree
 
 vim.o.autoindent = true
 vim.o.clipboard = 'unnamedplus'
+vim.o.conceallevel = 3 -- NOTE: this is for neorg
 vim.o.expandtab = true
 vim.o.mouse = 'a'
 vim.o.number = true
@@ -120,6 +121,28 @@ require('lazy').setup({
     require('toggleterm').setup({
       shade_terminals = false,
       })
+    end,
+  },
+  {
+    'nvim-neorg/neorg',
+    build = ':Neorg sync-parsers', -- BUG: does not seem to trigger properly, complains on first run
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require('neorg').setup {
+        load = {
+          ['core.defaults'] = {}, -- Loads default behaviour
+          ['core.concealer'] = {}, -- Adds pretty icons to your documents
+          ['core.dirman'] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                dotfiles = '~/dotfiles/org',
+              },
+            },
+          },
+        },
+      }
     end,
   },
   {
