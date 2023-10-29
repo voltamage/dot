@@ -31,6 +31,7 @@
         - noto-fonts-cjk
         - noto-fonts-emoji
         - noto-fonts-extra
+        - npm # NOTE: yamlls lsp relies on this
         - onefetch
         - openssh
         - pacman-contrib

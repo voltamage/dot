@@ -153,6 +153,10 @@ end)
 -- to learn how to use mason.nvim with lsp-zero
 require('mason').setup({})
 require('mason-lspconfig').setup({
+  ensure_installed = {
+    'lua_ls',
+    'yamlls',
+  },
   handlers = {
     lsp_zero.default_setup,
   }
