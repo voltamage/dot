@@ -153,6 +153,7 @@ end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
+    'bashls',
     'lua_ls',
     'pyright',
     'yamlls',
@@ -161,3 +162,11 @@ require('mason-lspconfig').setup({
     lsp_zero.default_setup,
   }
 })
+
+require('lspconfig')['bashls'].setup{
+	filetypes = {
+    'bash',
+    'sh',
+    'zsh',
+  },
+}
