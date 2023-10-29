@@ -157,6 +157,7 @@ require('mason-lspconfig').setup({
     'biome',    -- json but supports more
     'lua_ls',   -- lua
     'pyright',  -- python
+    'taplo',    -- toml
     'yamlls',   -- yaml
   },
   handlers = {
