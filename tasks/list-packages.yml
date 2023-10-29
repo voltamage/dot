@@ -44,6 +44,8 @@
         - tokei
         - tree-sitter-cli
         - ttf-jetbrains-mono-nerd
+        - unzip # NOTE: mason depends on this
+        - wget # NOTE: mason depends on this
         - wikiman
         - wl-clipboard
         - xdg-desktop-portal-hyprland
