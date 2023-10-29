@@ -35,7 +35,6 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       vim.cmd('colorscheme gruvbox-material')
---      vim.cmd('g:gruvbox_material_transparent_background = 1')
     end,
   },
   {
