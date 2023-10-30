@@ -1,10 +1,44 @@
 * Welcome to Neorg
-** ( ) Gold standard all shell tooling
-*** ( ) zsh shell
-    - ( ) .zshenv
-    - ( ) .zshrc
-    - ( ) compinit
-    - ( ) zinit
-    - ( ) zsh aliases 
-*** ( ) zoxide
-*** ( ) starship
+
+* ( ) Gold standard all shell tooling
+** ( ) starship
+** ( ) zoxide
+** ( ) zsh shell
+   - ( ) .zshenv
+   - ( ) .zshrc
+   - ( ) compinit
+   - ( ) zinit
+   - ( ) zsh aliases 
+
+* ( ) coreutil replacements
+** ( ) bat
+** ( ) exa
+** ( ) fd
+** ( ) fzf
+** ( ) ripgrep
+** ( ) ripgrep-all
+
+* ( ) Track browser settings
+** ( ) browser configurations
+   - ( ) browser flags 
+   - ( ) customization
+   - ( ) settings
+   - ( ) theme
+   - ( ) user config
+** ( ) addons
+   - ( ) clearurls
+   - ( ) darkreader
+   - ( ) noscript
+   - ( ) some kind of cache wiper
+   - ( ) ublock
+
+* ( ) dinit services
+** ( ) audio
+   - ( ) pipewire
+   - ( ) wireplumber
+** ( ) mullvad
+
+* ( ) Gaming
+** ( ) steam
+** ( ) lutris
+   - ( ) wine
