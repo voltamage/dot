@@ -38,6 +38,7 @@ alias lynx='lynx https://lite.duckduckgo.com/lite'
 alias paru='paru --bottomup'
 alias q='exit'
 alias source-zsh='source "$XDG_CONFIG_HOME"/zsh/.zshrc'
+alias symlink='ln -s'
 alias wikiman='wikiman -H lynx'
 
 eval "$(starship init zsh)"

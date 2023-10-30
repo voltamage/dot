@@ -2,6 +2,8 @@
 
 * ( ) Gold standard all shell tooling
 ** ( ) kitty
+   - ( ) kitty terminal padding
+   - (x) symlink default config next to regular conf for easy comparison
 ** ( ) starship
 ** ( ) tmux
 ** ( ) zoxide
