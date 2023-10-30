@@ -44,5 +44,6 @@ alias wikiman='wikiman -H lynx'
 eval "$(starship init zsh)"
 
 function wal() {
-  swww img $WALLPAPER/$1
+  cp $WALLPAPER/wallpaper$1 $WALLPAPER/current
+  swww img $WALLPAPER/current
 }
