@@ -64,6 +64,14 @@ require('lazy').setup({
     end,
   },
   {
+    'alker0/chezmoi.vim',
+    lazy = false,
+    init = function()
+      vim.g['chezmoi#source_dir_path'] = '~/dotfiles/chezmoi'
+      vim.g['chezmoi#use_tmp_buffer'] = true
+    end,
+  },
+  {
     "m4xshen/hardtime.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {}
