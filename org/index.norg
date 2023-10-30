@@ -1,9 +1,11 @@
 * Welcome to Neorg
 
 * ( ) Gold standard all shell tooling
+** ( ) kitty
 ** ( ) starship
+** ( ) tmux
 ** ( ) zoxide
-** ( ) zsh shell
+** ( ) zsh
    - ( ) .zshenv
    - ( ) .zshrc
    - ( ) compinit
@@ -36,9 +38,10 @@
 ** ( ) audio
    - ( ) pipewire
    - ( ) wireplumber
-** ( ) mullvad
+** ( ) vpn
+   - ( ) mullvad
 
 * ( ) Gaming
-** ( ) steam
 ** ( ) lutris
    - ( ) wine
+** ( ) steam
