@@ -1,11 +1,16 @@
 * Welcome to Neorg
 
-* ( ) Gold standard all shell tooling
+* ( ) Gold standard all shell stack
+** ( ) wallpaper
+   - ( ) swww
+** ( ) hyprland
+   - ( ) is hypr.conf's exec-once sequential
+   - (x) symlink default config
 ** ( ) kitty
    - ( ) kitty terminal padding
-   - (x) symlink default config next to regular conf for easy comparison
-** ( ) starship
+   - (x) symlink default config
 ** ( ) tmux
+** ( ) starship
 ** ( ) zoxide
 ** ( ) zsh
    - ( ) .zshenv
@@ -13,6 +18,11 @@
    - ( ) compinit
    - ( ) zinit
    - ( ) zsh aliases 
+
+* Package list maintenance
+** note what each package is for
+** create some way to standardize different architecture and distro lists
+   - ( ) test split architecture lists
 
 * ( ) coreutil replacements
 ** ( ) bat

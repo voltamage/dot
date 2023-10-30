@@ -42,3 +42,7 @@ alias symlink='ln -s'
 alias wikiman='wikiman -H lynx'
 
 eval "$(starship init zsh)"
+
+function wal() {
+  swww img $WALLPAPER/$1
+}
