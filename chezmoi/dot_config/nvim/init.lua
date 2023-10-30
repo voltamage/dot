@@ -4,6 +4,7 @@ vim.g.loaded_netrwPlugin = 1  -- NOTE: this might help with neo-tree
 
 vim.o.autoindent = true
 vim.o.clipboard = 'unnamedplus'
+vim.o.cmdheight = 2 -- NOTE: allows hardtime to display alongside modes
 vim.o.expandtab = true
 vim.o.mouse = 'a'
 vim.o.number = true
@@ -12,7 +13,6 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.termguicolors = true -- NOTE: relied on by neo-tree
 vim.o.wrap = false
-
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -62,6 +62,11 @@ require('lazy').setup({
         },
       }
     end,
+  },
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {}
   },
   {
     'nvim-treesitter/nvim-treesitter',
