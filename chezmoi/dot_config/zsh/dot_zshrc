@@ -27,6 +27,7 @@ zinit light marlonrichert/zsh-autocomplete
 alias c='chezmoi'
 alias cat='bat'
 alias cd='z' # BUG: interactive mode is broken and therefore has no alias
+alias cdiff='chezmoi diff && chezmoi git diff'
 alias e='nvim'
 alias en='nvim ~/.config/nvim/init.lua'
 alias fetch-git='onefetch'
