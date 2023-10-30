@@ -1,1 +1,10 @@
 * Welcome to Neorg
+** ( ) Gold standard all shell tooling
+*** ( ) zsh shell
+    - ( ) .zshenv
+    - ( ) .zshrc
+    - ( ) compinit
+    - ( ) zinit
+    - ( ) zsh aliases 
+*** ( ) zoxide
+*** ( ) starship
