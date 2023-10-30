@@ -18,6 +18,14 @@
    - ( ) compinit
    - ( ) zinit
    - ( ) zsh aliases 
+** slurp screenshot thing
+
+* Colortheme
+** Which thing dictates what theme
+   - (x) kitty
+   - (?) dircolors/LS_COLORS {https://unix.stackexchange.com/questions/94299/dircolors-modify-color-settings-globaly}[dircolors]
+    - ( ) fd
+    - ( ) fzf
 
 * Neovim
 ** ( ) Update plugin packages as well
