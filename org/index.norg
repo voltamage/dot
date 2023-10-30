@@ -19,10 +19,19 @@
    - ( ) zinit
    - ( ) zsh aliases 
 
-* Package list maintenance
-** note what each package is for
-** create some way to standardize different architecture and distro lists
+* Neovim
+** ( ) Update plugin packages as well
+   - ( ) Mason updater plugin
+** ( ) Better git handling, maybe magit or lazygit stuff
+
+* Ansible installer maintenance
+** ( ) note what each package is for
+** ( ) verbosify ansible scripts for install
+** ( ) create some way to standardize different architecture and distro lists
+   - ( ) remove references to artix specific user
    - ( ) test split architecture lists
+   - ( ) test termux chezmoi setup
+   - ( ) install ansible using pip not package
 
 * ( ) coreutil replacements
 ** ( ) bat
@@ -43,7 +52,7 @@
    - ( ) clearurls
    - ( ) darkreader
    - ( ) noscript
-   - ( ) some kind of cache wiper
+   - ( ) some kind of amnesiac cache handler
    - ( ) ublock
 
 * ( ) dinit services
