@@ -155,6 +155,7 @@ require('lazy').setup({
               workspaces = {
                 dotfiles = '~/dotfiles/org',
               },
+              default_workspace = 'dotfiles'
             },
           },
         },
