@@ -31,7 +31,7 @@
         - noto-fonts-cjk
         - noto-fonts-emoji
         - noto-fonts-extra
-        - npm # NOTE: mason.nvim relies on this
+        - npm # NOTE: TSUpdate relies on this
         - onefetch
         - openssh
         - pacman-contrib
@@ -42,6 +42,7 @@
         - ripgrep-all
         - slurp
         - starship
+        - sudo
         - tmux
         - tokei
         - tree-sitter-cli

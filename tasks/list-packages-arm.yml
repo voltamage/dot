@@ -22,10 +22,12 @@
         - man-db
         - ninja
         - nodejs
+        - npm # NOTE: TSUpdate relies on this
         - onefetch
         - openssh
         - openssl-1.1
         - pacman-contrib
+        - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
         - ranger
         - ripgrep
         - ripgrep-all
@@ -36,7 +38,19 @@
         - tokei
         - tree-sitter-cli
         - ttf-jetbrains-mono-nerd
+        - unzip # NOTE: mason depends on this
+        - wget # NOTE: mason depends on this
         - wikiman
         - yt-dlp
         - zoxide
         - zsh
+
+  - name: Ensure removed packages
+    package:
+      name:
+        - mkinitcpio
+        - mkinitcpio-busybox
+        - mkinitcpio-nfs-utils
+        - mkinitcpio-openswap
+      state: absent
+      force: true

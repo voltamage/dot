@@ -15,6 +15,7 @@
       use: paru
       extra_args: "-a"
       name:
+        - eza-git # NOTE: not available in the main arm repos
         - neovim-git
         - paru-bin
         - pfetch-rs
