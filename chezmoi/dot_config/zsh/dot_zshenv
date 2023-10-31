@@ -9,10 +9,17 @@ export XDG_STATE_HOME="$HOME"/.local/state
 export ANSIBLE_HOME="$XDG_CONFIG_HOME"/ansible
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 export WALLPAPER="$XDG_DATA_HOME"/wallpaper
+
+# If you use non-default GnuPG Home directory, you will need to
+# edit all socket files to use the values of gpgconf --list-dirs.                                                                                         
+# If you set your SSH_AUTH_SOCK manually, keep in mind that your
+# socket location may be different if you are using a custom GNUPGHOME
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 export EDITOR=nvim
 export HISTSIZE=100000

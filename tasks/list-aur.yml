@@ -26,7 +26,7 @@
         - swww
           #- timg
           #- tldr++
-          #- xdg-ninja-git
+        - xdg-ninja-git
       state: present
     become: yes
     become_user: main
