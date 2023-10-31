@@ -67,7 +67,7 @@
     become: yes
     become_user: main
 
- - name: Remove chezmoi
+  - name: Remove chezmoi
     shell: rm /bin/chezmoi
     become: yes
     become_user: ansible
