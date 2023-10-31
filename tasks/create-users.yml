@@ -25,7 +25,6 @@
     lineinfile:
       path: /etc/sudoers.d/u_main
       line: 'main ALL=(ALL) NOPASSWD:ALL'
-#      line: 'main ALL=(ALL) ALL'
       create: yes
       mode: 0644
       validate: 'visudo -cf %s'

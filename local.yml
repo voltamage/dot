@@ -4,7 +4,7 @@
 
   tasks:
   - name: Create users
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/users.yml
+    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/create-users.yml
 
   - name: Initialize dotfiles repository
     shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-dotfiles.yml --ask-vault-pass

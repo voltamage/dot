@@ -1,0 +1,17 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: Remove main user passwordless permissons
+    shell: sudo rm /etc/sudoers.d/u_main
+    become: yes
+    become_user: ansible
+  
+  - name: Allow the main user to run passworded sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_main
+      line: 'main ALL=(ALL) ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
