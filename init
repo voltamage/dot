@@ -7,5 +7,4 @@ ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-packages.yml
 ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
 ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-manual.yml &&
 ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/post-install.yml &&
-sudo rm -rf ~/.ansible
 echo -e "sudo passwd main\nexit\nlogin as main\nHyprland\n"
