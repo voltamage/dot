@@ -56,12 +56,7 @@
       owner: main
       group: main
       mode: 0644
-  
-  - name: Install chezmoi
-    shell: curl -fsLS get.chezmoi.io | sh
-    become: yes
-    become_user: main
-  
+ 
   - name: Configure dotfiles with chezmoi
     shell: chezmoi apply
     become: yes
