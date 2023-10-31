@@ -43,6 +43,9 @@ alias source-zsh='source "$XDG_CONFIG_HOME"/zsh/.zshrc'
 alias symlink='ln -s'
 alias wikiman='wikiman -H lynx'
 
+# NOTE: could automate this to trigger on font update, pacman hook perhaps
+alias update-termuxfont='cp /usr/share/fonts/TTF/JetBrainsMonoNerdFontMono-Regular.ttf ~/dotfiles/chezmoi/private_dot_termux/font.ttf'
+
 eval "$(starship init zsh)"
 
 function wal() {
