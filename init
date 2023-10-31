@@ -7,8 +7,7 @@ ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-packages.yml
 ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
 ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-manual.yml &&
 rm /home/artix/.bash* &&
-mv /home/artix/.ansible /home/artix/.config/ansible &&
-swww init
+mv /home/artix/.ansible /home/artix/.config/ansible
 
 #sudo passwd main
 #su main
