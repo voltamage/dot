@@ -8,7 +8,7 @@
       name: paru-bin
       state: present
     become: yes
-    become_user: ansible
+    become_user: main
   
   - name: Install aur packages
     kewlfft.aur.aur:
@@ -18,15 +18,15 @@
         - hyprland-nvidia-git                       
         - librewolf-bin
         - neovim-git
-        - nvtop-nosystemd-git
+          #- nvtop-nosystemd-git
         - paru-bin
         - pfetch-rs-bin
         - rate-mirrors-bin
-        - rofi-lbonn-wayland-git
+          #- rofi-lbonn-wayland-git
         - swww
-        - timg
-        - tldr++
-        - xdg-ninja-git
+          #- timg
+          #- tldr++
+          #- xdg-ninja-git
       state: present
     become: yes
-    become_user: ansible
+    become_user: main
