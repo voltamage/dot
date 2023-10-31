@@ -66,6 +66,11 @@
     shell: chezmoi apply
     become: yes
     become_user: main
+
+ - name: Remove chezmoi
+    shell: rm /bin/chezmoi
+    become: yes
+    become_user: ansible
   
   - name: Ensure /etc/zsh directory exists
     file:
