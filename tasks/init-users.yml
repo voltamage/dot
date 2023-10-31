@@ -70,7 +70,7 @@
   - name: Remove chezmoi
     shell: rm /bin/chezmoi
     become: yes
-    become_user: ansible
+    become_user: root
   
   - name: Ensure /etc/zsh directory exists
     file:
