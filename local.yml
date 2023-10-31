@@ -3,11 +3,11 @@
   become: true
 
   tasks:
-  - name: Create users
-    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/create-users.yml
+  - name: Initialize users
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-users.yml
 
-  - name: Initialize dotfiles repository
-    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-dotfiles.yml --ask-vault-pass
+  - name: Initialize ssh
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-ssh.yml --ask-vault-pass
   
   - name: Install base-devel and booster
     package:
@@ -57,17 +57,3 @@
     shell: yes | paru -Syyu
     become: yes
     become_user: main
-
-  - name: Install shell and chezmoi
-    package:
-      name:
-        - chezmoi
-        - zsh
-  
-  - name: Configure dotfiles with chezmoi
-    shell: chezmoi apply
-    become: yes
-    become_user: main
-  
-  - name: Configure shell
-    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-shell.yml
