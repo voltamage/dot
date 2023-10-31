@@ -26,7 +26,6 @@
         - swww
         - timg
         - tldr++
-#        - xdg-desktop-portal-hyprland-git
         - xdg-ninja-git
       state: present
     become: yes

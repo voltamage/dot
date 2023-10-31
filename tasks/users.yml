@@ -15,3 +15,17 @@
       create: yes
       mode: 0644
       validate: 'visudo -cf %s'
+  
+  - name: Ensure the main user exists
+    user:
+      name: main
+      create_home: yes
+
+  - name: Allow the main user to run passwordless sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_main
+      line: 'main ALL=(ALL) NOPASSWD:ALL'
+#      line: 'main ALL=(ALL) ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'

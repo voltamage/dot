@@ -11,7 +11,6 @@
     become_user: main
   
   - name: Fix dotfiles origin
-#this fix sucks btw, dubious ownership error
     shell: cd /home/main/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
     become: yes
     become_user: main
