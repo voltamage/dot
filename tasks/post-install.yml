@@ -17,6 +17,6 @@
       validate: 'visudo -cf %s'
   
   - name: Remove main user lint
-    shell: rm -rf .cargo && rm .bash*
+    shell: rm -rf ~/.cargo && rm ~/.bash*
     become: yes
     become_user: main
