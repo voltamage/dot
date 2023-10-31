@@ -8,7 +8,7 @@
       name: paru-bin
       state: present
     become: yes
-    become_user: ansible
+    become_user: main
   
   - name: Install aur packages
     kewlfft.aur.aur:
@@ -20,9 +20,9 @@
         - paru-bin
         - pfetch-rs
         - rate-mirrors-bin
-        - timg
-        - tldr++
+          #- timg
+          #- tldr++
         - xdg-ninja-git
       state: present
     become: yes
-    become_user: ansible
+    become_user: main
