@@ -4,10 +4,10 @@
 
   tasks:
   - name: Create users
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/create-users.yml
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/create-users.yml
 
   - name: Initialize dotfiles repository
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-dotfiles.yml --ask-vault-pass
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-dotfiles.yml --ask-vault-pass
   
   - name: Install base-devel and booster
     package:
@@ -33,10 +33,10 @@
     become_user: main
   
   - name: Configure mirrors
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-mirrors.yml
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-mirrors.yml
   
   - name: Refresh mirrorlist
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/update-mirrors.yml
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/update-mirrors.yml
   
   - name: Removed mkinitcpio packages
     package:
@@ -70,4 +70,4 @@
     become_user: main
   
   - name: Configure shell
-    shell: ansible-playbook /home/artix/.ansible/pull/artixlinux/tasks/init-shell.yml
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-shell.yml
