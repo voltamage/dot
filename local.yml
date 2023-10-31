@@ -3,17 +3,17 @@
   become: true
 
   tasks:
-  - name: Initialize users
-    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-users.yml
-
-  - name: Initialize ssh
-    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-ssh.yml --ask-vault-pass
-  
   - name: Install base-devel and booster
     package:
       name:
         - base-devel
         - booster
+
+  - name: Initialize users
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-users.yml
+
+  - name: Initialize ssh
+    shell: ansible-playbook -vvv /home/artix/.ansible/pull/artixlinux/tasks/init-ssh.yml --ask-vault-pass
 
   - name: Install Paru
     kewlfft.aur.aur:
