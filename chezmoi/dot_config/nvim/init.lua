@@ -213,3 +213,6 @@ require('lspconfig')['bashls'].setup{
     'zsh',
   },
 }
+
+-- https://www.josean.com/posts/neovim-linting-and-formatting
+-- https://www.youtube.com/watch?v=ybUE4D80XSk

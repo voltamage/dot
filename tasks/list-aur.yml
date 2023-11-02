@@ -17,6 +17,7 @@
       name:
         - hyprland-nvidia-git                       
         - librewolf-bin
+        - librewolf-extension-dark-reader-bin
         - neovim-git
           #- nvtop-nosystemd-git
         - paru-bin
