@@ -38,6 +38,10 @@ require('lazy').setup({
     end,
   },
   {
+    'xiyaowong/transparent.nvim',
+    config = true,
+  },
+  {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup(nil,{

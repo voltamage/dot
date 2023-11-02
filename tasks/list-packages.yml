@@ -48,6 +48,7 @@
         - tree-sitter-cli
         - ttf-jetbrains-mono-nerd
         - unzip # NOTE: mason depends on this
+        - vivid # NOTE: LS_COLORS generator
         - wget # NOTE: mason depends on this
         - wikiman
         - wl-clipboard
