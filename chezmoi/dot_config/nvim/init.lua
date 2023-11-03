@@ -13,7 +13,6 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.termguicolors = true -- NOTE: relied on by neo-tree
 vim.o.wrap = false
-
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -26,7 +25,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 require('lazy').setup({
   'tpope/vim-fugitive',
   {
@@ -38,11 +36,7 @@ require('lazy').setup({
     end,
   },
   {
-    'xiyaowong/transparent.nvim',
-    config = true,
-  },
-  {
-    'norcalli/nvim-colorizer.lua',
+    'NvChad/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup(nil,{
         RGB       = true,
@@ -56,16 +50,15 @@ require('lazy').setup({
     end,
   },
   {
-    'xiyaowong/transparent.nvim',
-    config = function()
-      require('transparent').setup {
-        extra_groups = {
-          'NeoTreeNormal',
-          'NeoTreeNormalNC',
-          'NormalFloat',
-        },
-      }
-    end,
+    'folke/todo-comments.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+    opts = {},
+  },
+  {
+    'numToStr/Comment.nvim',
+    config = true,
   },
   {
     'alker0/chezmoi.vim',
@@ -74,13 +67,6 @@ require('lazy').setup({
       vim.g['chezmoi#source_dir_path'] = '~/dotfiles/chezmoi'
       vim.g['chezmoi#use_tmp_buffer'] = true
     end,
-  },
-  {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {
-      enabled = false,
-    }
   },
   {
     'nvim-treesitter/nvim-treesitter',
@@ -100,13 +86,6 @@ require('lazy').setup({
     config = true,
   },
   {
-    'folke/todo-comments.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    },
-    opts = {},
-  },
-  {
     'folke/trouble.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons'
@@ -121,26 +100,6 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter',
     },
     config = true,
-  },
-  {
-  'nvim-pack/nvim-spectre',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    },
-  config = function()
-    require('spectre').setup({
-      live_update = true,
-      replace_vim_cmd = 'cdfo',
-      })
-    end,
-  },
-  {
-  'akinsho/toggleterm.nvim',
-  config = function()
-    require('toggleterm').setup({
-      shade_terminals = false,
-      })
-    end,
   },
   {
     'nvim-neorg/neorg',
@@ -179,6 +138,57 @@ require('lazy').setup({
       'williamboman/mason.nvim',
     },
   },
+  -- {
+  --   'xiyaowong/transparent.nvim',
+  --   config = true,
+  -- },
+  -- {
+  --   'folke/twilight.nvim', -- BUG: does nothing
+  --   config = true,
+  -- },
+  -- {
+  --   'lcheylus/overlength.nvim',
+  --   config = true,
+  -- },
+  -- {
+  --   'xiyaowong/transparent.nvim',
+  --   config = function()
+  --     require('transparent').setup {
+  --       extra_groups = {
+  --         'NeoTreeNormal',
+  --         'NeoTreeNormalNC',
+  --         'NormalFloat',
+  --       },
+  --    }
+  --   end,
+  -- },
+  -- {
+  --   "m4xshen/hardtime.nvim",
+  --   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+  --   opts = {
+  --     enabled = false,
+  --   }
+  -- },
+  -- {
+  -- 'nvim-pack/nvim-spectre',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim'
+  --   },
+  -- config = function()
+  --   require('spectre').setup({
+  --     live_update = true,
+  --     replace_vim_cmd = 'cdfo',
+  --     })
+  --   end,
+  -- },
+  -- {
+  -- 'akinsho/toggleterm.nvim',
+  -- config = function()
+  --   require('toggleterm').setup({
+  --     shade_terminals = false,
+  --     })
+  --   end,
+  -- },
   defaults = {
     lazy = true,
     version = '*',
@@ -217,6 +227,3 @@ require('lspconfig')['bashls'].setup{
     'zsh',
   },
 }
-
--- https://www.josean.com/posts/neovim-linting-and-formatting
--- https://www.youtube.com/watch?v=ybUE4D80XSk
