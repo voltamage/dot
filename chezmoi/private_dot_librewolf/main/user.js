@@ -15,3 +15,15 @@ user_pref("browser.tabs.loadInBackground", true); // When you open a link, image
 user_pref("browser.tabs.warnOnClose", false); // Confirm before closing multiple tabs
 user_pref("browser.warnOnQuitShortcut", false); // Confirm before quitting with Ctrl+Q
 user_pref("privacy.userContext.enabled", true); // Enable Container Tabs
+
+// Language and Appearance
+// Fonts
+user_pref("browser.display.use_document_fonts", 1); // Allow pages to choose their own fonts, instead of your selections above
+
+// Language
+user_pref("layout.spellcheckDefault", 0); // Check your spelling as you type
+
+// Files and Applications
+// Downloads
+// // TODO: XDG user directories for the download folder
+user_pref("browser.download.useDownloadDir", false); // Always ask you where to save files
