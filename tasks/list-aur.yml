@@ -15,18 +15,19 @@
       use: paru
       extra_args: "-a"
       name:
+        - ff2mpv-native-messaging-host-librewolf-git
         - hyprland-nvidia-git                       
         - librewolf-bin
         - librewolf-extension-dark-reader-bin
         - neovim-git
-          #- nvtop-nosystemd-git
+        # - nvtop-nosystemd-git
         - paru-bin
         - pfetch-rs-bin
         - rate-mirrors-bin
-          #- rofi-lbonn-wayland-git
+        - rofi-lbonn-wayland-git
         - swww
-          #- timg
-          #- tldr++
+        # - timg
+        # - tldr++
         - xdg-ninja-git
       state: present
     become: yes
