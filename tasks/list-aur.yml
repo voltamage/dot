@@ -24,7 +24,7 @@
         - paru-bin
         - pfetch-rs-bin
         - rate-mirrors-bin
-        - rofi-lbonn-wayland-git
+        - rofi-lbonn-wayland-only-git
         - swww
         # - timg
         # - tldr++
