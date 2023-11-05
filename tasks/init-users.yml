@@ -29,6 +29,16 @@
       mode: 0644
       validate: 'visudo -cf %s'
   
+  - name: Install kewlfft.aur for main user
+    shell: ansible-galaxy collection install kewlfft.aur
+    become: yes
+    become_user: main
+  
+  - name: Install kewlfft.aur for root user
+    shell: ansible-galaxy collection install kewlfft.aur
+    become: yes
+    become_user: root
+  
   - name: Git clone dotfiles
     git:
       repo: https://github.com/voltamage/dotfiles.git

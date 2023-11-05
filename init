@@ -1,7 +1,6 @@
 #!/bin/sh
 sudo pacman -Sy --noconfirm ansible glibc &&
 ansible localhost --module-name package --become --args name=ansible,git &&
-ansible-galaxy collection install kewlfft.aur -vvv &&
 ansible-pull -U https://github.com/voltamage/dotfiles.git -vvv &&
 ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-packages.yml
 ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
