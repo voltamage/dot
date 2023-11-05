@@ -1,0 +1,9 @@
+#!/bin/sh
+sudo pacman -Sy --noconfirm ansible glibc &&
+ansible localhost --module-name package --become --args name=ansible,git &&
+ansible-pull -U https://github.com/voltamage/dotfiles.git -vvv &&
+ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-packages.yml
+ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
+ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-manual.yml &&
+ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/post-install.yml &&
+echo -e "sudo passwd main\nexit\nlogin as main\nHyprland\n"

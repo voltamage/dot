@@ -1,9 +1,12 @@
 #!/bin/sh
-sudo pacman -Sy --noconfirm ansible glibc &&
-ansible localhost --module-name package --become --args name=ansible,git &&
-ansible-pull -U https://github.com/voltamage/dotfiles.git -vvv &&
-ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-packages.yml
-ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-aur.yml &&
-ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-manual.yml &&
-ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/post-install.yml &&
-echo -e "sudo passwd main\nexit\nlogin as main\nHyprland\n"
+sudo pacman -Sy --noconfirm tmux &&
+tmux new-session -d -s install && tmux send-keys -t install "\
+sudo pacman -S --noconfirm ansible glibc && \
+ansible localhost --module-name package --become --args name=ansible,git && \
+ansible-pull -U -vvv https://github.com/voltamage/dotfiles.git && \
+ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-packages.yml \
+ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-aur.yml && \
+ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/list-manual.yml && \
+ansible-playbook -vvv ~/.ansible/pull/artixlinux/tasks/post-install.yml && \
+echo -e 'sudo passwd main\nexit\nlogin as main\nHyprland\n' " Enter &&
+tmux attach -t install
