@@ -1,5 +1,4 @@
 #!/bin/sh
 sudo pacman -Sy --noconfirm tmux &&
 tmux new-session -d -s install &&
-tmux send-keys -t install "curl https://raw.githubusercontent.com/voltamage/dotfiles/main/install | sh" Enter &&
-tmux attach -t install
+tmux send-keys -t install "curl -sSL https://raw.githubusercontent.com/voltamage/dotfiles/main/install | sh" Enter
