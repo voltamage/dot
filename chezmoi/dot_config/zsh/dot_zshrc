@@ -45,7 +45,7 @@ alias wikiman='wikiman -H lynx'
 
 # NOTE: could automate this to trigger on font update, pacman hook perhaps
 alias update-termuxfont='cp /usr/share/fonts/TTF/JetBrainsMonoNerdFontMono-Regular.ttf ~/dotfiles/chezmoi/private_dot_termux/font.ttf'
-alias librediff='cd ~/.librewolf/main && git init && git add . && git commit -m 'sync''
+alias librediff='curl -s https://raw.githubusercontent.com/yokoffing/Betterfox/main/Fastfox.js -o ~/.librewolf/main/fastfox.js && cd ~/.librewolf/main && git init && git add . && git commit -m 'sync''
 eval "$(starship init zsh)"
 
 function wal() {
