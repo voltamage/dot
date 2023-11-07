@@ -139,7 +139,7 @@ user_pref("content.notify.interval", 100000); // (.10s); default=120000 (.12s)
 // and use this percent value (out of 100) to determine if Firefox is in a
 // low memory scenario.
 // [1] https://dev.to/msugakov/taking-firefox-memory-usage-under-control-on-linux-4b02
-user_pref("browser.low_commit_space_threshold_percent", 66); // default=5; LINUX
+//user_pref("browser.low_commit_space_threshold_percent", 33); // default=5; LINUX
 
 // PREF: determine how long (in ms) tabs are inactive before they unload
 // 60000=1min; 300000=5min; 600000=10min (default)
@@ -171,31 +171,31 @@ user_pref("dom.security.sanitizer.enabled", true);
 
 // PREF: Shadowrealms [NIGHTLY]
 // [1] https://github.com/tc39/proposal-shadowrealm/blob/main/explainer.md#introduction
-user_pref("javascript.options.experimental.shadow_realms", true);
+//user_pref("javascript.options.experimental.shadow_realms", true);
 
 // PREF: Wasm GC [NIGHTLY]
 // WASM GC refers to garbage collection for WebAssembly. Garbage collection is a mechanism
 // to automatically free up memory that is no longer being used by a program. This helps
 // manage memory and prevent memory leaks. 
 // [1] https://github.com/WebAssembly/gc/blob/main/proposals/gc/Overview.md
-user_pref("javascript.options.wasm_gc", true);
+//user_pref("javascript.options.wasm_gc", true);
 
 // PREF: WASM Function References [NIGHTLY]
 // [1] https://github.com/WebAssembly/function-references/blob/master/proposals/function-references/Overview.md
-user_pref("javascript.options.wasm_function_references", true);
+//user_pref("javascript.options.wasm_function_references", true);
 
 // PREF: import assertions [NIGHTLY]
-user_pref("javascript.options.experimental.import_assertions", true);
+//user_pref("javascript.options.experimental.import_assertions", true);
 
 // PREF: Array.fromAsync [NIGHTLY]
 // [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1795452
-user_pref("javascript.options.experimental.array_grouping", true);
+//user_pref("javascript.options.experimental.array_grouping", true);
 
 // PREF: scroll-driven animations [NIGHTLY]
 // [1] https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Experimental_features#scroll-driven_animations
 // [2] https://developer.chrome.com/articles/scroll-driven-animations/
 // [3] https://developer.chrome.com/en/blog/scroll-animation-performance-case-study/
-user_pref("layout.css.scroll-driven-animations.enabled", true);
+//user_pref("layout.css.scroll-driven-animations.enabled", true);
 
 // PREF: WebGPU [HIGHLY EXPERIMENTAL!]
 // [WARNING] Do not enable unless you are a web developer!
@@ -212,7 +212,7 @@ user_pref("layout.css.scroll-driven-animations.enabled", true);
 // [1] https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API
 // [2] https://groups.google.com/a/mozilla.org/g/dev-platform/c/3g0fnn6682A?pli=1
 // [3] https://w3c.github.io/webcodecs/samples/
-user_pref("dom.media.webcodecs.enabled", true);
+//user_pref("dom.media.webcodecs.enabled", true);
 
 /****************************************************************************
  * SECTION: GFX RENDERING TWEAKS                                            *
@@ -304,7 +304,7 @@ user_pref("browser.cache.disk.enable", false);
 // [1] https://bugzilla.mozilla.org/show_bug.cgi?id=913808
 // [2] https://bugzilla.mozilla.org/show_bug.cgi?id=968101
 // [3] https://rockridge.hatenablog.com/entry/2014/09/15/165501
-user_pref("browser.cache.frecency_half_life_hours", 18); // default=6
+//user_pref("browser.cache.frecency_half_life_hours", 18); // default=6
 
 // PREF: memory cache
 // The "automatic" size selection (default) is based on a decade-old table
@@ -600,6 +600,9 @@ user_pref("browser.download.autohideButton", true); // hide download ui intil fi
 user_pref("browser.toolbars.bookmarks.visibility", "never"); // hide bookmarks toolbar
 user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org"); // set dark ui
 user_pref("privacy.sanitize.sanitizeOnShutdown", false); // do not clear history on close
+
+// fastfox
+user_pref("browser.low_commit_space_threshold_percent", 66); // percentage of system memory to consider allowed for browser
 
 // SETTINGS
 // General
