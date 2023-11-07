@@ -1,5 +1,5 @@
 {
-  "timeStamp": 1699341512443,
+  "timeStamp": 1699355897279,
   "version": "1.53.0",
   "userSettings": {
     "advancedUserEnabled": true,
@@ -90,7 +90,7 @@
     "vivaldi-scheme",
     "wyciwyg-scheme"
   ],
-  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop\n* * 3p-script block\n* * 3p-frame block\ngithub.com github.githubassets.com * noop\n* cloudfront.net * noop\n* map.fastly.net * noop\nwww.reddit.com www.redditstatic.com * noop\nstore.steampowered.com store.cloudflare.steamstatic.com * noop\nwww.ign.com kraken.ignimgs.com * noop\n* youtube-ui.l.google.com * noop\n* www.youtube-nocookie.com * noop\n* www.youtube.com * noop",
+  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop\n* * 3p-script block\n* * 3p-frame block\ngithub.com github.githubassets.com * noop\n* cloudfront.net * noop\n* map.fastly.net * noop\nwww.reddit.com www.redditstatic.com * noop\nstore.steampowered.com store.cloudflare.steamstatic.com * noop\nwww.ign.com kraken.ignimgs.com * noop\n* youtube-ui.l.google.com * noop\n* www.youtube-nocookie.com * noop\n* www.youtube.com * noop\nsteamcommunity.com community.cloudflare.steamstatic.com * noop\nwww.twitch.tv static.twitchcdn.net * noop\nopen.spotify.com open.spotifycdn.com * noop\ntwitter.com abs.twimg.com * noop\nwww.fandango.com ssl.p.jwpcdn.com * noop\nwww.fandango.com cdn.jwplayer.com * noop\n* akamaiedge.net * noop\nwww.amazon.com c.media-amazon.com * noop\nwww.amazon.com m.media-amazon.com * noop\nwww.amazon.com images-na.ssl-images-amazon.com * noop",
   "urlFilteringString": "",
   "hostnameSwitchesString": "no-large-media: behind-the-scene false\nno-csp-reports: * true",
   "userFilters": ""
