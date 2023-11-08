@@ -58,10 +58,11 @@
    - ( ) user config
 ** ( ) addons
    - ( ) clearurls
+    - ( ) aur package
+   - ( ) canvasblocker
    - ( ) darkreader
-   - ( ) noscript
-   - ( ) some kind of amnesiac cache handler
    - ( ) ublock
+   - ( ) userscript handler
 
 * ( ) dinit services
 ** ( ) audio
