@@ -42,34 +42,30 @@
   - name: Git clone dotfiles
     git:
       repo: https://github.com/voltamage/dotfiles.git
-      dest: ~/dotfiles
+      dest: /home/main/dotfiles
     become: yes
     become_user: main
   
   - name: Fix dotfiles origin
-    shell: cd ~/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
+    shell: cd /home/main/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
     become: yes
     become_user: main
   
   - name: Ensure chezmoi directory exists
     file:
-      dest: ~/.config/chezmoi
+      dest: /home/main/.config/chezmoi
       owner: main
       group: main
       state: directory
-    become: yes
-    become_user: main
  
   - name: Configure chezmoi
     lineinfile:
-      path: ~/.config/chezmoi/chezmoi.yaml
+      path: /home/main/.config/chezmoi/chezmoi.yaml
       line: 'sourceDir: ~/dotfiles/chezmoi'
       create: yes
       owner: main
       group: main
       mode: 0644
-    become: yes
-    become_user: main
 
   - name: Install chezmoi
     shell: cd / && sh -c "$(curl -fsLS get.chezmoi.io)"
@@ -102,24 +98,20 @@
   
   - name: Ensure ~/.local/state/zsh directory exists
     file:
-      dest: ~/.local/state/zsh
+      dest: /home/main/.local/state/zsh
       owner: main
       group: main
       state: directory
       mode: 0755
-    become: yes
-    become_user: main
   
   - name: Ensure zsh history exists
     copy:
       content: ""
-      dest: ~/.local/state/zsh/history
+      dest: /home/main/.local/state/zsh/history
       force: no
       owner: main
       group: main
       mode: 0600
-    become: yes
-    become_user: main
   
   - name: Install zsh
     package:

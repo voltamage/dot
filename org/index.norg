@@ -36,15 +36,15 @@
 ** ( ) note what each package is for
 ** ( ) verbosify ansible scripts for install
 ** ( ) create some way to standardize different architecture and distro lists
-   - (-) remove references to artix specific user
+   - ( ) remove references to artix specific user
    - ( ) test split architecture lists
    - ( ) test termux chezmoi setup
    - ( ) install ansible using pip not package
 
-* (-) coreutil replacements
+* ( ) coreutil replacements
 ** ( ) bat
 ** ( ) exa
-** (x) fd
+** ( ) fd
 ** ( ) fzf
 ** ( ) ripgrep
 ** ( ) ripgrep-all

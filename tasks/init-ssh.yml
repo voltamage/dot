@@ -5,32 +5,26 @@
   tasks:
   - name: Ensure .ssh directory exists
     file:
-      dest: ~/.ssh
+      dest: /home/main/.ssh
       owner: main
       group: main
       state: directory
       mode: 0700 
-    become: yes
-    become_user: main
 
   - name: Copy server public key
     copy:
-      src: ~/dotfiles/files/id_ed25519.pub
-      dest: ~/.ssh/id_ed25519.pub
+      src: /home/main/dotfiles/files/id_ed25519.pub
+      dest: /home/main/.ssh/id_ed25519.pub
       decrypt: yes
       owner: main
       group: main
       mode: 0644 
-    become: yes
-    become_user: main
   
   - name: Copy server private key
     copy:
-      src: ~/dotfiles/files/id_ed25519
-      dest: ~/.ssh/id_ed25519
+      src: /home/main/dotfiles/files/id_ed25519
+      dest: /home/main/.ssh/id_ed25519
       decrypt: yes
       owner: main
       group: main
       mode: 0600 
-    become: yes
-    become_user: main
