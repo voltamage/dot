@@ -13,7 +13,7 @@
 
   - name: Copy server public key
     copy:
-      src: /home/main/dotfiles/tasks/files/id_ed25519.pub
+      src: /home/main/dotfiles/files/id_ed25519.pub
       dest: /home/main/.ssh/id_ed25519.pub
       decrypt: yes
       owner: main
@@ -22,7 +22,7 @@
   
   - name: Copy server private key
     copy:
-      src: /home/main/dotfiles/tasks/files/id_ed25519
+      src: /home/main/dotfiles/files/id_ed25519
       dest: /home/main/.ssh/id_ed25519
       decrypt: yes
       owner: main
