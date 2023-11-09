@@ -3,6 +3,11 @@
   become: true
 
   tasks:
+  - name: Install aur librewolf-extension-clearurls
+    shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && makepkg -i
+    become: yes
+    become_user: main
+  
   - name: Remove main user passwordless permissons
     shell: sudo rm /etc/sudoers.d/u_main
     become: yes
