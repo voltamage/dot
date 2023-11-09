@@ -20,6 +20,7 @@
         - gammastep
         - gcc
         - git
+        - git-delta
         - glow
         - grim
         - kitty
