@@ -32,11 +32,13 @@
     package:
       update_cache: true
 
-  - name: Install base-devel and booster
+  - name: Install base-devel, booster, chezmoi, and zsh
     package:
       name:
         - base-devel
         - booster
+        - chezmoi
+        - zsh
 
   - name: Remove mkinitcpio packages
     package:
@@ -47,3 +49,115 @@
         - mkinitcpio-nfs-utils
       state: absent
       force: true
+  
+  - name: Ensure the ansible user exists
+    user:
+      name: ansible
+      create_home: yes
+
+  - name: Allow the ansible user to run passwordless sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_ansible
+      line: 'ansible ALL=(ALL) NOPASSWD:ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
+  
+  - name: Ensure the main user exists
+    user:
+      name: main
+      create_home: yes
+
+  - name: Allow the main user to run passwordless sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_main
+      line: 'main ALL=(ALL) NOPASSWD:ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
+  
+  - name: Install ansible aur support for user ansible
+    shell: ansible-galaxy collection install kewlfft.aur
+    become: yes
+    become_user: ansible
+  
+  - name: Install ansible aur support for user main
+    shell: ansible-galaxy collection install kewlfft.aur
+    become: yes
+    become_user: main
+  
+  - name: Install ansible aur support for user root
+    shell: ansible-galaxy collection install kewlfft.aur
+    become: yes
+    become_user: root
+  
+  - name: Git clone dotfiles
+    shell: if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi
+    become: yes
+    become_user: main
+  
+  - name: Fix dotfiles origin
+    shell: cd ~/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
+    become: yes
+    become_user: main
+  
+  - name: Ensure chezmoi directory exists
+    file:
+      dest: /home/main/.config/chezmoi
+      owner: main
+      group: main
+      state: directory
+ 
+  - name: Configure chezmoi
+    lineinfile:
+      path: /home/main/.config/chezmoi/chezmoi.yaml
+      line: 'sourceDir: ~/dotfiles/chezmoi'
+      create: yes
+      owner: main
+      group: main
+      mode: 0644
+
+  - name: Configure dotfiles with chezmoi
+    shell: chezmoi apply
+    become: yes
+    become_user: main
+  
+  - name: Ensure /etc/zsh directory exists
+    file:
+      dest: /etc/zsh
+      owner: root
+      group: root
+      state: directory
+      mode: 0755
+
+  - name: Configure ZDOTDIR
+    copy:
+      dest: /etc/zsh/zshenv
+      content: |
+        export ZDOTDIR="$HOME"/.config/zsh
+  
+  - name: Ensure ~/.local/state/zsh directory exists
+    file:
+      dest: ~/.local/state/zsh
+      owner: main
+      group: main
+      state: directory
+      mode: 0755
+    become: yes
+    become_user: main
+  
+  - name: Ensure zsh history exists
+    copy:
+      content: ""
+      dest: ~/.local/state/zsh/history
+      force: no
+      owner: main
+      group: main
+      mode: 0600
+    become: yes
+    become_user: main
+  
+  - name: Make user use zsh as the default shell
+    shell: sudo chsh -s /usr/bin/zsh main
+    become: yes
+    become_user: ansible
