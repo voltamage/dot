@@ -1,7 +1,9 @@
 #!/bin/sh
-mount -o remount,size=3G /run/archiso/cowspace
+mount -o remount,size=4G /run/archiso/cowspace
 pacman -Sy --noconfirm ansible btop git glibc neovim ranger tmux
 if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi
+cp -r ~/dotfiles/chezmoi/dot_config/git ~/.config
 tmux new-session -d -s install
 tmux send-keys -t install "\
-ansible-playbook -vvv ~/dotfiles/tasks/live.yml --ask-vault-pass" Enter
+ansible-playbook -vvv ~/dotfiles/tasks/live.yml --ask-vault-pass && \
+yes | pacman -Syyu" Enter
