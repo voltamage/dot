@@ -28,6 +28,10 @@
         [multilib]
         Include = /etc/pacman.d/mirrorlist
 
+  - name: Synchronize package databases
+    package:
+      update_cache: true
+
   - name: Install base-devel and booster
     package:
       name:

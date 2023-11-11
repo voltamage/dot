@@ -5,8 +5,9 @@ ansible-galaxy collection install kewlfft.aur
 if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi
 mkdir -p ~/.config/git
 cp ~/dotfiles/chezmoi/dot_config/git/config ~/.config/git/config
-tmux new-session -d -s install
-tmux send-keys -t install "\
-ansible-playbook -vvv ~/dotfiles/tasks/live-vault.yml --ask-vault-pass && \
-ansible-playbook -vvv ~/dotfiles/tasks/live.yml && \
-yes | pacman -Syyu" Enter
+tmux new-session -d -s live
+tmux send-keys -t live "\
+ansible-playbook -vvv ~/dotfiles/live-vault.yml --ask-vault-pass && \
+ansible-playbook -vvv ~/dotfiles/live.yml && \
+yes | pacman -Syyu
+echo -e 'passwd main\nexit\nlogin as main\nHyprland\n'" Enter
