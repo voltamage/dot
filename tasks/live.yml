@@ -3,25 +3,27 @@
   become: true
   
   tasks:
-  - name: Ensure .ssh directory exists
-    file:
-      dest: ~/.ssh
-      state: directory
-      mode: 0700 
+  - name: Set pacman Color
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#Color'
+      line: Color
+  
+  - name: Set pacman ParallelDownloads
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#ParallelDownloads'
+      line: ParallelDownloads = 12
+  
+  - name: Set pacman VerbosePkgLists
+    lineinfile:
+      path: /etc/pacman.conf
+      regexp: '^#VerbosePkgLists'
+      line: VerbosePkgLists
 
-  - name: Copy server public key
-    copy:
-      src: ~/dotfiles/files/id_ed25519.pub
-      dest: ~/.ssh/id_ed25519.pub
-      decrypt: yes
-      mode: 0644 
-  
-  - name: Copy server private key
-    copy:
-      src: ~/dotfiles/files/id_ed25519
-      dest: ~/.ssh/id_ed25519
-      decrypt: yes
-      mode: 0600 
-  
-  - name: Fix dotfiles origin
-    shell: cd ~/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
+  - name: Enable multilib packages
+    blockinfile:
+      path: /etc/pacman.conf
+      block: |
+        [multilib]
+        Include = /etc/pacman.d/mirrorlist
