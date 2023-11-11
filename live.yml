@@ -161,3 +161,15 @@
     shell: sudo chsh -s /usr/bin/zsh main
     become: yes
     become_user: ansible
+
+  - name: Install Paru
+    kewlfft.aur.aur:
+      name: paru-bin
+      state: present
+    become: yes
+    become_user: main
+
+  - name: Update system
+    shell: yes | paru -Syyu
+    become: yes
+    become_user: main
