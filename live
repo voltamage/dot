@@ -1,6 +1,6 @@
 #!/bin/sh
 mount -o remount,size=75% /run/archiso/cowspace
-pacman -Sy --noconfirm ansible btop git glibc neovim ranger tmux
+pacman -Sy --noconfirm ansible btop git glibc ranger tmux
 ansible-galaxy collection install kewlfft.aur
 if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi
 mkdir -p ~/.config/git
@@ -9,5 +9,4 @@ tmux new-session -d -s live
 tmux send-keys -t live "\
 ansible-playbook -vvv ~/dotfiles/live-vault.yml --ask-vault-pass && \
 ansible-playbook -vvv ~/dotfiles/live.yml && \
-yes | paru -Syyu
 echo -e 'passwd main\nexit\nlogin as main\nHyprland\n'" Enter
