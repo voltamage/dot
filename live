@@ -1,8 +1,7 @@
 #!/bin/sh
 mount -o remount,size=75% /run/archiso/cowspace
-pacman -Sy --noconfirm ansible booster btop git glibc neovim ranger tmux
+pacman -Sy --noconfirm ansible btop git glibc neovim ranger tmux
 ansible-galaxy collection install kewlfft.aur
-yes | pacman -R mkinitcpio mkinitcpio-archiso mkinitcpio-busybox mkinitcpio-nfs-utils
 if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi
 mkdir -p ~/.config/git
 cp ~/dotfiles/chezmoi/dot_config/git/config ~/.config/git/config

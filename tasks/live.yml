@@ -27,3 +27,19 @@
       block: |
         [multilib]
         Include = /etc/pacman.d/mirrorlist
+
+  - name: Install base-devel and booster
+    package:
+      name:
+        - base-devel
+        - booster
+
+  - name: Remove mkinitcpio packages
+    package:
+      name:
+        - mkinitcpio
+        - mkinitcpio-archiso
+        - mkinitcpio-busybox
+        - mkinitcpio-nfs-utils
+      state: absent
+      force: true
