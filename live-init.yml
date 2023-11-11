@@ -1,0 +1,81 @@
+- hosts: localhost
+  connection: local
+  become: true
+  
+  tasks:
+  - name: Ensure the ansible user exists
+    user:
+      name: ansible
+      create_home: yes
+
+  - name: Allow the ansible user to run passwordless sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_ansible
+      line: 'ansible ALL=(ALL) NOPASSWD:ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
+  
+  - name: Ensure the main user exists
+    user:
+      name: main
+      create_home: yes
+
+  - name: Allow the main user to run passwordless sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_main
+      line: 'main ALL=(ALL) NOPASSWD:ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
+
+  - name: Git clone dotfiles
+    shell: if cd ~/dotfiles; then git pull; else yes | git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi
+    become: yes
+    become_user: main
+  
+  - name: Fix dotfiles origin
+    shell: cd ~/dotfiles && git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git 
+    become: yes
+    become_user: main
+
+  - name: Ensure .ssh directory exists
+    file:
+      dest: ~/.ssh
+      state: directory
+      mode: 0700
+    become: yes
+    become_user: main
+
+  - name: Copy server public key
+    copy:
+      src: ~/dotfiles/files/id_ed25519.pub
+      dest: ~/.ssh/id_ed25519.pub
+      decrypt: yes
+      mode: 0644 
+    become: yes
+    become_user: main
+  
+  - name: Copy server private key
+    copy:
+      src: ~/dotfiles/files/id_ed25519
+      dest: ~/.ssh/id_ed25519
+      decrypt: yes
+      mode: 0600 
+    become: yes
+    become_user: main
+
+  - name: Install ansible aur support for user ansible
+    shell: ansible-galaxy collection install kewlfft.aur
+    become: yes
+    become_user: ansible
+  
+  - name: Install ansible aur support for user main
+    shell: ansible-galaxy collection install kewlfft.aur
+    become: yes
+    become_user: main
+  
+  - name: Install ansible aur support for user root
+    shell: ansible-galaxy collection install kewlfft.aur
+    become: yes
+    become_user: root
