@@ -1,8 +1,10 @@
 #!/bin/sh
 mount -o remount,size=4G /run/archiso/cowspace
-pacman -Sy --noconfirm ansible btop git glibc neovim ranger tmux
+pacman -Sy --noconfirm ansible booster btop git glibc neovim ranger tmux
+pacman -R mkinitcpio mkinitcpio-archiso mkinitcpio-busybox mkinitcpio-nfs-utils
 if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi
-cp -r ~/dotfiles/chezmoi/dot_config/git ~/.config
+mkdir -p ~/.config/git
+cp ~/dotfiles/chezmoi/dot_config/git/config ~/.config/git/config
 tmux new-session -d -s install
 tmux send-keys -t install "\
 ansible-playbook -vvv ~/dotfiles/tasks/live.yml --ask-vault-pass && \
