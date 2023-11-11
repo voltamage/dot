@@ -9,5 +9,5 @@ tmux new-session -d -s live
 tmux send-keys -t live "\
 ansible-playbook -vvv ~/dotfiles/live-vault.yml --ask-vault-pass && \
 ansible-playbook -vvv ~/dotfiles/live.yml && \
-yes | pacman -Syyu
+yes | paru -Syyu
 echo -e 'passwd main\nexit\nlogin as main\nHyprland\n'" Enter
