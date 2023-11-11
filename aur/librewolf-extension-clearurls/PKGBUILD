@@ -13,7 +13,7 @@ license=('LGPL3')
 depends=('librewolf')
 groups=('librewolf-addons')
 noextract=("$_name-$pkgver.xpi")
-source=("https://github.com/$_name/Addon/releases/download/$pkgver/clearurls-$pkgver.xpi")
+source=("https://addons.mozilla.org/firefox/downloads/file/4064884/$_name-$pkgver.xpi")
 sha256sums=('e20168d63cb1b8ba3ad0de4cdb42c540d99fe00aa9679b59f49bccc36f106291')
 
 package() {
