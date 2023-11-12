@@ -6,14 +6,16 @@
     "debug": false,
     "hostname": "archlinux",
     "kernels": [
-        "linux"
+        "linux-zen"
     ],
     "locale_config": {
         "kb_layout": "us",
         "sys_enc": "UTF-8",
         "sys_lang": "en_US"
     },
-    "network_config": {},
+    "network_config": {
+        "type": "nm"
+    },
     "no_pkg_lookups": false,
     "ntp": true,
     "offline": false,
@@ -22,6 +24,6 @@
     "script": "guided",
     "silent": false,
     "swap": true,
-    "timezone": "UTC",
+    "timezone": "America/Los_Angeles",
     "version": "2.6.3"
 }
