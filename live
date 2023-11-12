@@ -1,4 +1,5 @@
 #!/bin/sh
+systemctl stop reflector.service
 pkill reflector
 reflector --sort rate --country US --protocol https --delay 1 --save /etc/pacman.d/mirrorlist
 mount -o remount,size=75% /run/archiso/cowspace
