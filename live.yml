@@ -56,15 +56,19 @@
       owner: main
       group: main
       state: directory
+    become: yes
+    become_user: main
  
   - name: Configure chezmoi
     lineinfile:
-      path: /home/main/.config/chezmoi/chezmoi.yaml
+      path: ~/.config/chezmoi/chezmoi.yaml
       line: 'sourceDir: ~/dotfiles/chezmoi'
       create: yes
       owner: main
       group: main
       mode: 0644
+    become: yes
+    become_user: main
 
   - name: Configure dotfiles with chezmoi
     shell: chezmoi apply
