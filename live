@@ -7,6 +7,6 @@ mkdir -p ~/.config/git
 cp ~/dotfiles/chezmoi/dot_config/git/config ~/.config/git/config
 tmux new-session -d -s live
 tmux send-keys -t live "\
-ansible-playbook -vvv ~/dotfiles/live-vault.yml --ask-vault-pass && \
-ansible-playbook -vvv ~/dotfiles/live.yml && \
+ansible-playbook -v ~/dotfiles/live-vault.yml --ask-vault-pass && \
+ansible-playbook -v ~/dotfiles/live.yml && \
 echo -e 'passwd main\nexit\nlogin as main\nHyprland\n'" Enter
