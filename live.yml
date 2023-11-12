@@ -32,6 +32,19 @@
     package:
       update_cache: true
 
+  - name: Remove main user sudo permissons
+    shell: sudo rm /etc/sudoers.d/u_main
+    become: yes
+    become_user: ansible
+  
+  - name: Allow the main user to run passwordless sudo
+    lineinfile:
+      path: /etc/sudoers.d/u_main
+      line: 'main ALL=(ALL) NOPASSWD:ALL'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
+
   - name: Install base-devel, booster, chezmoi, and zsh
     package:
       name:
@@ -232,6 +245,6 @@
       validate: 'visudo -cf %s'
   
   - name: Remove main user lint
-    shell: rm -rf ~/.cargo && rm ~/.bash*
+    shell: rm -rf ~/.cargo && rm -f ~/.bash* && rm -f ~/.screenrc && rm -f ~/.zshrc
     become: yes
     become_user: main
