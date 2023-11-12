@@ -1,0 +1,27 @@
+{
+    "additional-repositories": [],
+    "archinstall-language": "English",
+    "bootloader": "Systemd-boot",
+    "config_version": "2.6.3",
+    "debug": false,
+    "hostname": "archlinux",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "us",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US"
+    },
+    "network_config": {},
+    "no_pkg_lookups": false,
+    "ntp": true,
+    "offline": false,
+    "packages": [],
+    "parallel downloads": 0,
+    "script": "guided",
+    "silent": false,
+    "swap": true,
+    "timezone": "UTC",
+    "version": "2.6.3"
+}
