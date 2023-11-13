@@ -1,6 +1,7 @@
 #!/bin/sh
 # Stop the reflector service that comes with the arch live environment
 # This way we can run it with our own settings without mirrorlist conflicts
+# BUG: If reflector service doesn't exist this errs
 systemctl stop reflector.service
 
 # Expand disk, configure pacman, and ensure tmux is installed
@@ -8,7 +9,7 @@ mount -o remount,size=75% /run/archiso/cowspace
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 sed -i 's/#VerbosePkgLists/VerbosePkgLists/g' /etc/pacman.conf
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 12/g' /etc/pacman.conf
-pacman -Sy --needed --noconfirm tmux
+pacman -Sy --needed --noconfirm reflector tmux
 
 # Start tmux session install, update mirrorlist, system, and basic packages
 # Download configs into a tmp directory, and start archinstall
