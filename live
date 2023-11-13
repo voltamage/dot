@@ -1,7 +1,7 @@
 #!/bin/sh
 systemctl stop reflector.service
 pkill reflector
-reflector --sort rate --country US --protocol https --delay 1 --save /etc/pacman.d/mirrorlist
+reflector --sort rate -c US -p https --delay 1 --save /etc/pacman.d/mirrorlist -x berkeley
 mount -o remount,size=75% /run/archiso/cowspace
 pacman -Sy --noconfirm ansible btop git glibc ranger tmux
 ansible-galaxy collection install kewlfft.aur

@@ -2,21 +2,19 @@
 # Stop the reflector service that comes with the arch live environment
 # This way we can run it with our own settings without mirrorlist conflicts
 systemctl stop reflector.service
-pkill reflector # Not sure if pkill reflector is necessary after systemctl
 
-# Run reflector with our own settings to speed up both testing and mirrors
-reflector --sort rate --country US --protocol https --delay 1 --save /etc/pacman.d/mirrorlist
-
-# Expand the disk space of the live environment
+# Expand disk and ensure tmux is installed
 mount -o remount,size=75% /run/archiso/cowspace
+pacman -Sy --needed --noconfirm tmux
 
-# Update the system so things like mkfs are up to date
-pacman -Syyu archinstall btop ranger tmux --noconfirm --ignore linux
-
-# Start a tmux session, download our configs, and start the install
+# Start tmux session install, update mirrorlist, system, and basic packages
+# Download configs into a tmp directory, and start archinstall
+# NOTE: Might want to create a dedicated directory in tmp to prevent file clash
 tmux new-session -d -s install
 tmux send-keys -t install "\
-cd && \
+reflector --sort rate -c US -p https --delay 1 --save /etc/pacman.d/mirrorlist -x berkeley && \
+pacman -Syu archinstall btop ranger --needed --noconfirm --ignore linux && \
+cd /tmp && \
 curl https://raw.githubusercontent.com/voltamage/dotfiles/main/files/user_configuration.json -O && \
 curl https://raw.githubusercontent.com/voltamage/dotfiles/main/files/user_credentials.json -O && \
-archinstall --config ~/user_configuration.json --creds ~/user_credentials.json" Enter
+archinstall --config user_configuration.json --creds user_credentials.json" Enter
