@@ -21,4 +21,5 @@ mkdir -p /tmp/archinstallconf && \
 cd /tmp/archinstallconf && \
 curl https://raw.githubusercontent.com/voltamage/dotfiles/main/files/user_configuration.json -O && \
 curl https://raw.githubusercontent.com/voltamage/dotfiles/main/files/user_credentials.json -O && \
-archinstall --config user_configuration.json --creds user_credentials.json" Enter
+archinstall --config user_configuration.json --creds user_credentials.json && \
+cd" Enter
