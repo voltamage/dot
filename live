@@ -9,7 +9,7 @@ mount -o remount,size=75% /run/archiso/cowspace
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 sed -i 's/#VerbosePkgLists/VerbosePkgLists/g' /etc/pacman.conf
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 12/g' /etc/pacman.conf
-pacman -Sy --needed --noconfirm reflector tmux
+pacman -Sy --needed --noconfirm git reflector tmux
 
 # Start tmux session, update mirrorlist, system, and basic packages
 tmux new-session -A -d -s live
