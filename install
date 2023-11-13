@@ -18,7 +18,8 @@ tmux new-session -d -s install
 tmux send-keys -t install "\
 reflector --sort rate -c US -p https --delay 1 --save /etc/pacman.d/mirrorlist -x berkeley && \
 pacman -Syu archinstall btop ranger --needed --noconfirm --ignore linux && \
-cd /tmp && \
+mkdir -p /tmp/archinstallconf && \
+cd /tmp/archinstallconf && \
 curl https://raw.githubusercontent.com/voltamage/dotfiles/main/files/user_configuration.json -O && \
 curl https://raw.githubusercontent.com/voltamage/dotfiles/main/files/user_credentials.json -O && \
 archinstall --config user_configuration.json --creds user_credentials.json" Enter
