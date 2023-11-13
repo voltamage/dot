@@ -1,12 +1,16 @@
 Ansible repository for systems automation, currently supporting Arch Linux
 
-Install with:
-
+Install new system with:
 ```
-curl -sSL https://raw.githubusercontent.com/voltamage/dotfiles/main/live | sh && tmux attach -t live
+curl https://raw.githubusercontent.com/voltamage/dotfiles/main/install | sh && tmux attach -t install
+```
+
+Install config with:
+```
+curl https://raw.githubusercontent.com/voltamage/dotfiles/main/live | sh && tmux attach -t live
 ```
 
 **Browser Addons**
-https://addons.mozilla.org/en-US/firefox/addon/clearurls/
+ClearURLs
 - enable logging
 - enable etag filter
