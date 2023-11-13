@@ -14,7 +14,7 @@ pacman -Sy --needed --noconfirm reflector tmux
 # Start tmux session install, update mirrorlist, system, and basic packages
 # Download configs into a tmp directory, and start archinstall
 # NOTE: Might want to create a dedicated directory in tmp to prevent file clash
-tmux new-session -d -s install
+tmux new-session -A -d -s install
 tmux send-keys -t install "\
 reflector --sort rate -c US -p https --delay 1 --save /etc/pacman.d/mirrorlist -x berkeley && \
 pacman -Syu archinstall btop ranger --needed --noconfirm --ignore linux && \
