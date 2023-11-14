@@ -85,13 +85,13 @@
     become: true
     become_user: main
     copy:
-      path: ~/.local/state/zsh/history
+      dest: ~/.local/state/zsh/history
       force: false
       mode: 0600
       content: ""
   
   - name: Make user use zsh as the default shell
-    cmd: chsh -s /usr/bin/zsh main
+    shell: chsh -s /usr/bin/zsh main
 
   - name: Ensure installed packages
     package:
@@ -161,7 +161,7 @@
   - name: Update system
     become: true
     become_user: main
-    cmd: paru -Syu --noconfirm --ignore linux
+    shell: paru -Syu --noconfirm --ignore linux
 
   - name: Install aur packages
     become: true
@@ -189,7 +189,7 @@
   - name: Install packages requiring manual intervention
     become: true
     become_user: main
-    cmd: paru -Sy --needed --noconfirm \
+    shell: paru -Sy --needed --noconfirm \
       neovim-symlinks \
       pigz-gzip-symlink \
 
