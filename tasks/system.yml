@@ -201,7 +201,7 @@
   - name: Install aur librewolf-extension-clearurls
     become: true
     become_user: main
-    shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && makepkg -i --needed --noconfirm
+    shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && makepkg -i --needed
 
   - name: ALWAYS CHANGED Allow the main user to run passworded sudo
     blockinfile:
