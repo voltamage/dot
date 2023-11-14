@@ -140,11 +140,11 @@ require('lazy').setup({
       'williamboman/mason.nvim',
     },
   },
-  {
-    'ellisonleao/glow.nvim',
-    config = true,
-    cmd = 'Glow'
-  },
+  --{
+  --  'ellisonleao/glow.nvim',
+  --  config = true,
+  --  cmd = 'Glow'
+  --},
   -- {
   --   'xiyaowong/transparent.nvim',
   --   config = true,

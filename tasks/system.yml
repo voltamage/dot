@@ -97,6 +97,7 @@
 
   - name: Ensure installed packages
     package:
+      extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
       name:
         # - arch-wiki-docs
         # - gcc
@@ -104,8 +105,8 @@
         # - glow
         # - grim
         # - lynx
+        # - onefetch
         # - pacman-contrib # NOTE: i dont remember what this is for
-        # - python-pillow # NOTE: this is required for ranger's kitty image preview
         # - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
         # - ripgrep-all
         # - slurp
@@ -133,8 +134,8 @@
         - noto-fonts-emoji
         - noto-fonts-extra
         - npm # NOTE: TSUpdate relies on this
-        - onefetch
         - openssh
+        - python-pillow # NOTE: this is required for ranger's kitty image preview
         - ranger
         - ripgrep
         - starship
@@ -160,6 +161,7 @@
       block: |
         main ALL=(ALL) NOPASSWD:ALL
 
+# Updated until this line
   - name: Update system
     become: true
     become_user: main
