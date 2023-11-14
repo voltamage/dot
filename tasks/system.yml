@@ -142,12 +142,6 @@
         - zoxide
         - zsh
 
-  - name: Ensure Paru is installed
-    kewlfft.aur.aur:
-      state: present
-      name:
-        - paru-bin
-
   - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
     blockinfile:
       path: /etc/sudoers.d/u_main
@@ -156,6 +150,14 @@
       validate: "visudo -cf %s"
       block: |
         main ALL=(ALL) NOPASSWD:ALL
+
+  - name: Ensure Paru is installed
+    become: true
+    become_user: main
+    kewlfft.aur.aur:
+      state: present
+      name:
+        - paru-bin
 
   - name: Update system
     become: true
