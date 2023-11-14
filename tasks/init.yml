@@ -44,7 +44,7 @@
     become: true
     become_user: main
     git:
-      # remote: by default its origin but i feel like it should be main
+      remote: main origin
       force: false # this one is default but i wanted it to be verbose
       update: false
       dest: ~/dotfiles
