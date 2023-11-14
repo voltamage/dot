@@ -9,14 +9,14 @@ mount -o remount,size=75% /run/archiso/cowspace
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 sed -i 's/#VerbosePkgLists/VerbosePkgLists/g' /etc/pacman.conf
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 12/g' /etc/pacman.conf
-yes | pacman -Sy --needed --noconfirm git reflector tmux
+yes | pacman -Sy --needed --noconfirm git reflector tmux # this sometimes doesn't accept yes
 
 # Start tmux session, update mirrorlist, system, and basic packages
 tmux new-session -A -d -s live
 tmux send-keys -t live "\
 reflector --sort rate -c US -p https --delay 1 --save /etc/pacman.d/mirrorlist -x berkeley && \
-pacman -Syu ansible btop ranger --needed --noconfirm --ignore linux && \
+pacman -Syu ansible btop ranger --needed --noconfirm --ignore linux --ignore linux-zen && \
 ansible-galaxy collection install kewlfft.aur && \
-if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi && \
+if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi && \ # not idempotent
 ansible-playbook -v ~/dotfiles/tasks/init.yml --ask-vault-pass && \
 ansible-playbook -v ~/dotfiles/tasks/system.yml" Enter

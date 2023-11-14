@@ -3,12 +3,6 @@
   become: true
   
   tasks:
-  - name: Ensure Paru is installed
-    kewlfft.aur.aur:
-      state: present
-      name:
-        - paru-bin
-
   - name: Set pacman Color
     lineinfile:
       path: /etc/pacman.conf
@@ -147,6 +141,12 @@
         - yt-dlp
         - zoxide
         - zsh
+
+  - name: Ensure Paru is installed
+    kewlfft.aur.aur:
+      state: present
+      name:
+        - paru-bin
 
   - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
     blockinfile:
