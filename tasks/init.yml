@@ -4,8 +4,8 @@
   
   tasks:
   - name: Ensure packages required for playbook exist
-    extra_args: "--ignore linux --ignore linux-zen"
     package:
+      extra_args: "--ignore linux --ignore linux-zen"
       name:
         - chezmoi
         - git
@@ -147,6 +147,6 @@
 
   - name: Configure dotfiles with chezmoi
     # Could probaby get it to be more idempotent with a if chezmoistate.boltdb check do nothing
-    cmd: chezmoi apply
+    shell: chezmoi apply
     become: yes
     become_user: main
