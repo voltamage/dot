@@ -3,9 +3,10 @@
   become: true
   
   tasks:
-  - name: Ensure git and ssh packages exist
+  - name: Ensure packages required for playbook exist
     package:
       name:
+        - chezmoi
         - git
         - openssh
 
@@ -123,3 +124,26 @@
     shell: ansible-galaxy collection install kewlfft.aur
     become: yes
     become_user: root
+
+  - name: Ensure chezmoi directory exists
+    file:
+      path: ~/.config/chezmoi
+      state: directory
+    become: yes
+    become_user: main
+ 
+  - name: Configure chezmoi
+    blockinfile:
+      path: ~/.config/chezmoi/chezmoi.yaml
+      block: |
+        sourceDir: ~/dotfiles/chezmoi
+      create: yes
+      mode: 0644
+    become: yes
+    become_user: main
+
+  - name: Configure dotfiles with chezmoi
+    # Could probaby get it to be more idempotent with a if chezmoistate.boltdb check do nothing
+    cmd: chezmoi apply
+    become: yes
+    become_user: main

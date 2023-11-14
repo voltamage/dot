@@ -5,8 +5,9 @@
   tasks:
   - name: Ensure Paru is installed
     kewlfft.aur.aur:
-      name: paru-bin
       state: present
+      name:
+        - paru-bin
 
   - name: Set pacman Color
     lineinfile:
@@ -58,95 +59,39 @@
         - mkinitcpio-busybox
         - mkinitcpio-nfs-utils
   
-  - name: Ensure chezmoi directory exists
-    file:
-      path: ~/.config/chezmoi
-      state: directory
-    become: yes
-    become_user: main
- 
-  - name: Configure chezmoi
-    blockinfile:
-      path: ~/.config/chezmoi/chezmoi.yaml
-      block: |
-        sourceDir: ~/dotfiles/chezmoi
-      create: yes
-      mode: 0644
-    become: yes
-    become_user: main
-
-# configured up till this point 
-  - name: Configure dotfiles with chezmoi
-    shell: chezmoi apply
-    become: yes
-    become_user: main
-  
   - name: Ensure /etc/zsh directory exists
     file:
-      dest: /etc/zsh
-      owner: root
-      group: root
+      path: /etc/zsh
       state: directory
       mode: 0755
-    become: yes
-    become_user: ansible
 
   - name: Configure ZDOTDIR
     blockinfile:
       path: /etc/zsh/zshenv
+      create: true
+      mode: 0644
       block: |
         export ZDOTDIR="$HOME"/.config/zsh
-      create: yes
-      owner: root
-      group: root
-      mode: 0644
-      validate: 'visudo -cf %s'
-    become: yes
-    become_user: ansible
 
   - name: Ensure ~/.local/state/zsh directory exists
+    become: true
+    become_user: main
     file:
-      dest: ~/.local/state/zsh
-      owner: main
-      group: main
+      path: ~/.local/state/zsh
       state: directory
       mode: 0755
-    become: yes
-    become_user: main
   
   - name: Ensure zsh history exists
-    copy:
-      content: ""
-      dest: ~/.local/state/zsh/history
-      force: no
-      owner: main
-      group: main
-      mode: 0600
-    become: yes
+    become: true
     become_user: main
+    copy:
+      path: ~/.local/state/zsh/history
+      force: false
+      mode: 0600
+      content: ""
   
   - name: Make user use zsh as the default shell
-    shell: sudo chsh -s /usr/bin/zsh main
-    become: yes
-    become_user: ansible
-
-  - name: Allow the main user to run passwordless sudo
-    blockinfile:
-      path: /etc/sudoers.d/u_main
-      block: |
-        main ALL=(ALL) NOPASSWD:ALL
-      create: yes
-      owner: root
-      group: root
-      mode: 0644
-      validate: 'visudo -cf %s'
-    become: yes
-    become_user: ansible
-
-  - name: Update system
-    shell: paru -Syu --noconfirm --ignore linux
-    become: yes
-    become_user: main
+    cmd: chsh -s /usr/bin/zsh main
 
   - name: Ensure installed packages
     package:
@@ -203,8 +148,24 @@
         - yt-dlp
         - zoxide
         - zsh
- 
+
+  - name: Allow the main user to run passwordless sudo
+    blockinfile:
+      path: /etc/sudoers.d/u_main
+      create: true
+      mode: 0644
+      validate: "visudo -cf %s"
+      block: |
+        main ALL=(ALL) NOPASSWD:ALL
+
+  - name: Update system
+    become: true
+    become_user: main
+    cmd: paru -Syu --noconfirm --ignore linux
+
   - name: Install aur packages
+    become: true
+    become_user: main
     kewlfft.aur.aur:
       use: paru
       extra_args: "-a"
@@ -224,26 +185,24 @@
         - swww
         - xdg-ninja-git
       state: present
-    become: yes
-    become_user: main
 
   - name: Install packages requiring manual intervention
-    shell: paru -Sy --needed --noconfirm \
+    become: true
+    become_user: main
+    cmd: paru -Sy --needed --noconfirm \
       neovim-symlinks \
       pigz-gzip-symlink \
-    become: yes
-    become_user: main
 
   - name: Install aur librewolf-extension-clearurls
-    shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && makepkg -i --needed --noconfirm
-    become: yes
+    become: true
     become_user: main
-  
+    shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && makepkg -i --needed --noconfirm
+
   - name: Allow the main user to run passworded sudo
     blockinfile:
       path: /etc/sudoers.d/u_main
+      create: true
+      mode: 0644
+      validate: "visudo -cf %s"
       block: |
         main ALL=(ALL) ALL
-      create: yes
-      mode: 0644
-      validate: 'visudo -cf %s'
