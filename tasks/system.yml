@@ -11,20 +11,20 @@
   - name: Set pacman Color
     lineinfile:
       path: /etc/pacman.conf
-      regexp: '^#Color'
-      line: Color
+      regexp: "^#Color"
+      line: "Color"
   
   - name: Set pacman ParallelDownloads
     lineinfile:
       path: /etc/pacman.conf
-      regexp: '^#ParallelDownloads'
-      line: ParallelDownloads = 12
+      regexp: "^#ParallelDownloads"
+      line: "ParallelDownloads = 12"
   
   - name: Set pacman VerbosePkgLists
     lineinfile:
       path: /etc/pacman.conf
-      regexp: '^#VerbosePkgLists'
-      line: VerbosePkgLists
+      regexp: "^#VerbosePkgLists"
+      line: "VerbosePkgLists"
 
   - name: Enable multilib packages
     blockinfile:
@@ -40,6 +40,7 @@
 # configured up till this point 
   - name: Install base-devel, booster, chezmoi, and zsh
     package:
+      extra_args: "--ignore linux --ignore linux-zen"
       name:
         - base-devel
         - booster
