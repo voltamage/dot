@@ -86,12 +86,12 @@
       src: ~/dotfiles/files/id_ed25519
       dest: ~/.ssh/id_ed25519
   
-  - name: Install ansible aur support for user main
+  - name: ALWAYS CHANGED Install ansible aur support for user main
     become: true
     become_user: main
     shell: ansible-galaxy collection install kewlfft.aur
   
-  - name: Install ansible aur support for user root
+  - name: ALWAYS CHANGED Install ansible aur support for user root
     shell: ansible-galaxy collection install kewlfft.aur
 
   - name: Ensure chezmoi directory exists
@@ -112,7 +112,7 @@
       block: |
         sourceDir: ~/dotfiles/chezmoi
 
-  - name: Configure dotfiles with chezmoi
+  - name: ALWAYS CHANGED Configure dotfiles with chezmoi
     become: true
     become_user: main
     # Could probaby get it to be more idempotent with a if chezmoistate.boltdb check do nothing
