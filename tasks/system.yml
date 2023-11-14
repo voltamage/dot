@@ -190,18 +190,19 @@
         - swww
         - xdg-ninja-git
 
-# Updated until this line
-  - name: Install packages requiring manual intervention
+  - name: ALWAYS CHANGED Install packages requiring manual intervention
     become: true
     become_user: main
     shell: yes | paru -Sy --needed \
       neovim-symlinks \
       pigz-gzip-symlink \
 
-  - name: Install aur librewolf-extension-clearurls
+  - name: ALWAYS CHANGED Install aur librewolf-extension-clearurls
     become: true
     become_user: main
-    shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && makepkg -i --needed
+    shell: 
+      chdir: ~/dotfiles/aur/librewolf-extension-clearurls
+      cmd: makepkg -i --needed
 
   - name: ALWAYS CHANGED Allow the main user to run passworded sudo
     blockinfile:
