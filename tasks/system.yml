@@ -182,7 +182,7 @@
         # - ff2mpv-native-messaging-host-librewolf-git
         - hyprland-nvidia-git
         - librewolf-bin
-        - librewolf-extension-dark-reader-bin
+        - librewolf-extension-darkreader-bin
         - neovim-git
         - paru-bin
         - pfetch-rs-bin
@@ -201,7 +201,7 @@
     become_user: main
     shell: 
       chdir: ~/dotfiles/aur/librewolf-extension-clearurls
-      cmd: makepkg -i --needed
+      cmd: makepkg -i --needed --noconfirm
 
   - name: ALWAYS CHANGED Allow the main user to run passworded sudo
     blockinfile:
