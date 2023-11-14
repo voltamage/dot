@@ -18,5 +18,5 @@ reflector --sort rate -c US -p https --delay 1 --save /etc/pacman.d/mirrorlist -
 pacman -Syu ansible btop ranger --needed --noconfirm --ignore linux --ignore linux-zen && \
 ansible-galaxy collection install kewlfft.aur && \
 if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi && \ # not idempotent
-ansible-playbook -v ~/dotfiles/tasks/init.yml --ask-vault-pass && \
-ansible-playbook -v ~/dotfiles/tasks/system.yml" Enter
+ansible-playbook ~/dotfiles/tasks/init.yml --ask-vault-pass && \
+ansible-playbook ~/dotfiles/tasks/system.yml" Enter
