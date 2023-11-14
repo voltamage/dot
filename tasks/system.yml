@@ -33,13 +33,11 @@
         [multilib]
         Include = /etc/pacman.d/mirrorlist
 
-# configured up till this point 
   - name: Synchronize package databases
     package:
       update_cache: true
-    become: yes
-    become_user: ansible
 
+# configured up till this point 
   - name: Install base-devel, booster, chezmoi, and zsh
     package:
       name:
