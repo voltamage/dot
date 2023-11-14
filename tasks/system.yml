@@ -37,44 +37,45 @@
     package:
       update_cache: true
 
-# configured up till this point 
-  - name: Install base-devel, booster, chezmoi, and zsh
+  - name: Install packages required for playbook
     package:
-      extra_args: "--ignore linux --ignore linux-zen"
+      extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
       name:
+        - amd-ucode
         - base-devel
         - booster
         - chezmoi
+        - intel-ucode
         - zsh
 
   - name: Remove mkinitcpio packages
     package:
+      state: absent
+      force: true
       name:
         - mkinitcpio
         - mkinitcpio-archiso
         - mkinitcpio-busybox
         - mkinitcpio-nfs-utils
-      state: absent
-      force: true
-    become: yes
-    become_user: ansible
   
   - name: Ensure chezmoi directory exists
     file:
-      dest: ~/.config/chezmoi
+      path: ~/.config/chezmoi
       state: directory
     become: yes
     become_user: main
  
   - name: Configure chezmoi
-    lineinfile:
+    blockinfile:
       path: ~/.config/chezmoi/chezmoi.yaml
-      line: 'sourceDir: ~/dotfiles/chezmoi'
+      block: |
+        sourceDir: ~/dotfiles/chezmoi
       create: yes
       mode: 0644
     become: yes
     become_user: main
 
+# configured up till this point 
   - name: Configure dotfiles with chezmoi
     shell: chezmoi apply
     become: yes
