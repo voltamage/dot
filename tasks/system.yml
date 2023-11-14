@@ -90,7 +90,7 @@
       mode: 0600
       content: ""
   
-  - name: Make user use zsh as the default shell
+  - name: ALWAYS CHANGED Make user use zsh as the default shell
     shell: chsh -s /usr/bin/zsh main
 
   - name: Ensure installed packages
@@ -135,6 +135,7 @@
         - openssh
         - python-pillow # NOTE: this is required for ranger's kitty image preview
         - ranger
+        - reflector
         - ripgrep
         - starship
         - sudo
@@ -150,7 +151,7 @@
         - zoxide
         - zsh
 
-  - name: Allow the main user to run passwordless sudo
+  - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
     blockinfile:
       path: /etc/sudoers.d/u_main
       create: true
@@ -159,18 +160,21 @@
       block: |
         main ALL=(ALL) NOPASSWD:ALL
 
-# Updated until this line
   - name: Update system
     become: true
     become_user: main
-    shell: paru -Syu --noconfirm --ignore linux
+    kewlfft.aur.aur:
+      use: paru
+      update_cache: true
+      upgrade: true
+      extra_args: "--ignore linux --ignore linux-zen"
 
   - name: Install aur packages
     become: true
     become_user: main
     kewlfft.aur.aur:
       use: paru
-      extra_args: "-a"
+      aur_only: true
       name:
         # - nvtop-nosystemd-git
         # - rofi-lbonn-wayland-only-git
@@ -183,11 +187,10 @@
         - neovim-git
         - paru-bin
         - pfetch-rs-bin
-        - rate-mirrors-bin
         - swww
         - xdg-ninja-git
-      state: present
 
+# Updated until this line
   - name: Install packages requiring manual intervention
     become: true
     become_user: main
@@ -200,7 +203,7 @@
     become_user: main
     shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && makepkg -i --needed --noconfirm
 
-  - name: Allow the main user to run passworded sudo
+  - name: ALWAYS CHANGED Allow the main user to run passworded sudo
     blockinfile:
       path: /etc/sudoers.d/u_main
       create: true
