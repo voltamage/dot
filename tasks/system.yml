@@ -3,6 +3,11 @@
   become: true
   
   tasks:
+  - name: Ensure Paru is installed
+    kewlfft.aur.aur:
+      name: paru-bin
+      state: present
+
   - name: Set pacman Color
     lineinfile:
       path: /etc/pacman.conf
@@ -28,22 +33,12 @@
         [multilib]
         Include = /etc/pacman.d/mirrorlist
 
+# configured up till this point 
   - name: Synchronize package databases
     package:
       update_cache: true
-
-  - name: Remove main user sudo permissons
-    shell: sudo rm /etc/sudoers.d/u_main
     become: yes
     become_user: ansible
-  
-  - name: Allow the main user to run passwordless sudo
-    lineinfile:
-      path: /etc/sudoers.d/u_main
-      line: 'main ALL=(ALL) NOPASSWD:ALL'
-      create: yes
-      mode: 0644
-      validate: 'visudo -cf %s'
 
   - name: Install base-devel, booster, chezmoi, and zsh
     package:
@@ -62,12 +57,12 @@
         - mkinitcpio-nfs-utils
       state: absent
       force: true
+    become: yes
+    become_user: ansible
   
   - name: Ensure chezmoi directory exists
     file:
       dest: ~/.config/chezmoi
-      owner: main
-      group: main
       state: directory
     become: yes
     become_user: main
@@ -77,8 +72,6 @@
       path: ~/.config/chezmoi/chezmoi.yaml
       line: 'sourceDir: ~/dotfiles/chezmoi'
       create: yes
-      owner: main
-      group: main
       mode: 0644
     become: yes
     become_user: main
@@ -95,13 +88,22 @@
       group: root
       state: directory
       mode: 0755
+    become: yes
+    become_user: ansible
 
   - name: Configure ZDOTDIR
-    copy:
-      dest: /etc/zsh/zshenv
-      content: |
+    blockinfile:
+      path: /etc/zsh/zshenv
+      block: |
         export ZDOTDIR="$HOME"/.config/zsh
-  
+      create: yes
+      owner: root
+      group: root
+      mode: 0644
+      validate: 'visudo -cf %s'
+    become: yes
+    become_user: ansible
+
   - name: Ensure ~/.local/state/zsh directory exists
     file:
       dest: ~/.local/state/zsh
@@ -128,43 +130,57 @@
     become: yes
     become_user: ansible
 
-  - name: Install Paru
-    kewlfft.aur.aur:
-      name: paru-bin
-      state: present
+  - name: Allow the main user to run passwordless sudo
+    blockinfile:
+      path: /etc/sudoers.d/u_main
+      block: |
+        main ALL=(ALL) NOPASSWD:ALL
+      create: yes
+      owner: root
+      group: root
+      mode: 0644
+      validate: 'visudo -cf %s'
     become: yes
-    become_user: main
+    become_user: ansible
 
   - name: Update system
-    shell: yes | paru -Syyu
+    shell: paru -Syu --noconfirm --ignore linux
     become: yes
     become_user: main
 
   - name: Ensure installed packages
     package:
       name:
+        # - arch-wiki-docs
+        # - gcc
+        # - git-delta
+        # - glow
+        # - grim
+        # - lynx
+        # - pacman-contrib # NOTE: i dont remember what this is for
+        # - python-pillow # NOTE: this is required for ranger's kitty image preview
+        # - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
+        # - ripgrep-all
+        # - slurp
+        # - vivid # NOTE: LS_COLORS generator
+        # - wikiman
+        # - ytfzf
         - ansible
-        - arch-wiki-docs
         - aria2
         - base-devel
         - bat
+        - booster
         - btop
         - chezmoi
         - eza
         - fd
         - fzf
         - gammastep
-        - gcc
         - git
-        - git-delta
-        - glow
-        - grim
         - kitty
-        - lynx
         - man-db
         - mpv
         - ninja
-        - nodejs
         - noto-fonts
         - noto-fonts-cjk
         - noto-fonts-emoji
@@ -172,79 +188,62 @@
         - npm # NOTE: TSUpdate relies on this
         - onefetch
         - openssh
-        - pacman-contrib
-        - python-pillow # NOTE: this is required for ranger's kitty image preview
-        - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
         - ranger
         - ripgrep
-        - ripgrep-all
-        - slurp
         - starship
         - sudo
         - tmux
-        - tokei
-        - tree-sitter-cli
+        - tokei # NOTE: fast loc parser
+        - tree-sitter-cli # tree-sitter wants this for health :TSInstallFromGrammar
         - ttf-jetbrains-mono-nerd
         - unzip # NOTE: mason depends on this
-        - vivid # NOTE: LS_COLORS generator
         - wget # NOTE: mason depends on this
-        - wikiman
         - wl-clipboard
         - xdg-desktop-portal-hyprland
         - yt-dlp
-        - ytfzf
         - zoxide
         - zsh
-  
+ 
   - name: Install aur packages
     kewlfft.aur.aur:
       use: paru
       extra_args: "-a"
       name:
-        - ff2mpv-native-messaging-host-librewolf-git
-        - hyprland-nvidia-git                       
+        # - nvtop-nosystemd-git
+        # - rofi-lbonn-wayland-only-git
+        # - timg
+        # - tldr++
+        # - ff2mpv-native-messaging-host-librewolf-git
+        - hyprland-nvidia-git
         - librewolf-bin
         - librewolf-extension-dark-reader-bin
         - neovim-git
-        # - nvtop-nosystemd-git
         - paru-bin
         - pfetch-rs-bin
         - rate-mirrors-bin
-        - rofi-lbonn-wayland-only-git
         - swww
-        # - timg
-        # - tldr++
         - xdg-ninja-git
       state: present
     become: yes
     become_user: main
 
   - name: Install packages requiring manual intervention
-    shell: yes | paru -S \
+    shell: paru -Sy --needed --noconfirm \
       neovim-symlinks \
       pigz-gzip-symlink \
     become: yes
     become_user: main
 
   - name: Install aur librewolf-extension-clearurls
-    shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && yes | makepkg -i
+    shell: cd ~/dotfiles/aur/librewolf-extension-clearurls && makepkg -i --needed --noconfirm
     become: yes
     become_user: main
   
-  - name: Remove main user passwordless permissons
-    shell: sudo rm /etc/sudoers.d/u_main
-    become: yes
-    become_user: ansible
-  
   - name: Allow the main user to run passworded sudo
-    lineinfile:
+    blockinfile:
       path: /etc/sudoers.d/u_main
-      line: 'main ALL=(ALL) ALL'
+      block: |
+        main ALL=(ALL) ALL
       create: yes
       mode: 0644
       validate: 'visudo -cf %s'
-  
-  - name: Remove main user lint
-    shell: rm -rf ~/.cargo && rm -f ~/.bash* && rm -f ~/.screenrc && rm -f ~/.zshrc
-    become: yes
-    become_user: main
