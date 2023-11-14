@@ -64,7 +64,6 @@
       path: /etc/zsh
       state: directory
       mode: 0755
-      recurse: true
 
   - name: Configure ZDOTDIR
     blockinfile:
@@ -81,7 +80,6 @@
       path: ~/.local/state/zsh
       state: directory
       mode: 0755
-      recurse: true
   
   - name: Ensure zsh history exists
     become: true
