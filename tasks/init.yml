@@ -44,19 +44,19 @@
     become: true
     become_user: main
     git:
-      remote: git@github.com:voltamage/dotfiles.git
+     # remote: git@github.com:voltamage/dotfiles.git
       force: false # this one is default but i wanted it to be verbose
       update: false
       dest: ~/dotfiles
       repo: https://github.com/voltamage/dotfiles
 
-#  - name: ALWAYS CHANGED Fix dotfiles origin
-#    become: true
-#    become_user: main
-#     # could do better, ansible module instead of shell
-#    shell:
-#      chdir: ~/dotfiles
-#      cmd: git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git
+  - name: ALWAYS CHANGED Fix dotfiles origin
+    become: true
+    become_user: main
+     # could do better, ansible module instead of shell
+    shell:
+      chdir: ~/dotfiles
+      cmd: git remote remove origin && git remote add origin git@github.com:voltamage/dotfiles.git
 
   - name: Ensure .ssh directory exists
     become: true
