@@ -4,40 +4,43 @@
   
   tasks:
   - name: Ensure packages required for playbook exist
+    extra_args: "--ignore linux --ignore linux-zen"
     package:
       name:
         - chezmoi
         - git
-        - openssh
+        - zsh
+  
+  - name: Ensure the main user exists # how to set accompanying gid
+    user:
+      uid: 1000
+      shell: /usr/bin/zsh
+      name: main
+
+  - name: Allow the main user to run passworded sudo
+    blockinfile:
+      path: /etc/sudoers.d/u_main
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
+      block: |
+        main ALL=(ALL) ALL
 
   - name: Ensure the ansible user exists
     user:
+      create_home: false
       name: ansible
-      create_home: yes
-  
-  - name: Ensure the main user exists
-    user:
-      name: main
-      create_home: yes
 
   - name: Allow the ansible user to run passwordless sudo
     blockinfile:
       path: /etc/sudoers.d/u_ansible
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
       block: |
         ansible ALL=(ALL) NOPASSWD:ALL
-      create: yes
-      mode: 0644
-      validate: 'visudo -cf %s'
 
-  - name: Allow the main user to run passwordless sudo
-    blockinfile:
-      path: /etc/sudoers.d/u_main
-      block: |
-        main ALL=(ALL) NOPASSWD:ALL
-      create: yes
-      mode: 0644
-      validate: 'visudo -cf %s'
-
+# Upgraded until this line
   - name: Git clone dotfiles
     shell: if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi
     become: yes

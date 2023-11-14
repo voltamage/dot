@@ -89,9 +89,6 @@
       force: false
       mode: 0600
       content: ""
-  
-  - name: ALWAYS CHANGED Make user use zsh as the default shell
-    shell: chsh -s /usr/bin/zsh main
 
   - name: Ensure installed packages
     package:
