@@ -37,18 +37,9 @@
       extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
       name:
         - base-devel
-        - booster
         - chezmoi
         - intel-ucode
         - zsh
-
-  - name: Remove mkinitcpio packages
-    package:
-      state: absent
-      force: true
-      name:
-        - mkinitcpio
-        - mkinitcpio-busybox
   
   - name: Ensure /etc/zsh directory exists
     file:
@@ -103,7 +94,6 @@
         - aria2
         - base-devel # mark as depend, seems to already be installed with archinstall
         - bat
-        - booster
         - btop
         - chezmoi
         - eza
