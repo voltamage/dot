@@ -101,7 +101,7 @@
         # - ytfzf
         - ansible
         - aria2
-        - base-devel
+        - base-devel # mark as depend, seems to already be installed with archinstall
         - bat
         - booster
         - btop
@@ -111,11 +111,11 @@
         - fzf
         - gammastep
         - git
-        - intel-ucode
+        - intel-ucode # current hardware seems to be installed with archinstall
         - kitty
         - man-db
         - mpv
-        - ninja
+        - ninja # something prob installs this, but since it compiles neovim faster lets be explicit
         - noto-fonts
         - noto-fonts-cjk
         - noto-fonts-emoji
@@ -127,7 +127,7 @@
         - reflector
         - ripgrep
         - starship
-        - sudo
+        - sudo # already exists, arm seems to complain though
         - tmux
         - tokei # NOTE: fast loc parser
         - tree-sitter-cli # tree-sitter wants this for health :TSInstallFromGrammar
