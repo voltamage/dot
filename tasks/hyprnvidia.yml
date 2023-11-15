@@ -198,11 +198,3 @@
       validate: "visudo -cf %s"
       block: |
         main ALL=(ALL) ALL
-  
-  - name: Git clone tpm plugins
-    become: true
-    become_user: main
-    git:
-      force: true
-      dest: ~/.config/tmux/plugins/tpm
-      repo: https://github.com/tmux-plugins/tpm
