@@ -28,7 +28,7 @@
 
   - name: Ensure the ansible user exists
     user:
-      create_home: false
+      # create_home: false # i think this will cause a ton of problems
       name: ansible
 
   - name: Allow the ansible user to run passwordless sudo
@@ -86,7 +86,7 @@
       src: ~/dotfiles/files/id_ed25519
       dest: ~/.ssh/id_ed25519
   
-  - name: ALWAYS CHANGED Install ansible aur support for user main
+  - name: ALWAYS CHANGED Install ansible aur support for user main # is this required
     become: true
     become_user: main
     shell: ansible-galaxy collection install kewlfft.aur
