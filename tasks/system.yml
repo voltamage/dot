@@ -36,7 +36,6 @@
     package:
       extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
       name:
-        - amd-ucode
         - base-devel
         - booster
         - chezmoi
@@ -49,9 +48,7 @@
       force: true
       name:
         - mkinitcpio
-        - mkinitcpio-archiso
         - mkinitcpio-busybox
-        - mkinitcpio-nfs-utils
   
   - name: Ensure /etc/zsh directory exists
     file:
@@ -89,11 +86,11 @@
       extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
       name:
         # - arch-wiki-docs
-        # - gcc
         # - git-delta
         # - glow
         # - grim
         # - lynx
+        # - nvtop
         # - onefetch
         # - pacman-contrib # NOTE: i dont remember what this is for
         # - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
@@ -114,6 +111,7 @@
         - fzf
         - gammastep
         - git
+        - intel-ucode
         - kitty
         - man-db
         - mpv
@@ -175,8 +173,7 @@
       use: paru
       aur_only: true
       name:
-        # - nvtop-nosystemd-git
-        # - rofi-lbonn-wayland-only-git
+        # - rofi-lbonn-wayland-git
         # - timg
         # - tldr++
         # - ff2mpv-native-messaging-host-librewolf-git
