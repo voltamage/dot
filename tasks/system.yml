@@ -130,14 +130,14 @@
         - zoxide
         - zsh
 
-  - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
-    blockinfile:
-      path: /etc/sudoers.d/u_main
-      create: true
-      mode: 0644
-      validate: "visudo -cf %s"
-      block: |
-        main ALL=(ALL) NOPASSWD:ALL
+#  - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
+#    blockinfile:
+#      path: /etc/sudoers.d/u_main
+#      create: true
+#      mode: 0644
+#      validate: "visudo -cf %s"
+#      block: |
+#        main ALL=(ALL) NOPASSWD:ALL
 
   - name: Ensure Paru is installed
     become: true
