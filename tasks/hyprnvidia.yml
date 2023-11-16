@@ -10,14 +10,15 @@
       extra_args: "--ignore linux --ignore linux-zen --ignore linux-lts"
       use: paru
       name:
+          #- libva
+          #- libva-nvidia-driver-git
+          #- qt5-wayland
+          #- qt5ct
         - hyprland-nvidia-git
-        - libva
-          # - libva-nvidia-driver-git 
         - linux-lts-headers
         - linux-zen-headers
         - nvidia-dkms
-          #- qt5-wayland
-          #- qt5ct
+
 
   - name: Add nvidia tweaks to bootloader
     lineinfile:
