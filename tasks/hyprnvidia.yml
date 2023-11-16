@@ -12,12 +12,12 @@
       name:
         - hyprland-nvidia-git
         - libva
-        - libva-nvidia-driver-git 
+          # - libva-nvidia-driver-git 
         - linux-lts-headers
         - linux-zen-headers
         - nvidia-dkms
-        - qt5-wayland
-        - qt5ct
+          #- qt5-wayland
+          #- qt5ct
 
   - name: Add nvidia tweaks to bootloader
     lineinfile:
@@ -37,7 +37,7 @@
       line: "MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)"
 
   - name: Regenerate initramfs with mkinitcpio
-    shell: mkinitcpio -p linux-zen && mkinitcpio -p linux-lts
+    shell: mkinitcpio -P 
 
   - name: Configure nvidia modprobe
     blockinfile:
