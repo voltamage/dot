@@ -130,14 +130,14 @@
         - zoxide
         - zsh
 
-#  - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
-#    blockinfile:
-#      path: /etc/sudoers.d/u_main
-#      create: true
-#      mode: 0644
-#      validate: "visudo -cf %s"
-#      block: |
-#        main ALL=(ALL) NOPASSWD:ALL
+  - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
+    blockinfile:
+      path: /etc/sudoers.d/u_main
+      create: true
+      mode: 0644
+      validate: "visudo -cf %s"
+      block: |
+        main ALL=(ALL) NOPASSWD:ALL
 
   - name: Ensure Paru is installed
     become: true
@@ -147,14 +147,14 @@
       name:
         - paru-bin
 
-  - name: Update system
-    become: true
-    become_user: main
-    kewlfft.aur.aur:
-      use: paru
-      update_cache: true
-      upgrade: true
-      extra_args: "--ignore linux --ignore linux-zen"
+#  - name: Update system
+#    become: true
+#    become_user: main
+#    kewlfft.aur.aur:
+#      use: paru
+#      update_cache: true
+#      upgrade: true
+#      extra_args: "--ignore linux --ignore linux-zen"
 
   - name: Install aur packages
     become: true
