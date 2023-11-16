@@ -163,7 +163,6 @@
       use: paru
       aur_only: true
       name:
-        # - rofi-lbonn-wayland-git
         # - timg
         # - tldr++
         - ff2mpv-native-messaging-host-librewolf-git
@@ -173,6 +172,7 @@
         - neovim-git
         - paru-bin
         - pfetch-rs-bin
+        - rofi-lbonn-wayland-git
         - swww
         - xdg-ninja-git
 
