@@ -81,7 +81,6 @@
         # - glow
         # - grim
         # - lynx
-        # - nvtop
         # - onefetch
         # - pacman-contrib # NOTE: i dont remember what this is for
         # - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
@@ -111,6 +110,7 @@
         - noto-fonts-emoji
         - noto-fonts-extra
         - npm # NOTE: TSUpdate relies on this
+        - nvtop
         - openssh
         - python-pillow # NOTE: this is required for ranger's kitty image preview
         - ranger
@@ -166,7 +166,7 @@
         # - rofi-lbonn-wayland-git
         # - timg
         # - tldr++
-        # - ff2mpv-native-messaging-host-librewolf-git
+        - ff2mpv-native-messaging-host-librewolf-git
         - hyprland-nvidia-git
         - librewolf-bin
         - librewolf-extension-darkreader-bin

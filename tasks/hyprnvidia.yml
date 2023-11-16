@@ -3,198 +3,42 @@
   become: true
   
   tasks:
-  - name: Set pacman Color
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: "^#Color"
-      line: "Color"
-  
-  - name: Set pacman ParallelDownloads
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: "^#ParallelDownloads"
-      line: "ParallelDownloads = 12"
-  
-  - name: Set pacman VerbosePkgLists
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: "^#VerbosePkgLists"
-      line: "VerbosePkgLists"
-
-  - name: Enable multilib packages
-    blockinfile:
-      path: /etc/pacman.conf
-      block: |
-        [multilib]
-        Include = /etc/pacman.d/mirrorlist
-
-  - name: Synchronize package databases
-    package:
-      update_cache: true
-
-  - name: Install packages required for playbook
-    package:
-      extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
-      name:
-        - base-devel
-        - chezmoi
-        - intel-ucode
-        - zsh
-  
-  - name: Ensure /etc/zsh directory exists
-    file:
-      path: /etc/zsh
-      state: directory
-      mode: 0755
-
-  - name: Configure ZDOTDIR
-    blockinfile:
-      path: /etc/zsh/zshenv
-      create: true
-      mode: 0644
-      block: |
-        export ZDOTDIR="$HOME"/.config/zsh
-
-  - name: Ensure ~/.local/state/zsh directory exists
-    become: true
-    become_user: main
-    file:
-      path: ~/.local/state/zsh
-      state: directory
-      mode: 0755
-  
-  - name: Ensure zsh history exists
-    become: true
-    become_user: main
-    copy:
-      dest: ~/.local/state/zsh/history
-      force: false
-      mode: 0600
-      content: ""
-
-  - name: Ensure installed packages
-    package:
-      extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
-      name:
-        # - arch-wiki-docs
-        # - git-delta
-        # - glow
-        # - grim
-        # - lynx
-        # - nvtop
-        # - onefetch
-        # - pacman-contrib # NOTE: i dont remember what this is for
-        # - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
-        # - ripgrep-all
-        # - slurp
-        # - vivid # NOTE: LS_COLORS generator
-        # - wikiman
-        # - ytfzf
-        - ansible
-        - aria2
-        - base-devel # mark as depend, seems to already be installed with archinstall
-        - bat
-        - btop
-        - chezmoi
-        - eza
-        - fd
-        - fzf
-        - gammastep
-        - git
-        - intel-ucode # current hardware seems to be installed with archinstall
-        - kitty
-        - man-db
-        - mpv
-        - ninja # something prob installs this, but since it compiles neovim faster lets be explicit
-        - noto-fonts
-        - noto-fonts-cjk
-        - noto-fonts-emoji
-        - noto-fonts-extra
-        - npm # NOTE: TSUpdate relies on this
-        - openssh
-        - python-pillow # NOTE: this is required for ranger's kitty image preview
-        - ranger
-        - reflector
-        - ripgrep
-        - starship
-        - sudo # already exists, arm seems to complain though
-        - tmux
-        - tokei # NOTE: fast loc parser
-        - tree-sitter-cli # tree-sitter wants this for health :TSInstallFromGrammar
-        - ttf-jetbrains-mono-nerd
-        - unzip # NOTE: mason depends on this
-        - wget # NOTE: mason depends on this
-        - wl-clipboard
-        - xdg-desktop-portal-hyprland
-        - yt-dlp
-        - zoxide
-        - zsh
-
-  - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
-    blockinfile:
-      path: /etc/sudoers.d/u_main
-      create: true
-      mode: 0644
-      validate: "visudo -cf %s"
-      block: |
-        main ALL=(ALL) NOPASSWD:ALL
-
-  - name: Ensure Paru is installed
+  - name: Ensure packages required for playbook exist
     become: true
     become_user: main
     kewlfft.aur.aur:
-      state: present
-      name:
-        - paru-bin
-
-  - name: Update system
-    become: true
-    become_user: main
-    kewlfft.aur.aur:
+      extra_args: "--ignore linux --ignore linux-zen --ignore linux-lts"
       use: paru
-      update_cache: true
-      upgrade: true
-      extra_args: "--ignore linux --ignore linux-zen"
-
-  - name: Install aur packages
-    become: true
-    become_user: main
-    kewlfft.aur.aur:
-      use: paru
-      aur_only: true
       name:
-        # - rofi-lbonn-wayland-git
-        # - timg
-        # - tldr++
-        # - ff2mpv-native-messaging-host-librewolf-git
         - hyprland-nvidia-git
-        - librewolf-bin
-        - librewolf-extension-darkreader-bin
-        - neovim-git
-        - paru-bin
-        - pfetch-rs-bin
-        - swww
-        - xdg-ninja-git
+        - linux-lts-headers
+        - linux-zen-headers
+        - nvidia-dkms
 
-  - name: ALWAYS CHANGED Install packages requiring manual intervention
-    become: true
-    become_user: main
-    shell: yes | paru -Sy --needed \
-      neovim-symlinks \
-      pigz-gzip-symlink \
+  - name: Add nvidia tweaks to bootloader
+    lineinfile:
+      backup: true
+      path: /etc/default/grub
+      regexp: "GRUB_CMDLINE_LINUX="
+      line: 'GRUB_CMDLINE_LINUX="zswap.enabled=0 rootfstype=btrfs nvidia_drm.modeset=1"'
+  
+  - name: Rerun grub-mkconfig
+    shell: grub-mkconfig -o /boot/grub/grub.cfg
+  
+  - name: Add nvidia tweaks to mkinitcpio
+    lineinfile:
+      backup: true
+      path: /etc/mkinitcpio.conf
+      regexp: "MODULES="
+      line: "MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)"
 
-  - name: ALWAYS CHANGED Install aur librewolf-extension-clearurls
-    become: true
-    become_user: main
-    shell: 
-      chdir: ~/dotfiles/aur/librewolf-extension-clearurls
-      cmd: makepkg -i --needed --noconfirm
+  - name: Regenerate initramfs with mkinitcpio
+    shell: mkinitcpio -p linux-zen && mkinitcpio -p linux-lts
 
-  - name: ALWAYS CHANGED Allow the main user to run passworded sudo
+  - name: Configure nvidia modprobe
     blockinfile:
-      path: /etc/sudoers.d/u_main
+      path: /etc/modprobe.d/nvidia.conf
       create: true
       mode: 0644
-      validate: "visudo -cf %s"
       block: |
-        main ALL=(ALL) ALL
+        options nvidia-drm modeset=1
