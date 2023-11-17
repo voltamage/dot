@@ -224,10 +224,10 @@ user_pref("dom.security.sanitizer.enabled", true);
 // [3] https://www.reddit.com/r/firefox/comments/tbphok/is_setting_gfxwebrenderprecacheshaders_to_true/i0bxs2r/
 // [4] https://www.reddit.com/r/firefox/comments/z5auzi/comment/ixw65gb?context=3
 // [5] https://gist.github.com/RubenKelevra/fd66c2f856d703260ecdf0379c4f59db?permalink_comment_id=4532937#gistcomment-4532937
-//user_pref("gfx.webrender.all", true); // enables WR + additional features
-//user_pref("gfx.webrender.precache-shaders", true); // longer initial startup time
-//user_pref("gfx.webrender.compositor", true); // DEFAULT WINDOWS macOS
-    //user_pref("gfx.webrender.compositor.force-enabled", true); // enforce
+user_pref("gfx.webrender.all", true); // enables WR + additional features
+user_pref("gfx.webrender.precache-shaders", true); // longer initial startup time
+user_pref("gfx.webrender.compositor", true); // DEFAULT WINDOWS macOS
+user_pref("gfx.webrender.compositor.force-enabled", true); // enforce
 
 // PREF: if your hardware doesn't support Webrender, you can fallback to Webrender's software renderer
 // [1] https://www.ghacks.net/2020/12/14/how-to-find-out-if-webrender-is-enabled-in-firefox-and-how-to-enable-it-if-it-is-not/
@@ -248,36 +248,36 @@ user_pref("dom.security.sanitizer.enabled", true);
 // [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1741501
 // [2] https://github.com/yokoffing/Betterfox/issues/153
 // [3] https://github.com/yokoffing/Betterfox/issues/198
-//user_pref("gfx.canvas.accelerated", true); // DEFAULT macOS LINUX [FF110]; not compatible with WINDOWS integrated GPUs
-    user_pref("gfx.canvas.accelerated.cache-items", 4096); // default=2048; alt=8192
-    user_pref("gfx.canvas.accelerated.cache-size", 512); // default=256; alt=1024
-    user_pref("gfx.content.skia-font-cache-size", 20); // default=5; Chrome=20
+user_pref("gfx.canvas.accelerated", true); // DEFAULT macOS LINUX [FF110]; not compatible with WINDOWS integrated GPUs
+user_pref("gfx.canvas.accelerated.cache-items", 4096); // default=2048; alt=8192
+user_pref("gfx.canvas.accelerated.cache-size", 512); // default=256; alt=1024
+user_pref("gfx.content.skia-font-cache-size", 20); // default=5; Chrome=20
     // [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1239151#c2
 
 // PREF: prefer GPU over CPU
 // At best, the prefs do nothing on Linux/macOS.
 // At worst, it'll result in crashes if the sandboxing is a WIP.
 // [1] https://firefox-source-docs.mozilla.org/dom/ipc/process_model.html#gpu-process
-//user_pref("layers.gpu-process.enabled", true); // DEFAULT WINDOWS
-    //user_pref("layers.gpu-process.force-enabled", true); // enforce
-    //user_pref("layers.mlgpu.enabled", true); // LINUX
-//user_pref("media.hardware-video-decoding.enabled", true); // DEFAULT WINDOWS macOS
-    //user_pref("media.hardware-video-decoding.force-enabled", true); // enforce
-//user_pref("media.gpu-process-decoder", true); // DEFAULT WINDOWS
-//user_pref("media.ffmpeg.vaapi.enabled", true); // LINUX
+user_pref("layers.gpu-process.enabled", true); // DEFAULT WINDOWS
+user_pref("layers.gpu-process.force-enabled", true); // enforce
+user_pref("layers.mlgpu.enabled", true); // LINUX
+user_pref("media.hardware-video-decoding.enabled", true); // DEFAULT WINDOWS macOS
+user_pref("media.hardware-video-decoding.force-enabled", true); // enforce
+user_pref("media.gpu-process-decoder", true); // DEFAULT WINDOWS
+user_pref("media.ffmpeg.vaapi.enabled", true); // LINUX
 
 // PREF: disable AV1 for hardware decodeable videos
 // Firefox sometimes uses AV1 video decoding even to GPUs which do not support it.
 // [1] https://www.reddit.com/r/AV1/comments/s5xyph/youtube_av1_codec_have_worse_quality_than_old_vp9
-//user_pref("media.av1.enabled", false);
+user_pref("media.av1.enabled", false);
 
 // PREF: hardware and software decoded video overlay [FF116+]
 // [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1829063
 // [2] https://phabricator.services.mozilla.com/D175993
-//user_pref("gfx.webrender.dcomp-video-hw-overlay-win", true); // DEFAULT
-    //user_pref("gfx.webrender.dcomp-video-hw-overlay-win-force-enabled", true); // enforce
-//user_pref("gfx.webrender.dcomp-video-sw-overlay-win", true); // DEFAULT
-    //user_pref("gfx.webrender.dcomp-video-sw-overlay-win-force-enabled", true); // enforce
+user_pref("gfx.webrender.dcomp-video-hw-overlay-win", true); // DEFAULT
+user_pref("gfx.webrender.dcomp-video-hw-overlay-win-force-enabled", true); // enforce
+user_pref("gfx.webrender.dcomp-video-sw-overlay-win", true); // DEFAULT
+user_pref("gfx.webrender.dcomp-video-sw-overlay-win-force-enabled", true); // enforce
 
 /****************************************************************************
  * SECTION: BROWSER CACHE                                                   *
