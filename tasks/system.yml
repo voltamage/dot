@@ -98,7 +98,6 @@
         - eza
         - fd
         - fzf
-        - gammastep
         - git
         - intel-ucode # current hardware seems to be installed with archinstall
         - kitty
@@ -174,6 +173,7 @@
         - pfetch-rs-bin
         - rofi-lbonn-wayland-git
         - swww
+        - wlsunset
         - xdg-ninja-git
 
   - name: ALWAYS CHANGED Install packages requiring manual intervention
