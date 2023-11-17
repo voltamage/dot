@@ -38,7 +38,7 @@
       line: "MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)"
 
   - name: Regenerate initramfs with mkinitcpio
-    shell: mkinitcpio -p linux-zen && mkinitcpio -p linux-lts
+    shell: rm /boot/initramfs-* && mkinitcpio -P
 
   - name: Configure nvidia modprobe
     blockinfile:
