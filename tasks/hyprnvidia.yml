@@ -10,14 +10,14 @@
       extra_args: "--ignore linux --ignore linux-zen --ignore linux-lts"
       use: paru
       name:
-          #- libva
-          #- libva-nvidia-driver-git
-          #- qt5-wayland
-          #- qt5ct
         - hyprland-nvidia-git
+        - libva
+        - libva-nvidia-driver-git
         - linux-lts-headers
         - linux-zen-headers
         - nvidia-dkms
+        - qt5-wayland
+        - qt5ct
 
   - name: Configure nvidia modprobe
     blockinfile:
@@ -35,18 +35,12 @@
       regexp: "GRUB_CMDLINE_LINUX="
       line: 'GRUB_CMDLINE_LINUX="zswap.enabled=0 rootfstype=btrfs nvidia_drm.modeset=1"'
   
-  - name: Rerun grub-mkconfig
-    shell: grub-mkconfig -o /boot/grub/grub.cfg
-  
   - name: Add nvidia tweaks to mkinitcpio
     lineinfile:
       backup: true
       path: /etc/mkinitcpio.conf
       regexp: "MODULES="
       line: "MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)"
-
-  - name: Regenerate initramfs with mkinitcpio
-    shell: rm /boot/initramfs-* && mkinitcpio -P
   
   - name: Configure hyprland env vars
     become: true
@@ -62,3 +56,9 @@
         env = GBM_BACKEND,nvidia-drm
         env = __GLX_VENDOR_LIBRARY_NAME,nvidia
         env = WLR_NO_HARDWARE_CURSORS,1
+  
+  - name: ALWAYS CHANGED Rerun grub-mkconfig
+    shell: grub-mkconfig -o /boot/grub/grub.cfg
+
+  - name: ALWAYS CHANGED Regenerate initramfs with mkinitcpio
+    shell: rm /boot/initramfs-* && mkinitcpio -P
