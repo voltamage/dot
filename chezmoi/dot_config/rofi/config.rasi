@@ -4,7 +4,7 @@ configuration {
     display-run:    "";
     display-ssh:    "";
     display-window: "";
-    font: "JetBrainsMono Nerd Font Mono 11";
+    font: "JetBrainsMono NFM Medium 11";
     show-icons:     true;
 }
 
