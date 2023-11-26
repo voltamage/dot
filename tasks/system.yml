@@ -34,7 +34,6 @@
 
   - name: Install packages required for playbook
     package:
-      extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
       name:
         - base-devel
         - chezmoi
@@ -74,7 +73,6 @@
 
   - name: Ensure installed packages
     package:
-      extra_args: "--ignore linux --ignore linux-zen" # NOTE: check if functional
       name:
         # - arch-wiki-docs
         # - git-delta
@@ -153,7 +151,7 @@
 #      use: paru
 #      update_cache: true
 #      upgrade: true
-#      extra_args: "--ignore linux --ignore linux-zen"
+#      extra_args: "--ignore linux --ignore linux-lts --ignore linux-zen"
 
   - name: Install aur packages
     become: true

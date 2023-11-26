@@ -7,7 +7,6 @@
     become: true
     become_user: main
     kewlfft.aur.aur:
-      extra_args: "--ignore linux --ignore linux-zen --ignore linux-lts"
       use: paru
       name:
         - hyprland-git

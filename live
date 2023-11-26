@@ -17,7 +17,7 @@ pacman -Sy --needed --noconfirm git reflector tmux
 tmux new-session -A -d -s live
 tmux send-keys -t live "\
 reflector --sort rate -c US -p https --delay 1 --save /etc/pacman.d/mirrorlist -x berkeley && \
-pacman -Syu ansible btop ranger --needed --noconfirm --ignore linux --ignore linux-zen && \
+pacman -Syu ansible btop ranger --needed --noconfirm --ignore linux --ignore linux-lts --ignore linux-zen && \
 ansible-galaxy collection install kewlfft.aur && \
 if cd ~/dotfiles; then git pull; else git clone https://github.com/voltamage/dotfiles ~/dotfiles; fi && \
 ansible-playbook ~/dotfiles/tasks/init.yml --ask-vault-pass && \

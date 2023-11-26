@@ -5,7 +5,6 @@
   tasks:
   - name: Ensure packages required for playbook exist
     package:
-      extra_args: "--ignore linux --ignore linux-zen"
       name:
         - chezmoi
         - git

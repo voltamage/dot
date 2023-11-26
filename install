@@ -16,7 +16,7 @@ pacman -Sy --needed --noconfirm reflector tmux
 tmux new-session -A -d -s install
 tmux send-keys -t install "\
 reflector --sort rate -c US -p https --delay 1 --save /etc/pacman.d/mirrorlist -x berkeley && \
-pacman -Syu archinstall btop ranger --needed --noconfirm --ignore linux --ignore linux-zen && \
+pacman -Syu archinstall btop ranger --needed --noconfirm --ignore linux --ignore linux-lts --ignore linux-zen && \
 mkdir -p /tmp/archinstallconf && \
 cd /tmp/archinstallconf && \
 curl https://raw.githubusercontent.com/voltamage/dotfiles/main/files/user_configuration.json -O && \
