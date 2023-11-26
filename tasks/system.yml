@@ -122,7 +122,6 @@
         - unzip # NOTE: mason depends on this
         - wget # NOTE: mason depends on this
         - wl-clipboard
-        - xdg-desktop-portal-hyprland
         - yt-dlp
         - zoxide
         - zsh
@@ -172,6 +171,7 @@
         - rofi-lbonn-wayland-git
         - swww
         - wlsunset
+        - xdg-desktop-portal-hyprland-git
         - xdg-ninja-git
 
   - name: ALWAYS CHANGED Install packages requiring manual intervention
