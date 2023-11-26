@@ -165,7 +165,7 @@
         # - timg
         # - tldr++
         - ff2mpv-native-messaging-host-librewolf-git
-        - hyprland-nvidia-git
+        - hyprland-git
         - librewolf-bin
         - librewolf-extension-darkreader-bin
         - neovim-git

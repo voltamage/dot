@@ -1,0 +1,30 @@
+- hosts: localhost
+  connection: local
+  become: true
+  
+  tasks:
+  - name: Ensure packages required for playbook exist # BUG: I believe there is a keyring with manual import
+    become: true
+    become_user: main
+    kewlfft.aur.aur:
+      use: paru
+      name:
+        - mullvad-vpn-bin
+  
+  # - name: Enable and start wireplumber.service
+  #   become: true
+  #   become_user: main
+  #   systemd:
+  #     enabled: true
+  #     scope: user
+  #     state: started
+  #     name: wireplumber.service
+  #
+  # - name: Enable and start pipewire.socket
+  #   become: true
+  #   become_user: main
+  #   systemd:
+  #     enabled: true
+  #     scope: user
+  #     state: started
+  #     name: pipewire.socket
