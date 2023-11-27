@@ -37,6 +37,7 @@ alias find=$FZF_DEFAULT_COMMAND
 alias loc='tokei'
 alias ls='eza -a -o --icons'
 alias lynx='lynx https://lite.duckduckgo.com/lite'
+alias ovim='nvim -u "$XDG_CONFIG_HOME"/nvim/oldinit.lua'
 alias paru='paru --bottomup'
 alias q='exit'
 alias source-zsh='source "$XDG_CONFIG_HOME"/zsh/.zshrc'

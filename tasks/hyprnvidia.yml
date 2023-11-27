@@ -10,11 +10,13 @@
       use: paru
       name:
         - hyprland-git
+        - lib32-nvidia-utils
         - libva
         - libva-nvidia-driver-git
         - linux-lts-headers
         - linux-zen-headers
         - nvidia-dkms
+        - nvidia-utils
         - qt5-wayland
         - qt5ct
 
