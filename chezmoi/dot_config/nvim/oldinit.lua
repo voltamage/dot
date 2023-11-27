@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
-vim.g.loaded_netrw = 1        -- NOTE: this might help with neo-tree
-vim.g.loaded_netrwPlugin = 1  -- NOTE: this might help with neo-tree
+--vim.g.loaded_netrw = 1        -- NOTE: this might help with neo-tree
+--vim.g.loaded_netrwPlugin = 1  -- NOTE: this might help with neo-tree
 
 vim.o.autoindent = true
 vim.o.clipboard = 'unnamedplus'

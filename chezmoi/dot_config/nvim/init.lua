@@ -1,1 +1,1 @@
--- neovim rewrite
+require("main.lazy")
