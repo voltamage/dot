@@ -8,10 +8,12 @@
     become_user: main
     kewlfft.aur.aur:
       name:
+        - fd
         - git
         - neovim-git
         - ninja
         - npm
+        - rg
         - tree-sitter-cli
         - ttf-jetbrains-mono-nerd
         - unzip
