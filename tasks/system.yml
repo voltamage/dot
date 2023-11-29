@@ -1,207 +1,207 @@
 - hosts: localhost
   connection: local
   become: true
-  
+
   tasks:
-  - name: Set pacman Color
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: "^#Color"
-      line: "Color"
-  
-  - name: Set pacman ParallelDownloads
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: "^#ParallelDownloads"
-      line: "ParallelDownloads = 12"
-  
-  - name: Set pacman VerbosePkgLists
-    lineinfile:
-      path: /etc/pacman.conf
-      regexp: "^#VerbosePkgLists"
-      line: "VerbosePkgLists"
+    - name: Set pacman Color
+      lineinfile:
+        path: /etc/pacman.conf
+        regexp: "^#Color"
+        line: "Color"
 
-  - name: Enable multilib packages
-    blockinfile:
-      path: /etc/pacman.conf
-      block: |
-        [multilib]
-        Include = /etc/pacman.d/mirrorlist
+    - name: Set pacman ParallelDownloads
+      lineinfile:
+        path: /etc/pacman.conf
+        regexp: "^#ParallelDownloads"
+        line: "ParallelDownloads = 12"
 
-  - name: Synchronize package databases
-    package:
-      update_cache: true
+    - name: Set pacman VerbosePkgLists
+      lineinfile:
+        path: /etc/pacman.conf
+        regexp: "^#VerbosePkgLists"
+        line: "VerbosePkgLists"
 
-  - name: Install packages required for playbook
-    package:
-      name:
-        - base-devel
-        - chezmoi
-        - intel-ucode
-        - zsh
-  
-  - name: Ensure /etc/zsh directory exists
-    file:
-      path: /etc/zsh
-      state: directory
-      mode: 0755
+    - name: Enable multilib packages
+      blockinfile:
+        path: /etc/pacman.conf
+        block: |
+          [multilib]
+          Include = /etc/pacman.d/mirrorlist
 
-  - name: Configure ZDOTDIR
-    blockinfile:
-      path: /etc/zsh/zshenv
-      create: true
-      mode: 0644
-      block: |
-        export ZDOTDIR="$HOME"/.config/zsh
+    - name: Synchronize package databases
+      package:
+        update_cache: true
 
-  - name: Ensure ~/.local/state/zsh directory exists
-    become: true
-    become_user: main
-    file:
-      path: ~/.local/state/zsh
-      state: directory
-      mode: 0755
-  
-  - name: Ensure zsh history exists
-    become: true
-    become_user: main
-    copy:
-      dest: ~/.local/state/zsh/history
-      force: false
-      mode: 0600
-      content: ""
+    - name: Install packages required for playbook
+      package:
+        name:
+          - base-devel
+          - chezmoi
+          - intel-ucode
+          - zsh
 
-  - name: Ensure installed packages
-    package:
-      name:
-        # - arch-wiki-docs
-        # - git-delta
-        # - glow
-        # - grim
-        # - lynx
-        # - onefetch
-        # - pacman-contrib # NOTE: i dont remember what this is for
-        # - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
-        # - ripgrep-all
-        # - slurp
-        # - vivid # NOTE: LS_COLORS generator
-        # - wikiman
-        # - ytfzf
-        - ansible
-        - aria2
-        - base-devel # mark as depend, seems to already be installed with archinstall
-        - bat
-        - btop
-        - chezmoi
-        - eza
-        - fd
-        - fzf
-        - git
-        - intel-ucode # current hardware seems to be installed with archinstall
-        - kitty
-        - man-db
-        - mpv
-        - ninja # something prob installs this, but since it compiles neovim faster lets be explicit
-        - noto-fonts
-        - noto-fonts-cjk
-        - noto-fonts-emoji
-        - noto-fonts-extra
-        - npm # NOTE: TSUpdate relies on this
-        - nvtop
-        - openssh
-        - python-pillow # NOTE: this is required for ranger's kitty image preview
-        - ranger
-        - reflector
-        - ripgrep
-        - starship
-        - sudo # already exists, arm seems to complain though
-        - tmux
-        - tokei # NOTE: fast loc parser
-        - tree-sitter-cli # tree-sitter wants this for health :TSInstallFromGrammar
-        - ttf-jetbrains-mono-nerd
-        - unzip # NOTE: mason depends on this
-        - wget # NOTE: mason depends on this
-        - wl-clipboard
-        - yt-dlp
-        - zoxide
-        - zsh
+    - name: Ensure /etc/zsh directory exists
+      file:
+        path: /etc/zsh
+        state: directory
+        mode: 0755
 
-  - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
-    blockinfile:
-      path: /etc/sudoers.d/u_main
-      create: true
-      mode: 0644
-      validate: "visudo -cf %s"
-      block: |
-        main ALL=(ALL) NOPASSWD:ALL
+    - name: Configure ZDOTDIR
+      blockinfile:
+        path: /etc/zsh/zshenv
+        create: true
+        mode: 0644
+        block: |
+          export ZDOTDIR="$HOME"/.config/zsh
 
-  - name: Ensure Paru is installed
-    become: true
-    become_user: main
-    kewlfft.aur.aur:
-      state: present
-      name:
-        - paru-bin
+    - name: Ensure ~/.local/state/zsh directory exists
+      become: true
+      become_user: main
+      file:
+        path: ~/.local/state/zsh
+        state: directory
+        mode: 0755
 
-#  - name: Update system
-#    become: true
-#    become_user: main
-#    kewlfft.aur.aur:
-#      use: paru
-#      update_cache: true
-#      upgrade: true
-#      extra_args: "--ignore linux --ignore linux-lts --ignore linux-zen"
+    - name: Ensure zsh history exists
+      become: true
+      become_user: main
+      copy:
+        dest: ~/.local/state/zsh/history
+        force: false
+        mode: 0600
+        content: ""
 
-  - name: Install aur packages
-    become: true
-    become_user: main
-    kewlfft.aur.aur:
-      use: paru
-      aur_only: true
-      name:
-        # - timg
-        # - tldr++
-        - ff2mpv-native-messaging-host-librewolf-git
-        - hyprland-git
-        - librewolf-bin
-        - librewolf-extension-darkreader-bin
-        - neovim-git
-        - paru-bin
-        - pfetch-rs-bin
-        - rofi-lbonn-wayland-git
-        - swww
-        - wlsunset
-        - xdg-desktop-portal-hyprland-git
-        - xdg-ninja-git
+    - name: Ensure installed packages
+      package:
+        name:
+          # - arch-wiki-docs
+          # - git-delta
+          # - glow
+          # - grim
+          # - lynx
+          # - onefetch
+          # - pacman-contrib # NOTE: i dont remember what this is for
+          # - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
+          # - ripgrep-all
+          # - slurp
+          # - vivid # NOTE: LS_COLORS generator
+          # - wikiman
+          # - ytfzf
+          - ansible
+          - aria2
+          - base-devel # mark as depend, seems to already be installed with archinstall
+          - bat
+          - btop
+          - chezmoi
+          - eza
+          - fd
+          - fzf
+          - git
+          - intel-ucode # current hardware seems to be installed with archinstall
+          - kitty
+          - man-db
+          - mpv
+          - ninja # something prob installs this, but since it compiles neovim faster lets be explicit
+          - noto-fonts
+          - noto-fonts-cjk
+          - noto-fonts-emoji
+          - noto-fonts-extra
+          - npm # NOTE: TSUpdate relies on this
+          - nvtop
+          - openssh
+          - python-pillow # NOTE: this is required for ranger's kitty image preview
+          - ranger
+          - reflector
+          - ripgrep
+          - starship
+          - sudo # already exists, arm seems to complain though
+          - tmux
+          - tokei # NOTE: fast loc parser
+          - tree-sitter-cli # tree-sitter wants this for health :TSInstallFromGrammar
+          - ttf-jetbrains-mono-nerd
+          - unzip # NOTE: mason depends on this
+          - wget # NOTE: mason depends on this
+          - wl-clipboard
+          - yt-dlp
+          - zoxide
+          - zsh
 
-  - name: ALWAYS CHANGED Install packages requiring manual intervention
-    become: true
-    become_user: main
-    shell: yes | paru -Sy --needed \
-      neovim-symlinks \
-      pigz-gzip-symlink \
-      plzip-lzip-link \
+    - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
+      blockinfile:
+        path: /etc/sudoers.d/u_main
+        create: true
+        mode: 0644
+        validate: "visudo -cf %s"
+        block: |
+          main ALL=(ALL) NOPASSWD:ALL
 
-  - name: ALWAYS CHANGED Install aur librewolf-extension-clearurls
-    become: true
-    become_user: main
-    shell: 
-      chdir: ~/dotfiles/aur/librewolf-extension-clearurls
-      cmd: makepkg -i --needed --noconfirm
+    - name: Ensure Paru is installed
+      become: true
+      become_user: main
+      kewlfft.aur.aur:
+        state: present
+        name:
+          - paru-bin
 
-  - name: ALWAYS CHANGED Allow the main user to run passworded sudo
-    blockinfile:
-      path: /etc/sudoers.d/u_main
-      create: true
-      mode: 0644
-      validate: "visudo -cf %s"
-      block: |
-        main ALL=(ALL) ALL
-  
-  - name: Git clone tpm plugins
-    become: true
-    become_user: main
-    git:
-      force: true
-      dest: ~/.config/tmux/plugins/tpm
-      repo: https://github.com/tmux-plugins/tpm
+    #  - name: Update system
+    #    become: true
+    #    become_user: main
+    #    kewlfft.aur.aur:
+    #      use: paru
+    #      update_cache: true
+    #      upgrade: true
+    #      extra_args: "--ignore linux --ignore linux-lts --ignore linux-zen"
+
+    - name: Install aur packages
+      become: true
+      become_user: main
+      kewlfft.aur.aur:
+        use: paru
+        aur_only: true
+        name:
+          # - timg
+          # - tldr++
+          - ff2mpv-native-messaging-host-librewolf-git
+          - hyprland-git
+          - librewolf-bin
+          - librewolf-extension-darkreader-bin
+          - neovim-git
+          - paru-bin
+          - pfetch-rs-bin
+          - rofi-lbonn-wayland-git
+          - swww
+          - wlsunset
+          - xdg-desktop-portal-hyprland-git
+          - xdg-ninja-git
+
+    - name: ALWAYS CHANGED Install packages requiring manual intervention
+      become: true
+      become_user: main
+      shell: yes | paru -Sy --needed \
+        neovim-symlinks \
+        pigz-gzip-symlink \
+        plzip-lzip-link \
+
+    - name: ALWAYS CHANGED Install aur librewolf-extension-clearurls
+      become: true
+      become_user: main
+      shell:
+        chdir: ~/dotfiles/aur/librewolf-extension-clearurls
+        cmd: makepkg -i --needed --noconfirm
+
+    - name: ALWAYS CHANGED Allow the main user to run passworded sudo
+      blockinfile:
+        path: /etc/sudoers.d/u_main
+        create: true
+        mode: 0644
+        validate: "visudo -cf %s"
+        block: |
+          main ALL=(ALL) ALL
+
+    - name: Git clone tpm plugins
+      become: true
+      become_user: main
+      git:
+        force: true
+        dest: ~/.config/tmux/plugins/tpm
+        repo: https://github.com/tmux-plugins/tpm

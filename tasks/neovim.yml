@@ -10,6 +10,7 @@
       name:
         - fd
         - git
+        - lazygit
         - neovim-git
         - ninja
         - npm
