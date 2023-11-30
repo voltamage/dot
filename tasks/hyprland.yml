@@ -20,6 +20,7 @@
           - nvidia-utils
           - qt5-wayland
           - qt5ct
+          - qt6-wayland
           - sddm-git
           - sddm-sugar-dark
 
