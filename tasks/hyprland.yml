@@ -20,6 +20,8 @@
           - nvidia-utils
           - qt5-wayland
           - qt5ct
+          - sddm-git
+          - sddm-sugar-dark
 
     - name: Configure nvidia modprobe
       blockinfile:
@@ -76,6 +78,88 @@
         enabled: true
         state: stopped
         name: nvidia-resume.service
+
+    - name: Configure sddm
+      blockinfile:
+        path: /etc/sddm.conf.d/sddm.conf
+        backup: true
+        create: true
+        mode: 644
+        block: |
+          [Theme]
+          Current=sugar-dark
+
+    - name: Enable and ensure started sddm.service
+      systemd:
+        enabled: true
+        state: started
+        name: sddm.service
+
+    - name: Set Background
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^Background="
+        line: 'Background="current"'
+
+    - name: Set ScreenWidth
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^ScreenWidth="
+        line: "ScreenWidth=1920"
+
+    - name: Set ScreenHeight
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^ScreenHeight="
+        line: "ScreenHeight=1080"
+
+    - name: Set MainColor
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^MainColor="
+        line: 'MainColor="#ddc7a1"'
+
+    - name: Set AccentColor
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^AccentColor="
+        line: 'AccentColor="#e78a4e"'
+
+    - name: Set RoundCorners
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^RoundCorners="
+        line: "RoundCorners=10"
+
+    - name: Set Font
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^Font="
+        line: 'Font="JetBrainsMono NFM Medium"'
+
+    - name: Set DateFormat
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^DateFormat="
+        line: 'DateFormat="ddd, MMM d"'
+
+    - name: Set ForceHideCompletePassword
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^ForceHideCompletePassword="
+        line: "ForceHideCompletePassword=true"
+
+    - name: Set HeaderText
+      lineinfile:
+        path: /usr/share/sddm/themes/sugar-dark/theme.conf
+        regexp: "^HeaderText="
+        line: "HeaderText=󰣇"
+
+    # - name: Set colors
+    #   lineinfile:
+    #     path: /usr/share/sddm/themes/sugar-dark/Main.qml
+    #     regexp: '"#444"'
+    #     line: '"#282828"'
 
     - name: ALWAYS CHANGED Rerun grub-mkconfig
       shell: grub-mkconfig -o /boot/grub/grub.cfg
