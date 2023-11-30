@@ -1,0 +1,84 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Ensure packages required for playbook exist
+      become: true
+      become_user: main
+      kewlfft.aur.aur:
+        use: paru
+        name:
+          - hyprland-git
+          - lib32-nvidia-utils
+          - libva
+          - libva-nvidia-driver-git
+          - linux-lts-headers
+          - linux-zen-headers
+          - nvidia-dkms
+          - nvidia-utils
+          - qt5-wayland
+          - qt5ct
+
+    - name: Configure nvidia modprobe
+      blockinfile:
+        path: /etc/modprobe.d/nvidia.conf
+        backup: true
+        create: true
+        mode: 644
+        block: |
+          options nvidia-drm modeset=1
+
+    - name: Add nvidia tweaks to bootloader
+      lineinfile:
+        backup: true
+        path: /etc/default/grub
+        regexp: "GRUB_CMDLINE_LINUX="
+        line: 'GRUB_CMDLINE_LINUX="zswap.enabled=0 rootfstype=btrfs nvidia_drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1"'
+
+    - name: Add nvidia tweaks to mkinitcpio
+      lineinfile:
+        backup: true
+        path: /etc/mkinitcpio.conf
+        regexp: "MODULES="
+        line: "MODULES=(btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm)"
+
+    - name: Configure hyprland env vars
+      become: true
+      become_user: main
+      blockinfile:
+        path: ~/.config/hypr/hyprland.conf
+        backup: true
+        block: |
+          # If you encounter crashes in Firefox, remove the line env = GBM_BACKEND,nvidia-drm
+          # If you face problems with Discord windows not displaying or screen sharing not working in Zoom, remove or comment the line env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+          env = LIBVA_DRIVER_NAME,nvidia
+          env = XDG_SESSION_TYPE,wayland
+          env = GBM_BACKEND,nvidia-drm
+          env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+          env = WLR_NO_HARDWARE_CURSORS,1
+
+    - name: Enable and ensure stopped nvidia-suspend.service
+      systemd:
+        enabled: true
+        state: stopped
+        name: nvidia-suspend.service
+
+    - name: Enable and ensure stopped nvidia-hibernate.service
+      systemd:
+        enabled: true
+        state: stopped
+        name: nvidia-hibernate.service
+
+    - name: Enable and ensure stopped nvidia-resume.service
+      systemd:
+        enabled: true
+        state: stopped
+        name: nvidia-resume.service
+
+    - name: ALWAYS CHANGED Rerun grub-mkconfig
+      shell: grub-mkconfig -o /boot/grub/grub.cfg
+
+    - name: ALWAYS CHANGED Regenerate initramfs with mkinitcpio
+      shell: rm /boot/initramfs-* && mkinitcpio -P
