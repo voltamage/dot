@@ -168,7 +168,7 @@
           - librewolf-extension-darkreader-bin
           - neovim-git
           - paru-bin
-          - pfetch-rs-bin
+          - pfetch-rs
           - rofi-lbonn-wayland-git
           - swaybg
           - wlsunset
