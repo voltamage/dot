@@ -12,6 +12,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+alias LazyGit='lazygit'
 alias c='chezmoi'
 alias cat='bat -n'
 alias cd='z'
@@ -23,6 +24,7 @@ alias fd="$FZF_DEFAULT_COMMAND"
 alias fetch-git='onefetch'
 alias fetch='pfetch'
 alias find="$FZF_DEFAULT_COMMAND"
+alias fuz='fuzzy-search-and-edit'
 alias loc='tokei'
 alias ls='eza -a -o --icons'
 alias lynx='lynx https://lite.duckduckgo.com/lite'
@@ -65,10 +67,11 @@ source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light mafredri/zsh-async
-zinit light seletskiy/zsh-fuzzy-search-and-edit
+eval "$(starship init zsh)"
+
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light marlonrichert/zsh-autocomplete
+zinit light mafredri/zsh-async
+zinit light seletskiy/zsh-fuzzy-search-and-edit
 
-eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
