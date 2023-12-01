@@ -72,6 +72,7 @@ eval "$(starship init zsh)"
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light marlonrichert/zsh-autocomplete
 zinit light mafredri/zsh-async
+# BUG: inconsistent async issue
 zinit light seletskiy/zsh-fuzzy-search-and-edit
 
 eval "$(zoxide init zsh)"
