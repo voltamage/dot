@@ -83,7 +83,7 @@
 * ( ) tree-sitter-cli
 * ( ) ttf-jetbrains-mono-nerd
 * ( ) unzip
-* ( ) vivid
+* (x) vivid
 * ( ) waybar-git
 * ( ) wget
 * ( ) wireplumber
@@ -131,14 +131,14 @@
 * ( ) vim-fugitive
 * ( ) which-key
 
-* ( ) Gold standard all shell stack
+* (-) Gold standard all shell stack
 ** ( ) wallpaper
    - ( ) swww
 ** ( ) hyprland
    - ( ) is hypr.conf's exec-once sequential
    - (x) symlink default config
-** ( ) kitty
-   - ( ) kitty terminal padding
+** (x) kitty
+   - (x) kitty terminal padding
    - (x) symlink default config
 ** ( ) tmux
 ** ( ) starship
@@ -150,13 +150,6 @@
    - ( ) zinit
    - ( ) zsh aliases 
 ** slurp screenshot thing
-
-* Colortheme
-** Which thing dictates what theme
-   - (x) kitty
-   - (?) dircolors/LS_COLORS {https://unix.stackexchange.com/questions/94299/dircolors-modify-color-settings-globaly}[dircolors]
-    - ( ) fd
-    - ( ) fzf
 
 * Neovim
 ** ( ) Update plugin packages as well
@@ -194,13 +187,6 @@
    - ( ) darkreader
    - ( ) ublock
    - ( ) userscript handler
-
-* ( ) dinit services
-** ( ) audio
-   - ( ) pipewire
-   - ( ) wireplumber
-** ( ) vpn
-   - ( ) mullvad
 
 * ( ) Gaming
 ** ( ) lutris
