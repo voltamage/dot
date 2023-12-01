@@ -22,6 +22,7 @@ colors:
   orange: "e78a4e"
   gray: "7c6f64"
 
+  # alt colors are currently mirrors of regular colors
   alt_red: "ea6962"
   alt_green: "a9b665"
   alt_yellow: "d8a657"
