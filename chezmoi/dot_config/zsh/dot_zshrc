@@ -34,6 +34,7 @@ alias q='exit'
 alias source-zsh='source "$XDG_CONFIG_HOME"/zsh/.zshrc'
 alias symlink='ln -s'
 alias terraria='steam steam://rungameid/105600'
+alias tree='eza -a -o --tree --icons'
 alias wikiman='wikiman -H lynx'
 
 # NOTE: could automate this to trigger on font update, pacman hook perhaps
