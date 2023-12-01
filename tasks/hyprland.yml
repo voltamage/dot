@@ -19,7 +19,6 @@
           - nvidia-dkms
           - nvidia-utils
           - nwg-look
-          - qt4ct
           - qt5-wayland
           - qt5ct
           - qt6-wayland

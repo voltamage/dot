@@ -1,3 +1,4 @@
+---
 - hosts: localhost
   connection: local
   become: true
@@ -68,7 +69,7 @@
       copy:
         dest: ~/.local/state/zsh/history
         force: false
-        mode: 0600
+        mode: 600
         content: ""
 
     - name: Ensure installed packages
@@ -82,7 +83,6 @@
           # - onefetch
           # - pacman-contrib # NOTE: i dont remember what this is for
           # - python-pynvim # NOTE: nvim checkhealth likes having this, added because python lsp
-          # - ripgrep-all
           # - slurp
           # - vivid # NOTE: LS_COLORS generator
           # - wikiman
@@ -113,6 +113,7 @@
           - ranger
           - reflector
           - ripgrep
+          - ripgrep-all
           - starship
           - sudo # already exists, arm seems to complain though
           - tmux
@@ -130,7 +131,7 @@
       blockinfile:
         path: /etc/sudoers.d/u_main
         create: true
-        mode: 0644
+        mode: 644
         validate: "visudo -cf %s"
         block: |
           main ALL=(ALL) NOPASSWD:ALL
@@ -193,7 +194,7 @@
       blockinfile:
         path: /etc/sudoers.d/u_main
         create: true
-        mode: 0644
+        mode: 644
         validate: "visudo -cf %s"
         block: |
           main ALL=(ALL) ALL
