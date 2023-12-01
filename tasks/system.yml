@@ -165,7 +165,7 @@
           - ff2mpv-native-messaging-host-librewolf-git
           - hyprland-git
           - librewolf-bin
-          - librewolf-extension-darkreader-bin
+          - librewolf-extension-darkreader
           - neovim-git
           - paru
           - pfetch-rs
