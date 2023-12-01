@@ -1,31 +1,32 @@
+---
 - hosts: localhost
   connection: local
   become: true
-  
-  tasks:
-  - name: Ensure packages required for playbook exist
-    package:
-      name:
-        - alsa-utils
-        - lib32-pipewire
-        - pipewire
-        - pipewire-alsa
-        - wireplumber
-  
-  - name: Enable and start wireplumber.service
-    become: true
-    become_user: main
-    systemd:
-      enabled: true
-      scope: user
-      state: started
-      name: wireplumber.service
 
-  - name: Enable and start pipewire.socket
-    become: true
-    become_user: main
-    systemd:
-      enabled: true
-      scope: user
-      state: started
-      name: pipewire.socket
+  tasks:
+    - name: Ensure packages required for playbook exist
+      package:
+        name:
+          - alsa-utils
+          - lib32-pipewire
+          - pipewire
+          - pipewire-alsa
+          - wireplumber
+
+    - name: Enable and start wireplumber.service
+      become: true
+      become_user: main
+      systemd:
+        enabled: true
+        scope: user
+        state: started
+        name: wireplumber.service
+
+    - name: Enable and start pipewire.socket
+      become: true
+      become_user: main
+      systemd:
+        enabled: true
+        scope: user
+        state: started
+        name: pipewire.socket

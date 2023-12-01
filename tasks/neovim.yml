@@ -1,22 +1,23 @@
+---
 - hosts: localhost
   connection: local
   become: true
-  
+
   tasks:
-  - name: Install neovim packages
-    become: true
-    become_user: main
-    kewlfft.aur.aur:
-      name:
-        - fd
-        - git
-        - lazygit
-        - neovim-git
-        - ninja
-        - npm
-        - rg
-        - tree-sitter-cli
-        - ttf-jetbrains-mono-nerd
-        - unzip
-        - wget
-        - wl-clipboard
+    - name: Install neovim packages
+      become: true
+      become_user: main
+      kewlfft.aur.aur:
+        name:
+          - fd
+          - git
+          - lazygit
+          - neovim-git
+          - ninja
+          - npm
+          - rg
+          - tree-sitter-cli
+          - ttf-jetbrains-mono-nerd
+          - unzip
+          - wget
+          - wl-clipboard
