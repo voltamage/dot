@@ -142,7 +142,7 @@
       kewlfft.aur.aur:
         state: present
         name:
-          - paru-bin
+          - paru
 
     #  - name: Update system
     #    become: true
@@ -167,7 +167,7 @@
           - librewolf-bin
           - librewolf-extension-darkreader-bin
           - neovim-git
-          - paru-bin
+          - paru
           - pfetch-rs
           - rofi-lbonn-wayland-git
           - swaybg
