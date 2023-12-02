@@ -2,12 +2,12 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
   atuin init fish | source
   starship init fish | source
-  zoxide init fish | source
 end
 
 alias c='chezmoi'
 alias cat='bat -n'
-alias cdiff='chezmoi diff && chezmoi git diff'
+alias cdif='chezmoi diff'
+alias cgit='lazygit -p ~/dotfiles'
 alias e='nvim'
 alias en='nvim ~/.config/nvim/init.lua'
 alias fd="$FZF_DEFAULT_COMMAND"
@@ -36,7 +36,7 @@ function rgaf
             --preview-window='50%:wrap'
     ) && \
     echo "opening $file" && \
-    open "$file"
+    handlr open "$file"
 end
 
 function wal

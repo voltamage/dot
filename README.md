@@ -2,12 +2,12 @@ Ansible repository for systems automation, currently supporting Arch Linux
 
 Install new system with:
 ```
-curl https://raw.githubusercontent.com/voltamage/dotfiles/main/install | sh && tmux attach -t install
+curl https://raw.githubusercontent.com/voltamage/dotfiles/main/install.sh | sh && tmux attach -t install
 ```
 
 Install config with:
 ```
-curl https://raw.githubusercontent.com/voltamage/dotfiles/main/live | sh && tmux attach -t live
+curl https://raw.githubusercontent.com/voltamage/dotfiles/main/live.sh | sh && tmux attach -t live
 ```
 
 **Browser Addons**

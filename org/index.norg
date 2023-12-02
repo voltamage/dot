@@ -24,13 +24,15 @@
 * ( ) fd
 * ( ) ff2mpv-native-messaging-host-librewolf-git
 * (x) fish
-  - ( ) enable vi mode without taking out remaps
+  - (x) alias existing cd command with zoxide
   - ( ) alias existing commands, maybe through environment
+  - ( ) enable vi mode without taking out remaps
 * ( ) fzf
 * ( ) git
 * ( ) glow
 * ( ) grub
 * ( ) grub-btrfs
+* ( ) handlr
 * ( ) hyprland-git
 * ( ) imagemagick
 * ( ) inotify-tools

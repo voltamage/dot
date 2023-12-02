@@ -98,6 +98,7 @@
           - fd
           - fzf
           - git
+          - handlr
           - intel-ucode # current hardware seems to be installed with archinstall
           - man-db
           - mpv
