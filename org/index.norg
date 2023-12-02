@@ -2,7 +2,7 @@
 * ( ) ansible
 * ( ) ansible-lint
 * ( ) aria2
-* ( ) atuin
+* (x) atuin
 * ( ) base
 * ( ) base-devel
 * ( ) bat
