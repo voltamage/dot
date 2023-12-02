@@ -1,8 +1,17 @@
+  shell - zsh
+  shell - fish
+  prompt - atuin
+  prompt - starship
+  prompt - zoxide
+  terminal - kitty
+  tmux
+
 * ( ) alsa-utils
 * ( ) ansible
 * ( ) ansible-lint
 * ( ) aria2
 * (x) atuin
+  - ( ) non-fullscreen has character bleed in menu
 * ( ) base
 * ( ) base-devel
 * ( ) bat
@@ -14,7 +23,9 @@
 * (x) fastfetch
 * ( ) fd
 * ( ) ff2mpv-native-messaging-host-librewolf-git
-* ( ) fish
+* (x) fish
+  - ( ) enable vi mode without taking out remaps
+  - ( ) alias existing commands, maybe through environment
 * ( ) fzf
 * ( ) git
 * ( ) glow
@@ -25,6 +36,8 @@
 * ( ) inotify-tools
 * ( ) intel-ucode
 * ( ) kitty-git
+  - (x) kitty terminal padding
+  - (x) symlink default config
 * ( ) lazygit
 * ( ) lf
 * ( ) lib32-nvidia-utils
@@ -75,7 +88,8 @@
 * ( ) sddm-sugar-dark
 * ( ) snapper
 * ( ) spotify
-* ( ) starship
+* (x) starship
+  - ( ) customize prompt
 * ( ) steam
 * ( ) swaybg
 * ( ) swaync-git
@@ -85,6 +99,7 @@
 * ( ) ttf-jetbrains-mono-nerd
 * ( ) unzip
 * (x) vivid
+  - ( ) customizer alternate colors
 * ( ) waybar-git
 * ( ) wget
 * ( ) wireplumber
@@ -96,7 +111,8 @@
 * ( ) ytfzf
 * ( ) zoxide
 * ( ) zram-generator
-* ( ) zsh
+* (x) zsh
+  - ( ) export environment variables to fish or agnostic config
 
 * ( ) ReplaceWithRegister
 * ( ) alpha
@@ -133,14 +149,6 @@
 * ( ) which-key
 
 * (-) Gold standard all shell stack
-** ( ) wallpaper
-   - ( ) swww
-** ( ) hyprland
-   - ( ) is hypr.conf's exec-once sequential
-   - (x) symlink default config
-** (x) kitty
-   - (x) kitty terminal padding
-   - (x) symlink default config
 ** ( ) tmux
 ** ( ) starship
 ** ( ) zoxide
