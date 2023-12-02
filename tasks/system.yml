@@ -99,7 +99,6 @@
           - fzf
           - git
           - intel-ucode # current hardware seems to be installed with archinstall
-          - kitty
           - man-db
           - mpv
           - ninja # something prob installs this, but since it compiles neovim faster lets be explicit
@@ -145,6 +144,24 @@
         name:
           - paru
 
+    - name: Set paru BottomUp
+      lineinfile:
+        path: /etc/paru.conf
+        regexp: "^#BottomUp"
+        line: "BottomUp"
+
+    - name: Set paru RemoveMake
+      lineinfile:
+        path: /etc/paru.conf
+        regexp: "^#RemoveMake"
+        line: "RemoveMake"
+
+    - name: Set paru NewsOnUpgrade
+      lineinfile:
+        path: /etc/paru.conf
+        regexp: "^#NewsOnUpgrade"
+        line: "NewsOnUpgrade"
+
     #  - name: Update system
     #    become: true
     #    become_user: main
@@ -165,6 +182,7 @@
           # - tldr++
           - ff2mpv-native-messaging-host-librewolf-git
           - hyprland-git
+          - kitty-git
           - librewolf-bin
           - librewolf-extension-darkreader
           - neovim-git
