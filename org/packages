@@ -2,6 +2,7 @@ alsa-utils
 ansible
 ansible-lint
 aria2
+atuin
 base
 base-devel
 bat
