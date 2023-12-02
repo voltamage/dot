@@ -44,3 +44,7 @@ function wal
 	nohup swaybg -m fill -i "$WALLPAPER"/current &
 	sudo cp "$WALLPAPER"/current /usr/share/sddm/themes/sugar-dark/current
 end
+
+#fish_vi_key_bindings # this wipes out the custom bindings for some reason
+bind \e\[B 'complete'
+
