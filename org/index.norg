@@ -10,6 +10,7 @@
 * ( ) chezmoi
 * ( ) efibootmgr
 * ( ) eza
+* (x) fastfetch
 * ( ) fd
 * ( ) ff2mpv-native-messaging-host-librewolf-git
 * ( ) fish
@@ -22,7 +23,7 @@
 * ( ) imagemagick
 * ( ) inotify-tools
 * ( ) intel-ucode
-* ( ) kitty
+* ( ) kitty-git
 * ( ) lazygit
 * ( ) lf
 * ( ) lib32-nvidia-utils
@@ -53,10 +54,8 @@
 * ( ) nvidia-dkms
 * ( ) nvtop
 * ( ) nwg-look
-* ( ) onefetch
 * ( ) openssh
 * ( ) paru
-* ( ) pfetch-rs
 * ( ) pigz-gzip-symlink
 * ( ) pipewire-alsa
 * ( ) plzip-lzip-link
@@ -78,6 +77,7 @@
 * ( ) starship
 * ( ) steam
 * ( ) swaybg
+* ( ) swaync-git
 * ( ) tmux
 * ( ) tokei
 * ( ) tree-sitter-cli
@@ -181,11 +181,11 @@
    - ( ) theme
    - ( ) user config
 ** ( ) addons
-   - ( ) clearurls
-    - ( ) aur package
+   - (x) clearurls
+    - (x) aur package
    - ( ) canvasblocker
-   - ( ) darkreader
-   - ( ) ublock
+   - (x) darkreader
+   - (x) ublock
    - ( ) userscript handler
 
 * ( ) Gaming

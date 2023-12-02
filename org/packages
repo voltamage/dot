@@ -10,6 +10,7 @@ btrfs-progs
 chezmoi
 efibootmgr
 eza
+fastfetch
 fd
 ff2mpv-native-messaging-host-librewolf-git
 fish
@@ -22,7 +23,7 @@ hyprland-git
 imagemagick
 inotify-tools
 intel-ucode
-kitty
+kitty-git
 lazygit
 lf
 lib32-nvidia-utils
@@ -53,10 +54,8 @@ npm
 nvidia-dkms
 nvtop
 nwg-look
-onefetch
 openssh
 paru
-pfetch-rs
 pigz-gzip-symlink
 pipewire-alsa
 plzip-lzip-link
@@ -78,6 +77,7 @@ spotify
 starship
 steam
 swaybg
+swaync-git
 tmux
 tokei
 tree-sitter-cli

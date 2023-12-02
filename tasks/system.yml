@@ -94,6 +94,7 @@
           - btop
           - chezmoi
           - eza
+          - fastfetch
           - fd
           - fzf
           - git
@@ -168,7 +169,6 @@
           - librewolf-extension-darkreader
           - neovim-git
           - paru
-          - pfetch-rs
           - rofi-lbonn-wayland-git
           - swaybg
           - wlsunset
