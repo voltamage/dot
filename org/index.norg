@@ -12,6 +12,7 @@
 * ( ) aria2
 * (x) atuin
   - ( ) non-fullscreen has character bleed in menu
+  - ( ) paru -Syu hangs when confirm is required
 * ( ) base
 * ( ) base-devel
 * ( ) bat
