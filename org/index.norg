@@ -1,10 +1,10 @@
-  shell - zsh
-  shell - fish
-  prompt - atuin
-  prompt - starship
-  prompt - zoxide
-  terminal - kitty
-  tmux
+shell - zsh
+shell - fish
+prompt - atuin
+prompt - starship
+prompt - zoxide
+terminal - kitty
+multiplex - tmux
 
 * ( ) alsa-utils
 * ( ) ansible
@@ -38,9 +38,10 @@
 * ( ) imagemagick
 * ( ) inotify-tools
 * ( ) intel-ucode
-* ( ) kitty-git
+* (x) kitty-git
   - (x) kitty terminal padding
   - (x) symlink default config
+  - ( ) proper bold and italic rendering
 * ( ) lazygit
 * ( ) lf
 * ( ) lib32-nvidia-utils
@@ -97,6 +98,7 @@
 * ( ) swaybg
 * ( ) swaync-git
 * ( ) tmux
+  - ( ) proper italic rendering
 * ( ) tokei
 * ( ) tree-sitter-cli
 * ( ) ttf-jetbrains-mono-nerd
@@ -112,7 +114,8 @@
 * ( ) xdg-ninja-git
 * ( ) yt-dlp
 * ( ) ytfzf
-* ( ) zoxide
+* (x) zoxide
+  - ( ) confirm no cd infini loop
 * ( ) zram-generator
 * (x) zsh
   - ( ) export environment variables to fish or agnostic config

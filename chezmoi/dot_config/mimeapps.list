@@ -2,3 +2,4 @@
 
 [Default Applications]
 application/x-shellscript=nvim.desktop;
+application/x-zerosize=nvim.desktop;
