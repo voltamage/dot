@@ -1,5 +1,6 @@
 [Added Associations]
 
 [Default Applications]
+application/x-fishscript=nvim.desktop;
 application/x-shellscript=nvim.desktop;
 application/x-zerosize=nvim.desktop;

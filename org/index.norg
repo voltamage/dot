@@ -1,18 +1,28 @@
-shell - zsh
-shell - fish
-prompt - atuin
-prompt - starship
-prompt - zoxide
-terminal - kitty
-multiplex - tmux
+* (x) zsh
+  - ( ) export environment variables to fish or agnostic config
+* (x) fish
+  - (x) alias existing cd command with zoxide
+  - ( ) alias existing commands, maybe through environment
+  - ( ) enable vi mode without taking out remaps
+* (x) atuin
+  - ( ) non-fullscreen has character bleed in menu
+  - ( ) paru -Syu hangs when confirm is required
+* (x) starship
+  - ( ) customize prompt
+* (x) zoxide
+  - ( ) confirm no cd infini loop
+* (x) kitty
+  - (x) kitty terminal padding
+  - (x) symlink default config
+  - ( ) proper bold and italic rendering
+  - ( ) keybind opacity control
+* ( ) tmux
 
 * ( ) alsa-utils
 * ( ) ansible
 * ( ) ansible-lint
 * ( ) aria2
 * (x) atuin
-  - ( ) non-fullscreen has character bleed in menu
-  - ( ) paru -Syu hangs when confirm is required
 * ( ) base
 * ( ) base-devel
 * ( ) bat
@@ -25,9 +35,6 @@ multiplex - tmux
 * ( ) fd
 * ( ) ff2mpv-native-messaging-host-librewolf-git
 * (x) fish
-  - (x) alias existing cd command with zoxide
-  - ( ) alias existing commands, maybe through environment
-  - ( ) enable vi mode without taking out remaps
 * ( ) fzf
 * ( ) git
 * ( ) glow
@@ -39,9 +46,6 @@ multiplex - tmux
 * ( ) inotify-tools
 * ( ) intel-ucode
 * (x) kitty-git
-  - (x) kitty terminal padding
-  - (x) symlink default config
-  - ( ) proper bold and italic rendering
 * ( ) lazygit
 * ( ) lf
 * ( ) lib32-nvidia-utils
@@ -58,6 +62,7 @@ multiplex - tmux
 * ( ) linux-zen-headers
 * ( ) man-db
 * ( ) mpv
+  - ( ) issue with remembering playback position
 * ( ) mullvad-vpn-bin
 * ( ) neovim-git
 * ( ) neovim-symlinks
@@ -93,18 +98,15 @@ multiplex - tmux
 * ( ) snapper
 * ( ) spotify
 * (x) starship
-  - ( ) customize prompt
 * ( ) steam
 * ( ) swaybg
 * ( ) swaync-git
 * ( ) tmux
-  - ( ) proper italic rendering
 * ( ) tokei
 * ( ) tree-sitter-cli
 * ( ) ttf-jetbrains-mono-nerd
 * ( ) unzip
 * (x) vivid
-  - ( ) customizer alternate colors
 * ( ) waybar-git
 * ( ) wget
 * ( ) wireplumber
@@ -115,10 +117,8 @@ multiplex - tmux
 * ( ) yt-dlp
 * ( ) ytfzf
 * (x) zoxide
-  - ( ) confirm no cd infini loop
 * ( ) zram-generator
 * (x) zsh
-  - ( ) export environment variables to fish or agnostic config
 
 * ( ) ReplaceWithRegister
 * ( ) alpha
