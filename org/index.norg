@@ -16,10 +16,11 @@
   - (x) symlink default config
   - ( ) proper bold and italic rendering
   - ( ) keybind opacity control
+* ( ) tmux
 ** (x) NOT USED continuum
    - ( ) continuum status display issue
 ** (x) NOT USED resurrect
-* ( ) tmux
+* ( ) hyprland-git
 
 * ( ) alsa-utils
 * ( ) ansible
