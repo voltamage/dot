@@ -16,6 +16,9 @@
   - (x) symlink default config
   - ( ) proper bold and italic rendering
   - ( ) keybind opacity control
+** (x) NOT USED continuum
+   - ( ) continuum status display issue
+** (x) NOT USED resurrect
 * ( ) tmux
 
 * ( ) alsa-utils
@@ -123,6 +126,7 @@
 * ( ) ReplaceWithRegister
 * ( ) alpha
 * ( ) bufferline
+  - ( ) issue with symbol transparency
 * ( ) chezmoi
 * ( ) cmp
 * ( ) colorizer
