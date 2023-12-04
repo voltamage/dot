@@ -33,7 +33,9 @@
           - qt5ct
           - qt6-wayland
           - qt6ct
+          - swaync-git
           - xdg-desktop-portal-gtk
+          - xdg-desktop-portal-hyprland-git
 
     - name: ALWAYS CHANGED Allow the main user to run passworded sudo
       blockinfile:
