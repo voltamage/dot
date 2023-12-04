@@ -4,6 +4,15 @@
   become: true
 
   tasks:
+    - name: ALWAYS CHANGED Allow the main user to run passwordless sudo
+      blockinfile:
+        path: /etc/sudoers.d/u_main
+        create: true
+        mode: 644
+        validate: "visudo -cf %s"
+        block: |
+          main ALL=(ALL) NOPASSWD:ALL
+
     - name: Ensure packages required for playbook exist
       become: true
       become_user: main
@@ -19,10 +28,21 @@
           - nvidia-dkms
           - nvidia-utils
           - nwg-look
+          - polkit-kde-agent
           - qt5-wayland
           - qt5ct
           - qt6-wayland
           - qt6ct
+          - xdg-desktop-portal-gtk
+
+    - name: ALWAYS CHANGED Allow the main user to run passworded sudo
+      blockinfile:
+        path: /etc/sudoers.d/u_main
+        create: true
+        mode: 644
+        validate: "visudo -cf %s"
+        block: |
+          main ALL=(ALL) ALL
 
     - name: Configure nvidia modprobe
       blockinfile:
