@@ -18,3 +18,9 @@ uBlock Origin
 ClearURLs
 - enable logging
 - enable etag filter
+
+**Steam**
+
+Library:
+
+Low Performance Mode
