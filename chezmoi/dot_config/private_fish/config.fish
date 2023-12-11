@@ -14,7 +14,6 @@ alias ls='eza -a -o --icons'
 alias ngit='lazygit -p ~/.config/nvim'
 alias q='exit'
 alias sf='source "$XDG_CONFIG_HOME"/fish/config.fish && source "$XDG_CONFIG_HOME"/fish/zshenv'
-alias terraria='steam steam://rungameid/105600'
 alias tree='eza -a -o --tree --icons'
 alias update-termuxfont='cp /usr/share/fonts/TTF/JetBrainsMonoNerdFontMono-Medium.ttf ~/dotfiles/chezmoi/private_dot_termux/font.ttf'
 
