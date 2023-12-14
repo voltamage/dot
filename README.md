@@ -31,12 +31,8 @@ FOV: 100
 
 GUI Scale: 2x
 
-Vsync: On / Adaptive if available
-
 View Bobbing: False
 
-Render Distance: 10 because server default
-
-Shadow Distance: 10 or shader setting
-
 Show FPS: True
+
+Shader: MakeUp-UltraFast
