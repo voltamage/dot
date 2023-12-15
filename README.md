@@ -29,6 +29,10 @@ Low Performance Mode
 
 FOV: 100
 
+Render Distance: 10
+
+Simulation Distance: 5
+
 GUI Scale: 2x
 
 View Bobbing: False
