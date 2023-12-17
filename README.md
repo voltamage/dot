@@ -40,3 +40,5 @@ View Bobbing: False
 Show FPS: True
 
 Shader: MakeUp-UltraFast
+
+Directional Audio: True
