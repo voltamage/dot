@@ -16,6 +16,7 @@ alias ngit='lazygit -p ~/.config/nvim'
 alias q='exit'
 alias sf='source "$XDG_CONFIG_HOME"/fish/config.fish && source "$XDG_CONFIG_HOME"/fish/zshenv'
 alias tree='eza -a -o --tree --icons'
+alias twitch='wtwitch'
 alias update-termuxfont='cp /usr/share/fonts/TTF/JetBrainsMonoNerdFontMono-Medium.ttf ~/dotfiles/chezmoi/private_dot_termux/font.ttf'
 
 #fish_vi_key_bindings # this wipes out the custom bindings for some reason
