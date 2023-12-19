@@ -15,6 +15,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
+export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 export WALLPAPER="$XDG_DATA_HOME"/wallpaper
 
