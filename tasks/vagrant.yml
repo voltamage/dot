@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Ensure packages required for playbook exist
+      package:
+        name:
+          - base-devel
+          - libvirt
+          - qemu-img
+          - vagrant
+
+    - name: Enable and start libvirtd.service
+      systemd:
+        enabled: true
+        state: started
+        name: libvirtd.service
+
+    # - name: Install vagrant-libvirt plugin
+    #   become: true
+    #   become_user: main
+    #   shell:
+    #     cmd: vagrant plugin install vagrant-libvirt

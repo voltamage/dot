@@ -1,0 +1,24 @@
+# Install Red Dead Redemption II from Steam
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Enable multilib packages
+      blockinfile:
+        path: /etc/pacman.conf
+        block: |
+          [multilib]
+          Include = /etc/pacman.d/mirrorlist
+
+    - name: Generate locale
+      shell:
+        cmd: locale-gen
+
+    - name: Ensure installed packages
+      package:
+        name:
+          - lib32-nvidia-utils
+          - nvidia-utils
+          - steam
