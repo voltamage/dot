@@ -21,9 +21,20 @@ ClearURLs
 
 **Steam**
 
+Interface: Enable gpu accelerated rendering in web views: true (wayland does not like this)
+
 Library:
 
-Low Performance Mode
+Low Performance Mode: true
+
+Cloud:
+
+Enable Steam Cloud: false
+
+In Game:
+
+Enable the Steam Overlay while in-game: true
+
 
 **Minecraft**
 

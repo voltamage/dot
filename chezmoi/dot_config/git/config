@@ -3,3 +3,17 @@
 [user]
 	name = voltamage
 	email = 37029882+voltamage@users.noreply.github.com
+
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  light = false
+  line-numbers = true
+  navigate = true
+  side-by-side = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default

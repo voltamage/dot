@@ -29,6 +29,9 @@
           [multilib]
           Include = /etc/pacman.d/mirrorlist
 
+          [kde-unstable]
+          Include = /etc/pacman.d/mirrorlist
+
     - name: Synchronize package databases
       package:
         update_cache: true
@@ -115,6 +118,7 @@
           - reflector
           - ripgrep
           - ripgrep-all
+          - rofi
           - starship
           - sudo # already exists, arm seems to complain though
           - tmux
@@ -188,7 +192,6 @@
           - librewolf-extension-darkreader
           - neovim-git
           - paru
-          - rofi-lbonn-wayland-git
           - swaybg
           - wlsunset
           - xdg-desktop-portal-hyprland-git

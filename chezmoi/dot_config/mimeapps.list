@@ -4,3 +4,4 @@
 application/x-fishscript=nvim.desktop;
 application/x-shellscript=nvim.desktop;
 application/x-zerosize=nvim.desktop;
+x-scheme-handler/nxm=modorganizer2-nxm-handler.desktop

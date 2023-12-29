@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Ensure packages required for playbook exist
+      become: true
+      become_user: main
+      kewlfft.aur.aur:
+        use: paru
+        name:
+          - syncthing
+          - syncthingtray-qt6
+
+    - name: Enable and start wireplumber.service
+      become: true
+      become_user: main
+      systemd:
+        enabled: true
+        scope: user
+        state: started
+        name: syncthing.service
